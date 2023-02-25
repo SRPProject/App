@@ -7,7 +7,7 @@ import Loader from "./components/Loader";
 const Context = createContext({})
 
 function App() {
-  const [isAuth, changeAuth] = useState<Boolean>(false);
+  const [isAuth, changeAuth] = useState<Boolean>(true);
   const [isLoading, changeLoading] = useState<Boolean>(true);
   const [data, changeData] = useState<any>({})
 
@@ -15,9 +15,9 @@ function App() {
    
     (async () => {
     
-      const details: { isAuth: Boolean; data: any } = await verifyLogin();
+      const details: any = await verifyLogin();
   
-      if (details.isAuth) {
+      if (details.message==="success") {
         changeAuth(true);
         changeData(details.data);
       }

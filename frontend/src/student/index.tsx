@@ -1,10 +1,13 @@
 
 
 import React from 'react'
+import Layout from '../components/Layout'
 
 function Student() {
   return (
-    <div>index</div>
+    <div>
+      <Layout/>
+    </div>
   )
 }
 
