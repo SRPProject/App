@@ -14,6 +14,8 @@ const auth=require('../controllers/auth')
 
 router.post('/createAdmin',auth.AdminSave);
 router.post('/adminLogin',auth.AdminLogin);
+router.post('/forgot-password',auth.ForgotPassword);
+router.post('/:userId/:linkCode',auth.SetPassword)
 
 
 module.exports=router;

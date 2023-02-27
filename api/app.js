@@ -33,6 +33,7 @@ var adminRoutes=require('./routes/admin');
 
 app.use('/auth',authroutes);
 app.use('/admin',adminRoutes);
+app.use('/password-set',authroutes);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

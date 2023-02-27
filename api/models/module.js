@@ -11,7 +11,9 @@ const Departments=sequelize.define("dist_departments",{
     }
     ,dept_name:{
         type:Sequelize.TEXT,
-        allowNull:true,
+        allowNull:false,
+        validate:{notNull:true,notEmpty: true}
+
     }
   
 },{

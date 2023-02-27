@@ -14,7 +14,7 @@ const Admin = sequelize.define("dist_admin", {
       type:DataTypes.TEXT,
       allowNull:false,
       unique:true,
-      validate:{isEmail:true}
+      validate:{isEmail:true,notNull:true,notEmpty: true}
      
   },
   password:{
@@ -27,4 +27,35 @@ const Admin = sequelize.define("dist_admin", {
 );
 Departments.hasOne(Admin);
 Admin.belongsTo(Departments);
-module.exports={Admin}
+
+const Verification=sequelize.define("verification",{
+  verifyId:{
+    allowNull:false,
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  },
+  linkCode:{
+    allowNull:false,
+    type:DataTypes.TEXT,
+    validate:{notNull:true,notEmpty: true }//wont allow null
+  },
+  mail:{
+    type:DataTypes.TEXT,
+    allowNull:false,
+    unique:true,
+    validate:{isEmail:true,notNull:true,notEmpty: true}
+   
+},
+  expireTime:{
+    allowNull:false,
+    type:DataTypes.TEXT,
+    validate:{notNull:true,notEmpty: true }
+  }
+
+},{
+  freezeTableName: true
+  })
+// Admin.hasOne(Verification);
+// Verification.belongsTo(Admin);
+module.exports={Admin,Verification}
