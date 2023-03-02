@@ -1,13 +1,6 @@
-// module.exports = {
-//     secret: "au_sims-secret-key"
-//   };
-
 const dotenv = require('dotenv');
 dotenv.config();
 const nodemailer=require('nodemailer');
-
-
-
 let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -15,14 +8,14 @@ let transporter = nodemailer.createTransport({
     service : 'Gmail',
     
     auth: {
-      user: 'sivakanivan3@gmail.com',//use mail id
-      pass: 'dixdoquwizrucinm',//use app password for of gmail
+      user: process.env.SOURCE_EMAIL,//use mail id
+      pass: process.env.SOURCE_APPPASSWORD,//use app password for of gmail
     }
     
 });
 
 let jwtDetails={
-  secret: 'NHAvVUdSWz9UOSI2XUBmVShdMXA0bGxJYTAnc217J1whfWsiaWRZfnI4SXtrQHpuTzFvUD1Eci9QIUc2bjEiJ1BZXlJbPWowRl1TIyRrRHtVWyVxKSIybldwcydSaTpCTThGXz5uUSs8YHQle1BtL3JeXEFma2Jfe3JBaGQmVyw/KFxKLSpubFdmU0AqZXZ0PWAwbWEgZ05OXUo5NVRdYURhenxRflE2R1Z1JkV3QytKIEpBPyctViovWC4/JShsJ0EwXClRXjR7czN5WThMKVt2Kmwyfjo2XThEM0d8KlQ+PVd4RFckJThkXXtbQUU9XzBQL3FZTHZvaT4mejxhKGRrVj1kSSFCPTdwSjVaT3oyPjhTbTA1bnVnTEhrLXQ2',
+  secret: process.env.JWT_SECRET_KEY,
   jwtExpiration: 3600,           // 1 hour
   jwtRefreshExpiration: 86400,   // 24 hours
 

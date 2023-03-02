@@ -4,6 +4,7 @@ const { TokenExpiredError } = jwt;
 const crypto=require("crypto");
 const {transporter,jwtDetails}=require("../config/config");
 const {Admin,Verification} = require("../models/roles")
+const cookie = require("js-cookie")
 const saltRounds=10;
 
 
@@ -14,49 +15,55 @@ const AdminSave=async(req,res)=>{
         const mail=req.body.mail
         const password=req.body.password
         const deptId=req.body.deptId
-        Admin.findOne({
+        console.log(req.body);
+        if(mail && password && deptId){
+            Admin.findOne({
 
-            where:{
-                mail:mail,
-            }
-        }).then((data)=>{
-            if(data){
-                return res.status(403).send({message:"Admin id already exists"});
-            }
-            else{
-                bcrypt.genSalt(saltRounds,async (err, salt) => {
-                    bcrypt.hash(password, salt,async (err, hash) => {
+                where:{
+                    mail:mail,
+                }
+            }).then((data)=>{
+                if(data){
+                    return res.status(403).send({message:"Admin id already exists"});
+                }
+                else{
+                    bcrypt.genSalt(saltRounds,async (err, salt) => {
+                        bcrypt.hash(password, salt,async (err, hash) => {
+                            if(err){
+                                return res.status(500).send({ message: "Server Error." });
+                            }
+                            else{
+                                Admin.create({
+                                    mail:mail,
+                                    password:hash,
+                                    distDepartmentDeptId:deptId
+                                }).then((reg)=>{
+                                    if(reg){
+                                        return res.status(200).send({message:"Account saved successsfully!"});
+                                    }
+                                    else {
+                                        return res
+                                          .status(400)
+                                          .send({ message: "Server Error. Try again." });
+                                      }
+                                })
+                                .catch((err) => {
+                                    console.log(err.message);
+                                    return res.status(500).send({ message: "Server Error." });
+                                });
+                            }
+                        });
                         if(err){
                             return res.status(500).send({ message: "Server Error." });
                         }
-                        else{
-                            Admin.create({
-                                mail:mail,
-                                password:hash,
-                                distDepartmentDeptId:deptId
-                            }).then((reg)=>{
-                                if(reg){
-                                    return res.status(200).send({message:"Account saved successsfully!"});
-                                }
-                                else {
-                                    return res
-                                      .status(400)
-                                      .send({ message: "Server Error. Try again." });
-                                  }
-                            })
-                            .catch((err) => {
-                                console.log(err.message);
-                                return res.status(500).send({ message: "Server Error." });
-                            });
-                        }
                     });
-                    if(err){
-                        return res.status(500).send({ message: "Server Error." });
-                    }
-                });
-               
-            }
-        })
+                   
+                }
+            })
+        }
+        else{
+            return res.status(400).send({ message: "Bad Request. Try again." });
+        }
     }
     catch(err){
         console.log(err);
@@ -66,20 +73,19 @@ const AdminSave=async(req,res)=>{
 
 const AdminLogin=async(req,res)=>{
     try{
-        const mail=req.body.mail
+        const mail=req.body.email
         const password=req.body.password
+
         if(mail && password){
             const data=await Admin.findOne({
                 where:{
                     mail:mail
                 }
             })
-
             if(data===null){
                 return res.status(401).send({message:"Failure"})
             }
             else{
-                console.log(data);
                 bcrypt.compare(password, data.password, function(err, result) {
                     if(err){
                         console.log(err);
@@ -361,6 +367,32 @@ const SetPassword=async (req,res)=>{
         console.log(err);
         return res.status(500).send({message:"Server Error!"});
     }
-
 }
-module.exports={AdminSave,AdminLogin,StudentLogin,ForgotPassword,SetPassword}
+const VerifyToken=async(req,res)=>{
+    try{
+       
+    
+        var token=(req.headers.cookie).split("=")[1];
+
+
+        if (!token) {
+           
+            return res.status(403).send({ message: "No token provided!" });
+            // return false;
+        }else  {
+              jwt.verify(token, jwtDetails.secret, (err, decoded) => {
+                if (err) {
+                    return res.status(401).send({ message: "Server Error." });
+                }   
+                console.log(decoded);
+                return res.status(200).send({ message: "verified" });
+
+              })
+        }
+      }
+      catch(err){
+        return res.send({ message: "Server Error." });
+      }
+   
+}
+module.exports={AdminSave,AdminLogin,StudentLogin,ForgotPassword,SetPassword,VerifyToken}

@@ -4,15 +4,6 @@ var path = require('path');
 var logger = require('morgan');
 var cors=require('cors');
 
-// var mongoose= require("mongoose");
-
-// mongoose.connect("mongodb://127.0.0.1:27017/sims", {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-// }).then(() => {
-//     console.log("Connection Established!");
-// })
-
 const sequelize = require("./utils/dbconnection");
 sequelize.sync()
   .then(() => {
@@ -31,9 +22,10 @@ app.use(express.urlencoded({ extended: false }));
 var authroutes=require('./routes/auth');
 var adminRoutes=require('./routes/admin');
 
-app.use('/auth',authroutes);
-app.use('/admin',adminRoutes);
-app.use('/password-set',authroutes);
+app.use('/api/auth',authroutes);
+app.use('/api/admin',adminRoutes);
+app.use('/api/password-set',authroutes);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

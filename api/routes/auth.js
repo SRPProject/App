@@ -11,7 +11,7 @@ const auth=require('../controllers/auth')
 // router.post('/authverifyotp',admin.authverifyotp)
 
 // router.post('/newstudent',admin.createnewstudent)
-
+router.head('/verifyJWT',auth.VerifyToken)
 router.post('/createAdmin',auth.AdminSave);
 router.post('/adminLogin',auth.AdminLogin);
 router.post('/forgot-password',auth.ForgotPassword);
