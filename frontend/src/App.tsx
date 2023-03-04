@@ -9,12 +9,19 @@ const Context = createContext({})
 function App() {
   const [isAuth, changeAuth] = useState<Boolean>(true);
   const [isLoading, changeLoading] = useState<Boolean>(true);
+<<<<<<< HEAD
   const [data, changeData] = useState<any>({role:"student"})
+=======
+  const [data, changeData] = useState<any>({})
+>>>>>>> 3bc01ac9ea480fabf2a1ff601beb3bdc7d9ceb36
 
   useEffect(() => {
    
     (async () => {
+<<<<<<< HEAD
     
+=======
+>>>>>>> 3bc01ac9ea480fabf2a1ff601beb3bdc7d9ceb36
       const details: any = await verifyLogin();
   
       if (details.message==="success") {

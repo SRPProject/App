@@ -14,6 +14,10 @@
     "@types/node": "^16.18.12",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+<<<<<<< HEAD
+=======
+    "axios": "^1.3.4",
+>>>>>>> 3bc01ac9ea480fabf2a1ff601beb3bdc7d9ceb36
     "js-cookie": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

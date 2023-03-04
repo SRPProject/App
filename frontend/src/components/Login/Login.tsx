@@ -111,16 +111,30 @@ const NormalLogin = ({changeMode,role}:{changeMode:any,role:string}) => {
        url = "/student/login"
     }
     else {
+<<<<<<< HEAD
       url ="/admin/login"
+=======
+      // url ="/admin/login"
+      url="/auth/adminLogin"
+>>>>>>> 3bc01ac9ea480fabf2a1ff601beb3bdc7d9ceb36
     }
 
     (async () => {
       const res:any = await login(url, { email: Email, password: Password })
+<<<<<<< HEAD
       if (res.message == "success") {
         
       }
       else {
 
+=======
+
+      if (res.status===200  && res.data.message === "Success") {
+        console.log("success");
+      }
+      else {
+        console.log("failure");
+>>>>>>> 3bc01ac9ea480fabf2a1ff601beb3bdc7d9ceb36
       }
     })()
 
