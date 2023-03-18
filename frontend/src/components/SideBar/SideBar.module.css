@@ -1,0 +1,38 @@
+
+
+.sidebar {
+    padding: 10px; 
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow:hidden;
+}
+
+.logo {
+    color:white ;
+}
+
+.navlist {
+
+    width :100% ;
+    display: flex;
+    flex-direction: column;
+}
+
+.navitems {
+    padding:20px; 
+    padding-left:5px;
+    text-decoration: none ;
+    text-transform: capitalize;
+    width:100% ;
+    color:white ;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navitems:hover {
+    background-color: black;
+}

@@ -1,0 +1,36 @@
+
+.nav_desktop_wrapper{
+    width:100vw ;
+    height: 100vh;
+    display: grid ;
+    grid-template-columns: .2fr .8fr;
+}
+
+.nav_header{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height :max-content ;
+    padding: 2rem ; 
+    width:100% ;
+}
+
+.nav {
+    width: 50vw;
+    height:100vh ;
+    position: absolute ;
+    left:-100% ;
+    transition: 300ms ease-in ;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #1465C0;
+}
+
+
+.nav_desktop{
+    background-color: #1465C0;
+}
+
+
+.nav_active{
+    left:0%;
+    transition: 600ms ease-in ;
+}
+
