@@ -44,11 +44,12 @@ function Login({role}:{role:string}) {
 //////////////////////////////////////////////////////
 
 const ForgotPassword = ({changeMode}:{changeMode:any}) => {
-  const [Email, changeEmail] = useState("");
+  
+  const email = useRef<HTMLInputElement>(null)
   
   const submitData = () => {
     (async () => {
-        const res :any  = await forgotPassword({email:Email})
+        const res :any  = await forgotPassword({email:email.current?.value})
         if(res.message==="success"){
           // pull notification
         }
@@ -65,8 +66,7 @@ const ForgotPassword = ({changeMode}:{changeMode:any}) => {
       <CustomInput
         type="email"
         title="Email"
-        data={Email}
-        changeData={changeEmail}
+        innerref = {email}
       />
       <Button variant="contained" disableElevation onClick={submitData}>
         Send Mail 
@@ -83,8 +83,8 @@ const ForgotPassword = ({changeMode}:{changeMode:any}) => {
 
 const NormalLogin = ({changeMode,role}:{changeMode:any,role:string}) => {
  
-   const email = useRef();
-   const password = useRef();
+   const email =  useRef<HTMLInputElement>(null)
+   const password =  useRef<HTMLInputElement>(null)
    const [requestSent, changeRequestSent] = useState(false);
 
 
@@ -99,17 +99,18 @@ const NormalLogin = ({changeMode,role}:{changeMode:any,role:string}) => {
     else {
       url ="/admin/login"
     }
+    console.log(email.current?.value, password.current)
 
-    (async () => {
-      const res:any = await login(url, { email: "Email", password: "Password" })
+    // (async () => {
+    //   const res:any = await login(url, { email: email.current?.value , password: password.current?.value })
 
-      if (res.status===200  && res.data.message === "Success") {
-        console.log("success");
-      }
-      else {
-        console.log("failure");
-      }
-    })()
+    //   if (res.status===200  && res.data.message === "Success") {
+    //     console.log("success");
+    //   }
+    //   else {
+    //     console.log("failure");
+    //   }
+    // })()
 
   };
 
@@ -117,7 +118,17 @@ const NormalLogin = ({changeMode,role}:{changeMode:any,role:string}) => {
     <>
       <h2 style={{textTransform:"capitalize"}}>{role} Login</h2>
       
-        <input type="text" ref={email} onChange={(e)=>{console.log(e)}}/>
+      <CustomInput
+        type="email"
+        title="Email"
+        innerref = {email}
+      />
+      
+      <CustomInput
+        type="password"
+        title="password"
+        innerref = {password}
+      />
   
       <ReCAPTCHA
         sitekey="6LeeV6YkAAAAAI--BlJpwkhQdYqA9nHKWWjnbMPv"

@@ -41,7 +41,7 @@
     justify-content: space-between;
     margin-top: 13px;
 }
-nod
+
 
 @media  only screen and (max-width:768px) {
     
@@ -54,6 +54,9 @@ nod
     }
 
     .login{
+        top:15% ;
+        left:0% ;
+        transform: none; 
         box-shadow: none;
         width:100vw ;
         font-size: .8em;

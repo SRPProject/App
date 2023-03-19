@@ -7,7 +7,7 @@ import Loader from "./components/Loader";
 const Context = createContext({})
 
 function App() {
-  const [isAuth, changeAuth] = useState<Boolean>(false);
+  const [isAuth, changeAuth] = useState<Boolean>(true);
   const [isLoading, changeLoading] = useState<Boolean>(true);
 
   const [data, changeData] = useState<any>({role:"student"})

@@ -10,26 +10,32 @@ import {
 interface Type {
   title : string ,
   type: string,
-  data:any ,
-  changeData:Function 
+  innerref : any 
 };
 
-function CustomInput({ title, type, data, changeData }:Type) {
+const inputStyle = {
+  padding:"10px 20px",
+  borderRadius:"5px",
+  outline : "none",
+  boxShadow :"rgba(0, 0, 0, 0.16) 0px 1px 4px",
+  border:"none",
+}
+
+function CustomInput({ title, type, innerref }:Type) {
+  
   const [error, changeError] = React.useState(null);
-  console.log("i am rendering"+title)
+  
   return (
     <FormControl style={{ margin: "5px 0 20px 0" }}>
-      <span style={{ marginBottom: "13px" }}>{title}</span>
-      <TextField
+      
+      <span style={{ marginBottom: "13px" ,textTransform:"capitalize"}}>{title}</span>
+      
+      <input
         required={true}
         type={type}
-        error={error != null ? true : false}
-        value={data}
         placeholder={`Enter your ${title}`}
-        onChange={(e) => {
-          changeData(e.target.value);
-        }}
-        size="small"
+        ref = {innerref}
+        style={inputStyle}
       />
 
       {error && (
