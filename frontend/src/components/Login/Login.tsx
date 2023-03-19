@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useRef} from "react";
 import Styles from "./Login.module.css";
 import { Button, Switch,Link } from "@mui/material";
 import CustomInput from "../InputBox";
@@ -83,25 +83,11 @@ const ForgotPassword = ({changeMode}:{changeMode:any}) => {
 
 const NormalLogin = ({changeMode,role}:{changeMode:any,role:string}) => {
  
-   const [Email, changeEmail] = useState("");
-   const [Password, changePassword] = useState("");
+   const email = useRef();
+   const password = useRef();
    const [requestSent, changeRequestSent] = useState(false);
 
 
-  const config = [
-    {
-      title: "Email",
-      type: "text",
-      data: Email,
-      changeData: changeEmail,
-    },
-    {
-      title: "Password",
-      type: "password",
-      data: Password,
-      changeData: changePassword,
-    },
-  ];
 
   const submitData = () => {
     
@@ -115,7 +101,7 @@ const NormalLogin = ({changeMode,role}:{changeMode:any,role:string}) => {
     }
 
     (async () => {
-      const res:any = await login(url, { email: Email, password: Password })
+      const res:any = await login(url, { email: "Email", password: "Password" })
 
       if (res.status===200  && res.data.message === "Success") {
         console.log("success");
@@ -130,17 +116,9 @@ const NormalLogin = ({changeMode,role}:{changeMode:any,role:string}) => {
   return (
     <>
       <h2 style={{textTransform:"capitalize"}}>{role} Login</h2>
-      {config.map((el: any) => {
-        return (
-          <CustomInput
-            type={el.type}
-            title={el.title}
-            data={el.data}
-            changeData={el.changeData}
-          />
-        );
-      })}
-
+      
+        <input type="text" ref={email} onChange={(e)=>{console.log(e)}}/>
+  
       <ReCAPTCHA
         sitekey="6LeeV6YkAAAAAI--BlJpwkhQdYqA9nHKWWjnbMPv"
       />

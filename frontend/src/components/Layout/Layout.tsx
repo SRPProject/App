@@ -42,7 +42,7 @@ function MobileLayout() {
         </div>
       }
 
-      <NavHeader className={{Styles.nav_header}}  desktop={false} toggleOpen={toggleOpen}/>
+      {/* <NavHeader className={{Styles.nav_header}}  desktop={false} toggleOpen={toggleOpen}/> */}
   
     </div>
   );
@@ -60,8 +60,8 @@ function DesktopLayout() {
 
       <div>
 
-        <NavHeader className={{Styles.nav_header}} desktop={true} toggleOpen={null}/>
-        
+        {/* <NavHeader className={{Styles.nav_header}} desktop={true} toggleOpen={null}/>
+         */}
         <div>
 
           this is body 
