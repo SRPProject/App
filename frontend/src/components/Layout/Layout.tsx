@@ -1,10 +1,16 @@
-import { useState } from "react";
+import React,{ useState } from "react";
 import Styles from "./Layout.module.css";
 import { useEffect } from "react";
 import SideBar from "../SideBar/SideBar"
 import NavHeader from "../NavHeader"
 
-function Layout() {
+
+interface type {
+  Body : React.ReactNode
+}
+
+
+function Layout({Body}:type) {
   const [desktop, changeDesktop] = useState(false);
 
   const handleSize = () => {
@@ -20,12 +26,12 @@ function Layout() {
     };
   }, []);
 
-  return <>{desktop ? <DesktopLayout /> : <MobileLayout />}</>;
+  return <>{desktop ? <DesktopLayout Body={<Body/>}/> : <MobileLayout  Body={<Body/>}/>}</>;
 }
 
 ////////////////////////////////////////////////////////
 
-function MobileLayout() {
+function MobileLayout({Body}:type) {
   const [sideOpen, changeSideOpen] = useState<Boolean>(false);
 
   const toggleOpen = () => changeSideOpen((prev) => !prev);
@@ -42,7 +48,11 @@ function MobileLayout() {
         </div>
       }
 
-      {/* <NavHeader className={{Styles.nav_header}}  desktop={false} toggleOpen={toggleOpen}/> */}
+      <NavHeader className={Styles.nav_header}  desktop={false} toggleOpen={toggleOpen}/>
+      
+      <div  className={Styles.body}>
+           <Body/>
+      </div>
   
     </div>
   );
@@ -50,7 +60,7 @@ function MobileLayout() {
 
 ////////////////////////////////////////////////
 
-function DesktopLayout() {
+function DesktopLayout({Body}:type) {
   return (
     <div className={Styles.nav_desktop_wrapper} >
       
@@ -60,11 +70,10 @@ function DesktopLayout() {
 
       <div>
 
-        {/* <NavHeader className={{Styles.nav_header}} desktop={true} toggleOpen={null}/>
-         */}
-        <div>
-
-          this is body 
+        <NavHeader className={Styles.nav_header} desktop={true} toggleOpen={null}/>
+        
+        <div className={Styles.body}>
+          <Body/>
         </div>
       
       </div>

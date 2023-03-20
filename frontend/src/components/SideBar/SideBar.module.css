@@ -7,10 +7,10 @@
     flex-direction: column;
     height: 100%;
     overflow:hidden;
-}
+box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;}
 
 .logo {
-    color:white ;
+    color: black ;
 }
 
 .navlist {
@@ -26,13 +26,17 @@
     text-decoration: none ;
     text-transform: capitalize;
     width:100% ;
-    color:white ;
+    color: #1a1f71; 
     border-radius: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.navitems:hover {
-    background-color: black;
+.currNav{
+    background-color:#E0EFFF;
+    font-weight: bolder;
+    font-size: large;
+    color: #0CBABA;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }

@@ -2,35 +2,28 @@
 import React from 'react'
 import Layout from '../components/Layout/Layout'
 import {BrowserRouter,Routes,Route} from "react-router-dom"
+import Academics from "./academics/Academics"
 
 function Student() {
 
   return (
   
-    <Layout/>
+    <Layout Body={<Body/>}/>
   
   )
 }
 
-function NavContent(){
-  return(
-    <div>
+
+
+function Body(){
+  return (
       <BrowserRouter>
         
         <Routes>
-        
+            <Route path="/academics" element={<Academics/>}/>
         </Routes>
       
       </BrowserRouter>
-    </div>
-  )
-}
-
-function Body() {
-  return (
-    <div>
-      this is body 
-    </div>
   )
 }
 
