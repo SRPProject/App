@@ -1,0 +1,92 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing :border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-weight:700 ; 
+}
+
+.layout {
+  display:flex;
+}
+
+.side-nav{
+  height:100vh ;
+  display: none;
+}
+
+.open {
+  animation-name: myAnime ;
+  animation-duration: .25s;
+  animation-iteration-count:1;
+  animation-fill-mode:both;
+}
+
+
+.open-app {
+  animation-duration: .25s;
+  animation-iteration-count:1;
+  animation-fill-mode:both;
+  animation-name : open_ ; 
+}
+
+
+@keyframes myAnime {
+  
+  from{
+    flex: 0 ;
+  }
+  to {
+
+    flex : .2;
+  }
+
+}
+
+@keyframes open_ {
+  
+  from{
+    flex: 1;
+  }
+  to {
+
+    flex : 0.8;
+  }
+
+}
+
+
+@media  only screen and (max-width:768px) {
+
+  .side-nav{
+    background-color: aqua;
+    position:absolute;
+    top:0%;
+    left:0%;
+  }
+
+  .open-app{
+    animation: none;
+  }
+
+  @keyframes myAnime {
+  
+    from{
+      width: 0 ;
+    }
+    to {
+  
+      width: 60vw;
+    }
+  
+  }
+  
+
+
+}
