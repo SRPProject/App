@@ -2,35 +2,33 @@
 import React from 'react'
 import Layout from '../components/Layout/Layout'
 import {BrowserRouter,Routes,Route} from "react-router-dom"
+import { routes } from '../data/student'
 
 function Student() {
 
   return (
   
-    <Layout/>
+    <Layout Body={<Body/>}/>
   
   )
 }
 
-function NavContent(){
-  return(
-    <div>
-      <BrowserRouter>
-        
-        <Routes>
-        
-        </Routes>
-      
-      </BrowserRouter>
-    </div>
-  )
-}
 
-function Body() {
+
+function Body(){
+
   return (
-    <div>
-      this is body 
-    </div>
+  
+        <Routes>
+            {
+               routes.map((el:any)=>{
+                  return(
+                    <Route element={el.component} path={el.link}/>
+                  )
+               })
+            }
+        </Routes>
+
   )
 }
 

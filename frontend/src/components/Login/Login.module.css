@@ -54,6 +54,9 @@
     }
 
     .login{
+        top:15% ;
+        left:0% ;
+        transform: none; 
         box-shadow: none;
         width:100vw ;
         font-size: .8em;

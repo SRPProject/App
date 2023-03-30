@@ -1,11 +1,19 @@
 
 
-import React from 'react'
+import {Snackbar,Alert} from "@mui/material"
 
-function Notification() {
+
+function Notification(notify:any) {
+
+
   return (
-    <div>Notification</div>
+    <div>
+         hi 
+    </div>
+
   )
+  
+
 }
 
 export default Notification

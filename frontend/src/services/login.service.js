@@ -1,5 +1,6 @@
 import axios  from "axios"
 import Cookies from 'js-cookie'
+import { triggerNotification } from "../components/Notification"
 
 // /api/verifyJWT : HEAD
 // /api/admin/login/ :POST 
@@ -8,7 +9,7 @@ import Cookies from 'js-cookie'
 
 
 const instance = axios.create({
-    baseURL: "http://localhost:3000/api/",
+    baseURL: "http://localhost:3001/api/auth/",
     headers: {
         "Content-Type": "application/json",
       },    
@@ -32,7 +33,7 @@ export const verifyLogin = async () => {
 
     return res 
 
-}
+}   
 
 
 // @POST : /admin/login   and  /student/login 
@@ -40,16 +41,28 @@ export const verifyLogin = async () => {
 // response : {message :"", jwtToken :"" }
 export const login = async (endpoint, data) => {
     
-    const res = await instance.post(endpoint, data)
-    
-    if (res.message === "success") {
+    try {
         
-        Cookies.set("JWT_TOKEN", res.jwtToken)
-
-        return res 
-    }
+        const res = await instance.post(endpoint, data)
     
-    return res 
+    }    
+    catch(err){
+        
+        if(err.response.status===400) triggerNotification() 
+
+    }
+
+
+    // if (res.status===200) {
+        
+    //     Cookies.set("JWT_TOKEN", res.jwtToken)
+
+    //     return res 
+    // }
+    // else if(res.status===400){
+    //    triggerNotification()
+    // }
+    // return res 
 
 }
 

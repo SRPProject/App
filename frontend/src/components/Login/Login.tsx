@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState ,useRef,useContext} from "react";
 import Styles from "./Login.module.css";
 import { Button, Switch,Link } from "@mui/material";
 import CustomInput from "../InputBox";
 import ReCAPTCHA from "react-google-recaptcha";
 import {login , forgotPassword} from "../../services/login.service"
+import {Context} from "../../App"
 
 const LOGO = "/images/logo.png"
 
@@ -44,11 +45,12 @@ function Login({role}:{role:string}) {
 //////////////////////////////////////////////////////
 
 const ForgotPassword = ({changeMode}:{changeMode:any}) => {
-  const [Email, changeEmail] = useState("");
+  
+  const email = useRef<HTMLInputElement>(null)
   
   const submitData = () => {
     (async () => {
-        const res :any  = await forgotPassword({email:Email})
+        const res :any  = await forgotPassword({email:email.current?.value})
         if(res.message==="success"){
           // pull notification
         }
@@ -65,8 +67,7 @@ const ForgotPassword = ({changeMode}:{changeMode:any}) => {
       <CustomInput
         type="email"
         title="Email"
-        data={Email}
-        changeData={changeEmail}
+        innerref = {email}
       />
       <Button variant="contained" disableElevation onClick={submitData}>
         Send Mail 
@@ -83,64 +84,52 @@ const ForgotPassword = ({changeMode}:{changeMode:any}) => {
 
 const NormalLogin = ({changeMode,role}:{changeMode:any,role:string}) => {
  
-   const [Email, changeEmail] = useState("");
-   const [Password, changePassword] = useState("");
+   const email =  useRef<HTMLInputElement>(null)
+   const password =  useRef<HTMLInputElement>(null)
    const [requestSent, changeRequestSent] = useState(false);
+   const context = useContext(Context)
 
 
-  const config = [
-    {
-      title: "Email",
-      type: "text",
-      data: Email,
-      changeData: changeEmail,
-    },
-    {
-      title: "Password",
-      type: "password",
-      data: Password,
-      changeData: changePassword,
-    },
-  ];
-
-  const submitData = () => {
+  const submitData = async() => {
     
     var url = ""
 
     if (role === "student") {
-       url = "/student/login"
+       url = "/student"
     }
     else {
-      url ="/admin/login"
+      url ="/admin"
+    }
+    
+    const data = {
+      email : email.current?.value, 
+      password : password.current?.value
     }
 
-    (async () => {
-      const res:any = await login(url, { email: Email, password: Password })
+    context.changeNotify({type:"Success",message:"Login success"})
 
-      if (res.status===200  && res.data.message === "Success") {
-        console.log("success");
-      }
-      else {
-        console.log("failure");
-      }
-    })()
+    // const res = await login(url,data)
+
+    // console.log(res)
 
   };
 
   return (
     <>
       <h2 style={{textTransform:"capitalize"}}>{role} Login</h2>
-      {config.map((el: any) => {
-        return (
-          <CustomInput
-            type={el.type}
-            title={el.title}
-            data={el.data}
-            changeData={el.changeData}
-          />
-        );
-      })}
-
+      
+      <CustomInput
+        type="email"
+        title="Email"
+        innerref = {email}
+      />
+      
+      <CustomInput
+        type="password"
+        title="password"
+        innerref = {password}
+      />
+  
       <ReCAPTCHA
         sitekey="6LeeV6YkAAAAAI--BlJpwkhQdYqA9nHKWWjnbMPv"
       />

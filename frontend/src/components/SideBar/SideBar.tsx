@@ -3,11 +3,15 @@ import React from 'react'
 import Styles from "./SideBar.module.css"
 import { Link } from "react-router-dom"
 import MenuIcon from "@mui/icons-material/Menu";
+import {useLocation} from "react-router-dom"
+import { routes } from '../../data/student';
 
 function SideBar() {
 
-  const data = [ "dashboard" , "general details" , "Academics" , "co-Curricular" , "Intern/Project" , "Placement Details"]
-
+ 
+  const location = useLocation()
+  
+  console.log(location.pathname)
     
   return (
     <div className={Styles.sidebar}>
@@ -16,13 +20,13 @@ function SideBar() {
 
         <div className={Styles.navlist}>
             {
-                data.map((el:any)=>{
+                routes.map((el:any)=>{
                     return (
                             <Link 
-                            className={Styles.navitems}
-                            to="none">
-                            <MenuIcon style={{marginRight:"10px"} }/>
-                            {el}</Link>
+                            className={Styles.navitems +" " + (location.pathname==`/${el.link}`?Styles.currNav:"") }
+                            to={el.link}>
+                            {el.icon}
+                            {el.title}</Link>
                     )
                 })
             }      
