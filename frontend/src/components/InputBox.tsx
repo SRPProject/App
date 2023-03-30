@@ -16,7 +16,7 @@ interface Type {
 
 function CustomInput({ title, type, data, changeData }:Type) {
   const [error, changeError] = React.useState(null);
-  console.log("i am rendering"+title)
+  
   return (
     <FormControl style={{ margin: "5px 0 20px 0" }}>
       <span style={{ marginBottom: "13px" }}>{title}</span>
