@@ -26,15 +26,17 @@ function Layout({Body}:type) {
     };
   }, []);
 
-  return <>{desktop ? <DesktopLayout Body={<Body/>}/> : <MobileLayout  Body={<Body/>}/>}</>;
+  return <>{desktop ? <DesktopLayout Body={Body}/> : <MobileLayout  Body={Body}/>}</>;
 }
 
 ////////////////////////////////////////////////////////
 
 function MobileLayout({Body}:type) {
+  
   const [sideOpen, changeSideOpen] = useState<Boolean>(false);
 
   const toggleOpen = () => changeSideOpen((prev) => !prev);
+  
 
   return (
     <div className={Styles.layout}>
@@ -51,9 +53,10 @@ function MobileLayout({Body}:type) {
       <NavHeader className={Styles.nav_header}  desktop={false} toggleOpen={toggleOpen}/>
       
       <div  className={Styles.body}>
-           <Body/>
+           {Body}
       </div>
-  
+      
+
     </div>
   );
 }
@@ -73,17 +76,19 @@ function DesktopLayout({Body}:type) {
         <NavHeader className={Styles.nav_header} desktop={true} toggleOpen={null}/>
         
         <div className={Styles.body}>
-          <Body/>
+          {Body}
         </div>
-      
+
+        {
+
+        }
+
       </div>
 
 
     </div>
   )
 }
-
-
 
 
 export default Layout;

@@ -2,7 +2,7 @@
 import React from 'react'
 import Layout from '../components/Layout/Layout'
 import {BrowserRouter,Routes,Route} from "react-router-dom"
-import Academics from "./academics/Academics"
+import { routes } from '../data/student'
 
 function Student() {
 
@@ -16,14 +16,19 @@ function Student() {
 
 
 function Body(){
+
   return (
-      <BrowserRouter>
-        
+  
         <Routes>
-            <Route path="/academics" element={<Academics/>}/>
+            {
+               routes.map((el:any)=>{
+                  return(
+                    <Route element={el.component} path={el.link}/>
+                  )
+               })
+            }
         </Routes>
-      
-      </BrowserRouter>
+
   )
 }
 

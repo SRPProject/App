@@ -89,28 +89,25 @@ const NormalLogin = ({changeMode,role}:{changeMode:any,role:string}) => {
 
 
 
-  const submitData = () => {
+  const submitData = async() => {
     
     var url = ""
 
     if (role === "student") {
-       url = "/student/login"
+       url = "/student"
     }
     else {
-      url ="/admin/login"
+      url ="/admin"
     }
-    console.log(email.current?.value, password.current)
+    
+    const data = {
+      email : email.current?.value, 
+      password : password.current?.value
+    }
 
-    // (async () => {
-    //   const res:any = await login(url, { email: email.current?.value , password: password.current?.value })
+    const res = await login(url,data)
 
-    //   if (res.status===200  && res.data.message === "Success") {
-    //     console.log("success");
-    //   }
-    //   else {
-    //     console.log("failure");
-    //   }
-    // })()
+    console.log(res)
 
   };
 
