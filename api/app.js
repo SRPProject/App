@@ -42,7 +42,6 @@ app.use((req, res, next) => {
     // verify jwt and proceed 
 
     const data = utils.token.verifyToken(req);
-
     
     if (data) {
 

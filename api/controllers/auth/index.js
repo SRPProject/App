@@ -5,6 +5,10 @@ const signup = require("./signup")
 
 module.exports = {
     login,
+<<<<<<< HEAD
     signup ,
     password
+=======
+    signup 
+>>>>>>> origin/kumaran
 }
