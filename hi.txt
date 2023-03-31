@@ -1,0 +1,92 @@
+1 HS5151 Technical English HSMC 4 0 0 4 4 
+2 MA5158 Engineering Mathematics I BSC 3 1 0 4 4 
+3 PH5151 Engineering Physics BSC 3 0 0 3 3 
+4 CY5151 Engineering Chemistry BSC 3 0 0 3 3 
+5 GE5153 Problem Solving and Python Programming ESC 3 0 0 3 3
+6 BS5161 Basic Sciences Laboratory BSC 0 0 4 4 2 
+7 GE5161 Problem Solving and Python Programming Laboratory ESC 0 0 4 4 2
+
+
+1 HS5251 Professional Communication HSMC 4 0 0 4 4 
+2 MA5252 Engineering Mathematics II BSC 3 1 0 4 4 
+3 IT5201 Information Technology Essentials ESC 3 0 0 3 3 
+4 EE5251 Basics of Electrical and Electronics Engineering ESC 3 0 0 3 3
+5 GE5151 Engineering Graphics ESC 1 0 4 5 3 PRACTICALS 
+6 IT5211 Information Technology Essentials Laboratory ESC 0 0 4 4 2 
+7 EE5261 Electrical and Electronics Engineering Laboratory ESC 0 0 4 4 2
+
+
+1 MA5302 Discrete Mathematics BSC 3 1 0 4 4 
+2 IT5301 Digital Logic and Design ESC 2 0 2 4 3 
+3 IT5352 Programming and Data Structures PCC 3 0 0 3 3 
+4 IT5351 Database Management Systems PCC 3 0 0 3 3 
+5 IT5302 Software Engineering PCC 3 0 0 3 3 
+
+
+6 IT5311 Programming and Data Structures Laboratory PCC 0 0 4 4 2 
+7 IT5312 Database Management Systems Laboratory PCC 0 0 4 4 2
+
+[
+["HS5151" ,"Technical English",4, 1],
+["MA5158" ,"Engineering Mathematics",4 ,1],
+["PH5151","Engineering Physics",3,1],
+["CY5151","Engineering Chemistry",3,1],
+["GE5153","Problem Solving and Python Programming",3,1],
+
+["BS5161","Basic Sciences Laboratory",2,1],
+["GE5161","Problem Solving and Python Programming Laboratory",2,1],
+
+
+["HS5251","Professional Communication",4,2],
+["MA5252","Engineering Mathematics II",4,2],
+["IT5201","Information Technology Essentials",3,2],
+["EE5251","Basics of Electrical and Electronics Engineering",3,2],
+["GE5151","Engineering Graphics",3,2],
+
+["IT5211","Information Technology Essentials Laboratory",2,2],
+["EE5261","Electrical and Electronics Engineering Laboratory",2,2],
+
+
+["MA5302","Discrete Mathematics",4,3],
+["IT5301","Digital Logic and Design",3,3],
+["IT5352","Programming and Data Structures",3,3],
+["IT5351","Database Management Systems",3,3],
+["IT5302","Software Engineering",3,3],
+
+["IT5311","Programming and Data Structures Laboratory",2,3],
+["IT5312","Database Management Systems Laboratory",2,3]
+]
+
+
+account creation 
+get 
+
+mail 
+
+distDepartmentDeptid
+batchId
+degreeDegid
+regulationRegid
+
+
+personal details
+
+regnum
+sex
+firstname
+lastname
+dob
+
+studentsem add subjects
+with regid deptid degid
+
+Verification table create entry for linkcode for email
+send mail with account creation
+
+then return response
+
+
+
+
+
+
