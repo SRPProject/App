@@ -40,7 +40,7 @@ function MobileLayout({Body}:type) {
   const [sideOpen, changeSideOpen] = useState<Boolean>(false);
 
   const toggleOpen = () => changeSideOpen((prev) => !prev);
-  
+   
 
   return (
     <div className={Styles.layout}>
@@ -50,14 +50,16 @@ function MobileLayout({Body}:type) {
             [ Styles.nav , sideOpen&&Styles.nav_active ].join(' ')
           }
         >
-          <SideBar/>
+          <SideBar sideOpen={sideOpen} changeSideOpen={changeSideOpen}/>
         </div>
       }
 
-      <NavHeader className={Styles.nav_header}  desktop={false} toggleOpen={toggleOpen}/>
+      <NavHeader className={Styles.nav_header} sideOpen={sideOpen} desktop={false} toggleOpen={toggleOpen}/>
       
       <div  className={Styles.body}>
-         {Body}
+          <div className={Styles.body_content}>
+            {Body}
+          </div>
       </div>
       
 
@@ -77,7 +79,7 @@ function DesktopLayout({Body}:type) {
 
       <div>
 
-        <NavHeader className={Styles.nav_header} desktop={true} toggleOpen={null}/>
+        <NavHeader className={Styles.nav_header} sideOpen={false} desktop={true} toggleOpen={null}/>
         
         <div className={Styles.body}>
 
