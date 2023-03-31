@@ -1,9 +1,11 @@
-import { useState ,useRef} from "react";
+import { useState ,useRef,useContext} from "react";
 import Styles from "./Login.module.css";
 import { Button, Switch,Link } from "@mui/material";
 import CustomInput from "../InputBox";
 import ReCAPTCHA from "react-google-recaptcha";
 import {login , forgotPassword} from "../../services/login.service"
+import {Context} from "../../App"
+import { toast } from 'react-toastify';
 
 const LOGO = "/images/logo.png"
 
@@ -86,31 +88,35 @@ const NormalLogin = ({changeMode,role}:{changeMode:any,role:string}) => {
    const email =  useRef<HTMLInputElement>(null)
    const password =  useRef<HTMLInputElement>(null)
    const [requestSent, changeRequestSent] = useState(false);
+   const context = useContext(Context)
 
 
-
-  const submitData = () => {
+  const submitData = async() => {
     
     var url = ""
 
     if (role === "student") {
-       url = "/student/login"
+       url = "/student"
     }
     else {
-      url ="/admin/login"
+      url ="/admin"
     }
-    console.log(email.current?.value, password.current)
 
-    // (async () => {
-    //   const res:any = await login(url, { email: email.current?.value , password: password.current?.value })
+    const data = {
+      email : email.current?.value, 
+      password : password.current?.value
+    }
+    
+    if(!data.email || !data.password)  {
+      toast.success("Success Notification !", {
+        position: toast.POSITION.TOP_RIGHT 
+      });
+      // context.changeNotify({status:"Success",message:"Login success"})
+    }
 
-    //   if (res.status===200  && res.data.message === "Success") {
-    //     console.log("success");
-    //   }
-    //   else {
-    //     console.log("failure");
-    //   }
-    // })()
+    // const res = await login(url,data)
+
+    // console.log(res)
 
   };
 

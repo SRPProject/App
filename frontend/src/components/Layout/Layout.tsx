@@ -6,7 +6,7 @@ import NavHeader from "../NavHeader"
 
 
 interface type {
-  Body : React.ReactNode
+  Body : any 
 }
 
 
@@ -28,17 +28,19 @@ function Layout({Body}:type) {
     };
   }, []);
 
-  return <>
 
-  {desktop ? <DesktopLayout Body={Body}/> : <MobileLayout Body={Body} />}</>;
+  return <>{desktop ? <DesktopLayout Body={Body}/> : <MobileLayout  Body={Body}/>}</>;
+
 }
 
 ////////////////////////////////////////////////////////
 
 function MobileLayout({Body}:type) {
+  
   const [sideOpen, changeSideOpen] = useState<Boolean>(false);
 
   const toggleOpen = () => changeSideOpen((prev) => !prev);
+  
 
   return (
     <div className={Styles.layout}>
@@ -57,7 +59,8 @@ function MobileLayout({Body}:type) {
       <div  className={Styles.body}>
          {Body}
       </div>
-  
+      
+
     </div>
   );
 }
@@ -77,17 +80,17 @@ function DesktopLayout({Body}:type) {
         <NavHeader className={Styles.nav_header} desktop={true} toggleOpen={null}/>
         
         <div className={Styles.body}>
+
            {Body}
+
         </div>
-      
+
       </div>
 
 
     </div>
   )
 }
-
-
 
 
 export default Layout;
