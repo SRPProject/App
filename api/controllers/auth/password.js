@@ -73,7 +73,7 @@ const ForgotPassword = async(req,res)=>{
             }
         }
         else{
-            logger.error("Mail not sent - Error");
+            logger.error("Id not found - Error");
             return res.status(500).send({ message: "Server Error." })
         }
        

@@ -30,7 +30,7 @@ const AdminSave = async (req, res) => {
         })
         
         //account already exists 
-        if(data) return res.status(403).send({status:"failure",message:"Account already exists"})
+        if(data) return res.status(403).send({message:"Account already exists"})
         
         // hash password and save 
         
@@ -47,7 +47,7 @@ const AdminSave = async (req, res) => {
 
                     if(err){
                         logger.info(err);
-                        return res.status(500).send({ status: "failure" , message: "Server Error" });
+                        return res.status(500).send({  message: "Server Error" });
                     }
 
                     else {
@@ -56,7 +56,7 @@ const AdminSave = async (req, res) => {
                             mail:mail,
                             password:hash,
                         })
-                        return res.status(200).send({status:"success" ,message:"Account created"})
+                        return res.status(200).send({message:"Account created"})
                     }
             });
             
@@ -64,8 +64,8 @@ const AdminSave = async (req, res) => {
 
     }
     catch (err) {
-        logger.info(err);
-        return res.status(500).send({status:"failure",message:"Server error"})
+        logger.error(err);
+        return res.status(500).send({message:"Server error"})
     }
 
 }

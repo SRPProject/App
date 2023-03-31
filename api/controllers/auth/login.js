@@ -40,13 +40,13 @@ const Login = async (req, res) => {
         })
 
         if(data===null){
-            return res.status(401).send({ status : "failure" ,  message:"Mail Id not Found"})
+            return res.status(401).send({ message:"Mail Id not Found"})
         }
         else{
         
             bcrypt.compare(password, data.password, function(err, result) {
                 if(err){
-                    return res.status(401).send({status:"failure" , message:"Server Error"})
+                    return res.status(401).send({message:"Server Error"})
                 }
                 else{
                     if (result === true) {
@@ -56,10 +56,10 @@ const Login = async (req, res) => {
                         let token = jwt.sign({ role , id}, jwtDetails.secret, {
                             expiresIn: jwtDetails.jwtExpiration,
                         });
-                        return res.status(200).json({status:"success" ,message:"Login success",accessToken:token,});
+                        return res.status(200).json({message:"Login success",accessToken:token,});
                     }
                     else{
-                        return res.status(401).send({status:"failure", message:"Wrong Password"})
+                        return res.status(401).send({ message:"Wrong Password"})
                     }
                 }
                 });
@@ -69,7 +69,7 @@ const Login = async (req, res) => {
     }
     catch(err){
         logger.error(err);
-        return res.status(500).send({ status:"failure" , message: "Server Error" });
+        return res.status(500).send({  message: "Server Error" });
     }
 }
 

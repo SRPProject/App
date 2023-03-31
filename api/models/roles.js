@@ -128,4 +128,19 @@ Students.belongsToMany(Subjects,{through:"studentsems"});
 
 
 
+
+//Regulation - subjects one to many
+Regulation.hasMany(Subjects);
+Subjects.belongsTo(Regulation)
+
+//Degree - Subjects one to many
+Degree.hasMany(Subjects);
+Subjects.belongsTo(Degree);
+
+//Departments - Subjects one to many
+Departments.hasMany(Subjects);
+Subjects.belongsTo(Departments);
+
+
+
 module.exports={Admin,Faculty,Verification}

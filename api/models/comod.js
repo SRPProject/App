@@ -90,6 +90,9 @@ const Subjects=sequelize.define("subjects",{
         allowNull:false,
         validate:{notNull:true,notEmpty: true}
     
+    },
+    semsubbelongs:{
+        type:DataTypes.INTEGER,
     }
 },{
     freezeTableName: true
@@ -119,5 +122,5 @@ const Batch=sequelize.define("batches",{
 
 
 
-//type of subjects==> core,professional ,humanities, audit 
+//type of subjects==>1 compulsory,2 professional elective ,3 humanities elective,4 audit 
 module.exports={Departments,Regulation,Degree,Subjects,Batch}
