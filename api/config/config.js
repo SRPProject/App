@@ -14,31 +14,17 @@ let transporter = nodemailer.createTransport({
     
 });
 
-<<<<<<< HEAD
 let jwtDetails={
   secret: process.env.JWT_SECRET_KEY,
   jwtExpiration: 3600,           // 1 hour
   jwtRefreshExpiration: 86400,   // 24 hours
-=======
-let JWTDetails={
-  secret: process.env.JWT_SECRET_KEY,
-  jwtExpiration: 3600*24,           // 1 hour
-  // jwtRefreshExpiration: 86400,   // 24 hours
->>>>>>> origin/kumaran
 
   /* for test */
   // jwtExpiration: 60,          // 1 minute
   // jwtRefreshExpiration: 120,  // 2 minutes
 };
 module.exports = {
-<<<<<<< HEAD
 
   transporter,
   jwtDetails
-=======
-  // sourcemail: process.env.source_emailid,
-  // sourcepswd: process.env.source_passsword,
-  transporter,
-  JWTDetails
->>>>>>> origin/kumaran
 };

@@ -1,9 +1,15 @@
-const express = require("express");
-const router = express.Router();
-const auth = require("../controllers/auth");
+var logger=require("../utils/log")(module);
+
+const express=require('express')
+const router=express.Router()
+const auth=require('../controllers/auth')
+const  authValidator=require("../validators/authValidator");
+const { validate } = require("../validators/index");
 
 router.post(
   "/admin",
+  authValidator.loginValidator,
+  validate,
   (req, res,next) => {
     res.locals.role = "Admin";
     next()

@@ -25,6 +25,8 @@ export const verifyLogin = async () => {
     if (!jwt) return { message:"fail", data: {} }
 
     const res = await instance.head("/verifyJWT");
+
+    console.log(res)
     
     if(res.message==="success")  return res 
 
