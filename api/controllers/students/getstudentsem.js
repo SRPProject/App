@@ -5,8 +5,8 @@ const {Departments,Regulation,Degree,Subjects,Batch}=require("../../models/comod
 
 const getstudentsem=async (req,res)=>{
     try{
-        // const sstid=res.locals.id;//need to change 
-        const stid=4;
+        const sstid=res.locals.id;//need to change 
+        // const stid=4;
         const getstdsubs=await Students.findAll({
             where:{st_id:stid},
             include:{

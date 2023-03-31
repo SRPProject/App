@@ -16,5 +16,5 @@ router.get("/studentsem",
 //     if(res.locals._id) {next()}
 //     else {return res.status(400).send({message:"unauthorized"})}
 // },
-getstudentsem)//yet to define
+getstudentsem)
 module.exports=router;

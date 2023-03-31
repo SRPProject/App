@@ -28,38 +28,38 @@ con.
     logger.error(err);
     logger.info("Failed to sync db: " + err.message);
   });
-
+const {Admin}=require("./models/roles");
 
 //filter authorised routes from unauthorised 
-// app.use((req, res, next) => {
+app.use((req, res, next) => {
 
-//   logger.info(req.url);
-//   const flag = unAuthRoutes.includes(req.url);  
-//   if (flag) {next();}
+  logger.info(req.url);
+  const flag = unAuthRoutes.includes(req.url);  
+  if (flag) {next();}
   
-//   else {
+  else {
 
-//     // verify jwt and proceed 
+    // verify jwt and proceed 
 
-//     const data = utils.token.verifyToken(req);
+    const data = utils.token.verifyToken(req);
 
     
-//     if (data) {
+    if (data) {
 
-//       if (req.url === "/api/auth/JWTVerify") {
+      if (req.url === "/api/auth/JWTVerify") {
        
-//         return res.status(200).send({ status:"success", data })
-//       }
-//       else {
-//         res.locals.role = data.role
-//         res.locals._id = data.id
-//         next();
-//       }
-//     }
-//     // token expired or invalid status code 
-//     else return res.status(498).send({ status:"failure" }) 
-//   }
-// })
+        return res.status(200).send({ status:"success", data })
+      }
+      else {
+        res.locals.role = data.role
+        res.locals._id = data.id
+        next();
+      }
+    }
+    // token expired or invalid status code 
+    else return res.status(498).send({ status:"failure" }) 
+  }
+})
 
 
 app.use('/api/auth', authroutes);
@@ -67,13 +67,13 @@ app.use('/api/auth', authroutes);
 
 // admin-only routes 
 app.use('/api/admin',
-//  (req,res,next) => {
+ (req,res,next) => {
   
-//   if (res.locals.role == "Admin") {next()}
+  if (res.locals.role == "Admin") {next()}
   
-//  else{ return res.status(401).send({status:"failure",message:"Admin-only routes"})}
+ else{ return res.status(401).send({status:"failure",message:"Admin-only routes"})}
 
-// } , 
+} , 
  adminroutes );
 
 // app.use('/api/admin',adminroutes);
@@ -81,13 +81,13 @@ app.use('/api/admin',
 //student-only routes 
 
 app.use('/api/student',
-//  (req,res,next) => {
+ (req,res,next) => {
     
-//   if (res.locals.role == "Student") next()
+  if (res.locals.role == "Student") next()
   
-//   else { return res.status(401).send({status:"failure",message:"Student-only routes"})}
+  else { return res.status(401).send({status:"failure",message:"Student-only routes"})}
 
-// },
+},
  studentroutes);
 
 
