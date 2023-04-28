@@ -1,4 +1,0 @@
-
-
-/admin  {login}
-/student {login}

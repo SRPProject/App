@@ -1,22 +1,13 @@
+import {CircularProgress} from '@mui/material' ;
+import React from 'react';
 
+const Loader= (style:any)=>{
 
-
-import { CircularProgress } from '@mui/material'
-
-function Loader({ width,height}:{width:string,height:string}) {
-  return (
-      <div style={{
-          height,
-          width , 
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}>
-            
-            <CircularProgress/>
-    
-    </div>
-  )
+    return (
+        <div>
+            <CircularProgress  color = "primary" />
+        </div>
+    )
 }
 
-export default Loader
+export default Loader ; 
