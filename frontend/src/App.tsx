@@ -1,72 +1,51 @@
-import { BrowserRouter } from "react-router-dom";
-import { useState,createContext ,useEffect,useReducer } from "react";
-import { CustomRouter } from "./Routes";
-import { verifyLogin } from "./services/login.service";
+import React,{useEffect, useState} from "react";
+import { CustomContext } from "./utils/Context";
 import Loader from "./components/Loader";
-import { toast, ToastContainer } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css";
-
-
-interface type{
-  data :any ,
- 
-}
-export const Context = createContext<type>({
-    data : null , 
-})
-
+import CustomRouter from "./utils/Routes";
+import Login from "./pages/login";
+import "./App.scss"
 
 function App() {
-
-  const [isAuth, changeAuth] = useState<Boolean>(true);
-  const [isLoading, changeLoading] = useState<Boolean>(true);  
-  const [data, changeData] = useState<any>({ role: "student" })
-
-
-  useEffect(() => {
-   
-    (async () => {
-      
-      const data: any = await verifyLogin();
- 
-      const details:any = {
-        message : "failure", 
-        data :{name:"kumaran"}
-      }
-      
-      if (details.message==="success") {
-        changeAuth(true);
-        changeData(details.data);
-      }
   
-      else changeLoading(false);
   
+  const [loading,setLoading] = useState<Boolean>(true)
+  const [data ,setData] = useState<any>([])
+  const [auth,setAuth] = useState<Boolean>(false)
+
+  const value = {
+    data ,
+    setData ,
+    setAuth 
+  }
+
+  useEffect(()=>{
+
+    (async ()=>{
+
+      setLoading(false)
+
     })();
-    
-    
+
   },[])
 
-  useEffect(() => {
-    
-    changeLoading(false) 
+   return (
+    <CustomContext.Provider value={value}>
+         
+         <div className="App">
+           
+          {
+            loading ? <span className="main-loader"> <Loader/> </span>
+                    :  <div>
+                          {
+                              auth ? <CustomRouter/> : <Login/>
+                          }
+                       </div>
+          }
 
-  },[data])
+          </div>
 
+    </CustomContext.Provider>
 
-  return (
-    <div className="App">
-    
-      <Context.Provider value={ data }>
-        
-          {isLoading ? <Loader width="100vw" height="100vh" /> :
-          <BrowserRouter>
-            <CustomRouter isAuth={isAuth} role={data.role} />
-          </BrowserRouter>} 
-
-         <ToastContainer/>
-        
-      </Context.Provider>
-    </div>
   );
 }
 
