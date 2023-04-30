@@ -1,5 +1,6 @@
 const { body, header, param, query } = require("express-validator");
 const { validate } = require(".");
+var  logger=require("../utils/log")(module);
 
 const addDetailsValidator=async(req,res,next)=>{
     await body("mail")
@@ -236,6 +237,20 @@ const scholarshipvalidator=async(req,res,next)=>{
         .isNumeric()
         .withMessage("Received amount invalid")
         .run(req)
+    await body("scholarshipproof")
+       
+        .custom(async(value,{req})=>{
+            if(req.file===undefined ){
+                throw new Error("Empty file")
+            }  
+            if(req.file.mimetype !== 'application/pdf'){
+                throw new Error("Invalid file type") 
+            }
+            else if(Number(req.file.size)>(1024*1024)){
+                throw new Error("File size exceeds the limit greater than 1MB")
+            }
+        })
+        .run(req)
     next()
 
 }
@@ -277,6 +292,20 @@ const MarksheetValidator=async(req,res,next)=>{
         .bail()
         .isNumeric()
         .withMessage("Sem no Invalid")
+        .run(req)
+    await body('marksheet')     
+   
+        .custom(async(value,{req})=>{
+            if(req.file===undefined ){
+                throw new Error("Empty file")
+            }  
+            if(req.file.mimetype !== 'application/pdf'){
+                throw new Error("Invalid file type") 
+            }
+            else if(Number(req.file.size)>(1024*1024)){
+                throw new Error("File size exceeds the limit greater than 1MB")
+            }
+        })
         .run(req)
     next()
 

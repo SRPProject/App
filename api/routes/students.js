@@ -46,6 +46,7 @@ router.post("/updateSemMark",
 router.post("/uploadMarkSheet",
     upload.single('marksheet'),
     DetailsValidator.MarksheetValidator,
+    validate,
     uploadMarkSheet
 )
 

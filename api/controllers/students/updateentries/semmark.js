@@ -43,12 +43,12 @@ const uploadMarkSheet=async(req,res)=>{
         console.log(req.body.semno)
         const getmarksheet=await MarksheetProofs.findOne({
             where:{
-                studentStId:res.locals.id,
+                studentStId:res.locals._id,
                 semno:req.body.semno
             }
         })
         if(getmarksheet && getmarksheet.status==0){
-            const blobname=res.locals.id+"_sem"+req.body.semno+"_"+Date.now()+".pdf";
+            const blobname=res.locals._id+"_sem"+req.body.semno+"_"+Date.now()+".pdf";
             const blockBlobClient = containerClient("marksheetproofs").getBlockBlobClient(blobname);
             const data =req.file.buffer;
             await blockBlobClient.upload(data, data.length);

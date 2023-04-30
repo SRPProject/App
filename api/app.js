@@ -39,6 +39,8 @@ app.use((req, res, next) => {
         return res.status(200).send({ status:"success", data })
       }
       else {
+        logger.info(data.role);
+        logger.info(data.id)
         res.locals.role = data.role
         res.locals._id = data.id
         next();

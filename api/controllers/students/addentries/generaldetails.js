@@ -6,7 +6,7 @@ const addgereralDetails=async (req,res)=>{
         var mail=req.body.mail;
         const data = await Students.findOne({
             where: {
-            mail: mail,//change this id : res.locals.id
+            st_id: res.local._id,//change this id : res.locals._id
             },
         });
         if(data===null){
