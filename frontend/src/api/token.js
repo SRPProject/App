@@ -40,4 +40,4 @@ function Token (){
 
 }
 
-module.exports = Token
+export default new Token()

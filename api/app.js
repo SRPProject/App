@@ -41,14 +41,21 @@ app.use((req, res, next) => {
   else {
 
     // verify jwt and proceed 
+    const token = req.headers.authorization
+    
+    console.log("JWT : "+token)
 
-    const data = utils.token.verifyToken(req);
+    let data ;
+
+    if(!token || token==="Bearer no_token") data= null 
+
+    else data = utils.token.verifyToken(req.headers.authorization);
     
     if (data) {
 
       if (req.url === "/api/auth/JWTVerify") {
        
-        return res.status(200).send({ message:"success", data })
+        return res.status(200).send({ message:"valid token", data })
       }
       else {
         res.locals.role = data.role
@@ -57,7 +64,7 @@ app.use((req, res, next) => {
       }
     }
     // token expired or invalid status code 
-    else return res.status(498).send({ message:"failure" }) 
+    else return res.status(401).send({ message:"Un-Authorized ,need token to enter" }) 
   }
 })
 

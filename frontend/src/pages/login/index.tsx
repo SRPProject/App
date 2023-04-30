@@ -1,7 +1,7 @@
 import { TextField ,Button, Checkbox, Card, Paper, Typography} from "@mui/material";
-import { Container, Stack } from "@mui/system";
+import { Container } from "@mui/system";
 import React from "react";
-import {useFormik,FormikProps} from "formik"
+import {toast} from"react-toastify"
 import CustomForm from "../../utils/custom-forms";
 
 const endpoint = "/auth/student"
@@ -48,7 +48,16 @@ const Login = ()=>{
                         }
                     ]
                 }
-                finishAction ={({code,data}:{code:any,data:any})=>{console.log(code)}}
+                finishAction ={(code:any,data:any)=>
+                                    {
+                                        if(code==200){
+
+                                        }
+                                        else {
+                                            toast.warning(data.message)
+                                        }
+                                    }
+                                }
                 endpoint= {endpoint}
                 buttonText={"Login"}
                 formTitle={"Student Login"}

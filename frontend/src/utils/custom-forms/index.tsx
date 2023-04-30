@@ -2,10 +2,9 @@ import { TextField ,Button, Checkbox, Card, Paper, Typography} from "@mui/materi
 import { Container, Stack } from "@mui/system";
 import React from "react";
 import {useFormik,FormikProps} from "formik"
-import axios from "axios";
-import { toast } from "react-toastify";
+import axiosObj from "../../api"
 
-
+console.log(axiosObj.post)
 interface valueType {
     label :String ,
     type :String ,
@@ -54,25 +53,22 @@ const CustomForm = ({values,endpoint,finishAction,formTitle,ExtraElements,button
         initialValues ,
         onSubmit : async(values:any)=>{
             
+            // console.log(values)
             try {
-                const resp = await axios.post("http://localhost:3001/api"+endpoint,values,{
-                    validateStatus: function (status) {
-                      return status < 500; // Resolve only if the status code is less than 500
-                    }
-                  })
-        
-                console.log("response:")
                 
-                console.log(resp.data)
+                const resp = await axiosObj.post(endpoint,values) 
 
-                if(resp.status===400){
-                    toast.warning(resp.data.message)
-                }
+                console.log(finishAction)
+                
+                const code = resp.status 
 
-                // finishAction(resp.status,resp.code)
+                const data = resp.data
+
+                finishAction(code,data)
+
             }
-            catch(err){
-                toast.error("server error")
+            catch(err:any){
+                ;
             }
 
         }
