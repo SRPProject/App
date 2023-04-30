@@ -6,13 +6,17 @@ import {useMediaQuery} from "react-responsive"
 import Dashboard from "../pages/dashboard";
 import Navbar from "../components/Navbar";
 import Data from "./data.js"
+import Api from "../pages/api/index.js";
 
 {/* refer App.scss for styling */}
 
 const data = [
     ...Data 
     ,
-    
+    {
+        'to' : "/api",
+        'element' : Api ,
+    },
     {
         'to' :"/" ,
         'element' : Navigate ,

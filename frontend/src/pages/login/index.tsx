@@ -4,7 +4,7 @@ import React from "react";
 import {useFormik,FormikProps} from "formik"
 import CustomForm from "../../utils/custom-forms";
 
-
+const endpoint = "/auth/student"
 
 const Login = ()=>{
 
@@ -33,21 +33,23 @@ const Login = ()=>{
                 values ={
                     [
                         {
-                            'label' : 'email' ,
+                            'label' : 'Email' ,
                             'disabled' : false ,
                              'required' : true ,
-                             'type' : 'email'
+                             'type' : 'email',
+                             'name' : 'mail' , 
                         },
                         {
                             'label' : 'password' ,
                             'disabled' : false ,
                              'required' : true ,
-                             'type' : 'password'
+                             'type' : 'password',
+                             'name' : 'password'
                         }
                     ]
                 }
-                finishAction ={()=>{console.log("trigger latter")}}
-                endpoint= "api/login"
+                finishAction ={({code,data}:{code:any,data:any})=>{console.log(code)}}
+                endpoint= {endpoint}
                 buttonText={"Login"}
                 formTitle={"Student Login"}
                 ExtraElements={(formik:any)=>{

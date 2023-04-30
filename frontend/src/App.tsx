@@ -3,7 +3,11 @@ import { CustomContext } from "./utils/Context";
 import Loader from "./components/Loader";
 import CustomRouter from "./utils/Routes";
 import Login from "./pages/login";
+
+import { ToastContainer } from 'react-toastify';
+
 import "./App.scss"
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   
@@ -41,6 +45,8 @@ function App() {
                           }
                        </div>
           }
+
+          <ToastContainer/>
 
           </div>
 

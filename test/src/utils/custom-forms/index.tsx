@@ -2,16 +2,13 @@ import { TextField ,Button, Checkbox, Card, Paper, Typography} from "@mui/materi
 import { Container, Stack } from "@mui/system";
 import React from "react";
 import {useFormik,FormikProps} from "formik"
-import axios from "axios";
-import { toast } from "react-toastify";
 
 
 interface valueType {
     label :String ,
     type :String ,
     disabled:Boolean ,
-    required : Boolean ,
-    name  :String 
+    required : Boolean 
 }
 
 interface CustomFormType {
@@ -47,34 +44,15 @@ const convertToObject = (arr:any)=>{
 
 const CustomForm = ({values,endpoint,finishAction,formTitle,ExtraElements,buttonText}:CustomFormType)=>{
 
-    const initialValues = convertToObject(values.map((el:any)=>el.name ))
+    const initialValues = convertToObject(values.map((el:any)=>el.label ))
 
+    console.log(initialValues)
 
     const formik:FormikProps<any> = useFormik({
         initialValues ,
-        onSubmit : async(values:any)=>{
+        onSubmit : (values:any)=>{
             
-            try {
-                const resp = await axios.post("http://localhost:3001/api"+endpoint,values,{
-                    validateStatus: function (status) {
-                      return status < 500; // Resolve only if the status code is less than 500
-                    }
-                  })
-        
-                console.log("response:")
-                
-                console.log(resp.data)
-
-                if(resp.status===400){
-                    toast.warning(resp.data.message)
-                }
-
-                // finishAction(resp.status,resp.code)
-            }
-            catch(err){
-                toast.error("server error")
-            }
-
+            finishAction()
         }
     })
 
@@ -93,9 +71,9 @@ const CustomForm = ({values,endpoint,finishAction,formTitle,ExtraElements,button
                                 label = { capitalizeString(el.label) }
                                 type = {el.type}
                                 variant="standard"
-                                name= {el.name}
+                                name= {el.label}
                                 required = {el.required}
-                                value = {formik.values[el.name]}
+                                value = {formik.values[el.label]}
                                 onChange={formik.handleChange}
                             />
                         )
