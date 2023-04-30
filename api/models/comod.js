@@ -1,10 +1,5 @@
-const Sequelize = require("sequelize");
 const sequelize = require("../config/dbconnection");
 var DataTypes = require('sequelize/lib/data-types');
-
-const {Admin,Faculty,Verification}=require("./roles")
-const {StuPersonalDetails,Students,Scholarship,StudentSem,InternProjects,Placement}=require("./students");
-
 
 const Departments=sequelize.define("dist_departments",{
     deptid:{

@@ -1,5 +1,5 @@
-const {Departments} = require("../models/comod")
-var logger=require("../utils/log")(module)
+const {Departments} = require("../../../models/comod")
+var logger=require("../../../utils/log")(module)
 
 const addDepartments=async (req,res)=>{
     

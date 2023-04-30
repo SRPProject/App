@@ -1,10 +1,9 @@
 
-// const Sequelize = require("sequelize");
 const sequelize = require("../config/dbconnection");
 var DataTypes = require('sequelize/lib/data-types');
 
 const {Departments,Degree,Regulation,Subjects,Batch}=require("./comod");
-const {StuPersonalDetails,Students,Scholarship,StudentSem,InternProjects,Placement}=require("./students");
+const {StuPersonalDetails,Students,Scholarship,StudentSem,InternProjects,Placement,MarksheetProofs}=require("./students");
 
 
 const Admin = sequelize.define("dist_admin", {
@@ -24,7 +23,8 @@ const Admin = sequelize.define("dist_admin", {
     allowNull:false,
     type:DataTypes.TEXT,
     validate:{notNull:true,notEmpty: true }//wont allow null
-  }
+  },
+  iscreated:{type:DataTypes.BOOLEAN,defaultValue:'0'}  
 },{
   freezeTableName: true
 });
@@ -141,6 +141,11 @@ Subjects.belongsTo(Degree);
 Departments.hasMany(Subjects);
 Subjects.belongsTo(Departments);
 
+Students.hasMany(MarksheetProofs);
+MarksheetProofs.belongsTo(Students);
 
+//Faculty - Student one to many
+Faculty.hasMany(Students);
+Students.belongsTo(Faculty);
 
 module.exports={Admin,Faculty,Verification}

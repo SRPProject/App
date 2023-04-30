@@ -1,5 +1,6 @@
-var logger = require("../../utils/log")(module);
-var {StuPersonalDetails,Students,Scholarship,StudentSem,InternProjects,Placement}=require("../../models/students");
+var logger = require("../../../utils/log")(module);
+var {StuPersonalDetails,Students}=require("../../../models/students");
+
 const addgereralDetails=async (req,res)=>{
     try{
         var mail=req.body.mail;

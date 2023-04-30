@@ -8,11 +8,6 @@ const adminroutes=require('./routes/admin');
 const studentroutes=require("./routes/students");
 const  utils=require('./utils');
 
-// these routes doesn't need jwt token 
-const unAuthRoutes = ["/api/auth/admin/","/api/auth/student/","/api/auth/signup-admin/","/api/auth/set-password","/api/auth/forgot-password"]
-
-// const adminRoutes = require('./routes/admin');
-
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -30,16 +25,10 @@ con.
   });
 const {Admin}=require("./models/roles");
 
-//filter authorised routes from unauthorised 
+
+app.use('/api/auth', authroutes); 
+
 app.use((req, res, next) => {
-
-  logger.info(req.url);
-  const flag = unAuthRoutes.includes(req.url);  
-  if (flag) {next();}
-  
-  else {
-
-    // verify jwt and proceed 
 
     const data = utils.token.verifyToken(req);
     
@@ -57,17 +46,16 @@ app.use((req, res, next) => {
     }
     // token expired or invalid status code 
     else return res.status(498).send({ status:"failure" }) 
-  }
+  // }
 })
 
 
-app.use('/api/auth', authroutes);
+
 
 
 // admin-only routes 
 app.use('/api/admin',
  (req,res,next) => {
-  
   if (res.locals.role == "Admin") {next()}
   
  else{ return res.status(401).send({status:"failure",message:"Admin-only routes"})}
@@ -75,15 +63,12 @@ app.use('/api/admin',
 } , 
  adminroutes );
 
-// app.use('/api/admin',adminroutes);
-
 //student-only routes 
 
 app.use('/api/student',
  (req,res,next) => {
     
   if (res.locals.role == "Student") next()
-  
   else { return res.status(401).send({status:"failure",message:"Student-only routes"})}
 
 },

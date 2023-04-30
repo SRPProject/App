@@ -1,7 +1,6 @@
 const DataTypes = require("sequelize");
 const sequelize = require("../config/dbconnection");
-const {Admin,Faculty,Verification}=require("./roles")
-const {Departments,Degree,Regulation,Subjects,Batch}=require("./comod");
+
 
 
 // use hard coded values for sex,blood group,specialcategory,community,volunteer,accomodation(hostel/dayscholar)
@@ -88,23 +87,32 @@ const StuPersonalDetails=sequelize.define("studentpersonal",{
 })
 const Students=sequelize.define("students",{
     st_id:{
-    allowNull:false,
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
-},
+        allowNull:false,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
     mail:{
-    type:DataTypes.TEXT,
-    allowNull:false,
-    unique:true,
-    validate:{isEmail:true,notNull:true,notEmpty: true}
-},
-    password:{
-    type:DataTypes.TEXT,
-},
-    iscreated:{type:DataTypes.BOOLEAN,defaultValue:'0'}//whether student setted his/her account
-},{
-    freezeTableName: true
+        type:DataTypes.TEXT,
+        allowNull:false,
+        validate:{isEmail:true,notNull:true,notEmpty: true}
+    },
+    regnum:{
+        type:DataTypes.INTEGER,
+        allowNull:false,
+        unique:true,
+        validate:{notNull:true,notEmpty: true},
+    },
+    password:{type:DataTypes.TEXT},
+    linkCode:{
+        type:DataTypes.TEXT
+    },
+    expireTime:{
+        type:DataTypes.TEXT,
+    },
+        iscreated:{type:DataTypes.BOOLEAN,defaultValue:'0'}//whether student setted his/her account
+    },{
+        freezeTableName: true
     })
 
 const Scholarship=sequelize.define("scholarships",{
@@ -116,7 +124,8 @@ const Scholarship=sequelize.define("scholarships",{
 },
     name:{type:DataTypes.TEXT},
     ryear:{type:DataTypes.INTEGER},//year received 
-    amount:{type:DataTypes.INTEGER}
+    amount:{type:DataTypes.INTEGER},
+    proofname:{type:DataTypes.TEXT},
 
 },{
     freezeTableName: true
@@ -131,7 +140,7 @@ const StudentSem=sequelize.define("studentsems",{
     primaryKey: true
 },
     scoredgrade:{type:DataTypes.INTEGER,defaultValue:0},//store grade points eg: A+ 9 ,A - 8
-    attempts:{type:DataTypes.INTEGER,defaultValue:'0'},//to maintain arrears
+    attempts:{type:DataTypes.INTEGER,defaultValue:0},//to maintain arrears
     monthyrpass:{
     type:DataTypes.DATEONLY
 }//Month and year of passing if reattempted
@@ -174,16 +183,27 @@ const Placement=sequelize.define("placements",{
     autoIncrement: true,
     primaryKey: true},
     compname:{type:DataTypes.TEXT},
-    selection:{type:DataTypes.BOOLEAN,defaultValue:'0'},//oncampus/off campus
+    selection:{type:DataTypes.BOOLEAN,defaultValue:'0'},//1- oncampus/ 0- off campus
     salary:{type:DataTypes.INTEGER},
-    comptype:{type:DataTypes.TEXT,}//service / product
+    comptype:{type:DataTypes.TEXT}//service / product
+})
+const MarksheetProofs=sequelize.define("marksheets",{
+    id:{
+        allowNull:false,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true},
+    semno:{
+        allowNull:false,
+        type: DataTypes.INTEGER},
+    marksheetname:{type:DataTypes.TEXT},
+    status:{
+        type: DataTypes.INTEGER,
+        defaultValue:Number(0)
+    }
 })
 
-
-module.exports={StuPersonalDetails,Students,Scholarship,StudentSem,InternProjects,Placement}
-
-// module.exports={StuPersonalDetails,Students,Scholarship,StudentSem,InternProjects,Placement}
-
+module.exports={StuPersonalDetails,Students,Scholarship,StudentSem,InternProjects,Placement,MarksheetProofs}
 
 
 

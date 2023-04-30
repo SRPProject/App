@@ -1,10 +1,11 @@
 const { body, header, param, query } = require("express-validator");
-const { validate } = require("../validators");
+const { validate } = require(".");
 
 const addStudValidator=async  (req,res,next)=>{
     await body("mail")
         .notEmpty()
         .withMessage("Email is required!")
+        .bail()
         .trim()
         .isEmail()
         .normalizeEmail()
@@ -54,8 +55,35 @@ const addStudValidator=async  (req,res,next)=>{
   await body("dob")
     .notEmpty()
     .withMessage("dob invalid")
+    .bail()
+    .isDate()
+    .withMessage("Must be a valid date")
     .run(req);
+  await body("facultyFacid")
+    .notEmpty()
+    .withMessage("Faculty id not defined in body")
+    .bail()
+    .isNumeric()
+    .withMessage("Invalid Faculty id")
+    .run(req)
   next()
 }
+const addFacultyValidator=async(req,res,next)=>{
+  await body("mail")
+    .notEmpty()
+    .withMessage("Email is required!")
+    .bail()
+    .trim()
+    .isEmail()
+    .normalizeEmail()
+    .withMessage("Invalid Email")
+    .run(req);
 
-module.exports={addStudValidator}
+  await body("distDepartmentDeptid")
+    .notEmpty()
+    .withMessage("Department is required!")
+    .run(req);
+
+  next()
+}
+module.exports={addStudValidator,addFacultyValidator}

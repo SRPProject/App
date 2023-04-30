@@ -1,58 +1,55 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt")
-const {Admin} = require("../../models/roles")
+const {Admin,Faculty} = require("../../models/roles")
+const {Students}=require("../../models/students")
 const {jwtDetails }= require("../../config/config")
 
 var logger=require("../../utils/log")(module);
 
-/*
-    PATH : /api/auth/admin/ && /api/auth/student/
-    POST : {mail,password}
-    RESPONSE :{ status , message , accessToken }
-*/
-
 const Login = async (req, res) => {
 
     const role = res.locals.role 
-
-    var Role  ; 
-
-    logger.info(role)
-
+    var Role="" ; 
     if (role === "Admin") {
         Role = Admin;
     }
     else if (role == "Student") {
-        Role = Admin; 
+        Role = Students; 
     }
     else if (role == "Faculty") {
-        Role = Admin; 
+        Role = Faculty; 
     }
 
     try{
-        const mail=req.body.mail
-        const password=req.body.password
-    
-        const data=await Role.findOne({
-            where:{
-                mail:mail
-            }
-        })
-
-        if(data===null){
-            return res.status(401).send({ message:"Mail Id not Found"})
+        var data=""; var id="";
+        if(role==="Faculty" || role==="Admin"){
+            const mail=req.body.mail
+             data=await Role.findOne({
+                where:{
+                    mail:mail
+                }
+            })
+            id=(data)?( (role==="Faculty")?data.facid:data.adminid ):"";
         }
         else{
+            data=await Role.findOne({
+                where:{
+                    regnum:req.body.regnum
+                }
+            })
+            id=(data)?data.st_id:"";
+        }
         
+        const password=req.body.password
+       
+        if(data){
+            if(!data.iscreated)return res.status(401).send({message:"User not created!"});
             bcrypt.compare(password, data.password, function(err, result) {
                 if(err){
                     return res.status(401).send({message:"Server Error"})
                 }
                 else{
                     if (result === true) {
-                        
-                        const id = data.admin_id
-
                         let token = jwt.sign({ role , id}, jwtDetails.secret, {
                             expiresIn: jwtDetails.jwtExpiration,
                         });
@@ -64,6 +61,9 @@ const Login = async (req, res) => {
                 }
                 });
             
+        }
+        else{
+            return res.status(401).send({ message:"User not Found"})
         }
        
     }

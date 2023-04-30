@@ -1,5 +1,5 @@
 const { body, header, param, query } = require("express-validator");
-const { validate } = require("../validators");
+const { validate } = require(".");
 
 const addDetailsValidator=async(req,res,next)=>{
     await body("mail")
@@ -50,8 +50,11 @@ const addDetailsValidator=async(req,res,next)=>{
     await body("dob")
         .notEmpty()
         .withMessage("dob invalid")
-        .run(req);
-
+        .bail()
+        .isDate()
+        .withMessage("Must be a valid date")
+        .run(req)
+       
     await body("bloodgroup")
         .notEmpty()
         .withMessage("dob invalid")
@@ -160,6 +163,130 @@ const addDetailsValidator=async(req,res,next)=>{
 	next();
 }
 
+const internDetailsValidator=async(req,res,next)=>{
+    console.log(req.body.details);
+    await body("inname")
+        .notEmpty()
+		.withMessage("Intern name not defined")
+		.run(req)
+    await body("fromperiod")
+        .notEmpty()
+        .withMessage("From period not defined")
+        .bail()
+        .isDate()
+        .withMessage("Must be a valid date")
+        .run(req)
+    await body("toperiod")
+        .notEmpty()
+        .withMessage("To period not defined")
+        .bail()
+        .isDate()
+        .withMessage("Must be a valid date")
+        .run(req)
+    await body("details")
+        .notEmpty()
+        .withMessage("Description of the intern not defined in body")
+        .run(req)
+    next()
+}
+const placementDetailsValidator=async(req,res,next)=>{
+    await body("compname")
+        .notEmpty()
+		.withMessage("Company name not defined")
+		.run(req)
+    await body("selection")
+        .notEmpty()
+        .withMessage("Selection not defined")
+        .bail()
+        .isBoolean()
+        .withMessage("Selection not boolean")
+        .run(req) 
+    await body("salary")
+        .notEmpty()
+        .withMessage("Salary not defined")
+        .bail()
+        .isNumeric()
+        .withMessage("Salary invalid")
+        .run(req)
+    await body("comptype")
+        .notEmpty()
+        .withMessage("Company type invalid")
+        .run(req)
+    
+    next()
+
+
+}
+const scholarshipvalidator=async(req,res,next)=>{
+    await body("name")
+        .notEmpty()
+        .withMessage("Scholarship name not defined")
+        .run(req)
+    await body("ryear")
+        .notEmpty()
+        .withMessage("Received year not defined")
+        .bail()
+        .isNumeric()
+        .withMessage("Received year invalid")
+        .run(req)
+    await body("amount")
+        .notEmpty()
+        .withMessage("Received amount not defined")
+        .bail()
+        .isNumeric()
+        .withMessage("Received amount invalid")
+        .run(req)
+    next()
+
+}
+const SemMarkValidator=async(req,res,next)=>{
+    await body("studentStId")
+        .notEmpty()
+        .withMessage("studentStId not defined in body")
+        .bail()
+        .isNumeric()
+        .withMessage("studentStId Invalid")
+        .run(req)
+
+    await body("marks")
+        //marks should  be array of json eg:  [{"subjectSubid":32 ,"scoredgrade":10,"monthyrpass":"2020/1/1"}]
+        .custom(async (value) => {
+        
+            if(value===undefined ){
+                throw new Error("Empty field")
+            }   
+            else{
+                const uniquesubid=new Set();
+                res.locals.marks=JSON.parse(req.body.marks);
+                for(let i =0;i<res.locals.marks.length;i++){
+                    uniquesubid.add(res.locals.marks[i]["subjectSubid"]);
+                }
+                if(res.locals.marks.length!==uniquesubid.size){
+                    throw new Error("Invalid subject id's")
+                }
+               
+            }
+        })
+        .run(req)
+    next()
+}
+const MarksheetValidator=async(req,res,next)=>{
+    await body("semno")
+        .notEmpty()
+        .withMessage("Sem no not defined")
+        .bail()
+        .isNumeric()
+        .withMessage("Sem no Invalid")
+        .run(req)
+    next()
+
+
+}
 module.exports={
-    addDetailsValidator
+    addDetailsValidator,
+    internDetailsValidator,
+    placementDetailsValidator,
+    scholarshipvalidator,
+    SemMarkValidator,
+    MarksheetValidator
 }

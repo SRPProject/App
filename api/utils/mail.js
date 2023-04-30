@@ -1,5 +1,6 @@
 const {transporter}=require("../config/config");
 
+const logger=require("../utils/log")(module);
 
 const sendMail = async (html,subject,to) => {
     
@@ -9,14 +10,10 @@ const sendMail = async (html,subject,to) => {
         html 
     };
 
-    return new Promise((resolve, reject) => {
-        
-        transporter.sendMail(mailOptions, async (error, info) => {
-            if (error) reject();
-            else resolve();
-        })
-
-    }); 
+    transporter.sendMail(mailOptions, async (err, info) => {
+        if (err) {logger.error(err);return false;}
+    })
+    return true;
 
 }
 

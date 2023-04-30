@@ -20,7 +20,21 @@ const loginValidator = async (req, res, next) => {
 	next();
 }
 
+const StdloginValidator=async (req, res, next) => {
+	await body("regnum")
+		.notEmpty()
+        .withMessage("rollnum invalid")
+        .bail()
+		.isLength({ min: 10,max:10 })
+		.withMessage("Roll Number invalid")
+		.run(req);
+	await body("password")
+		.notEmpty()
+		.withMessage("password not defined in body")
+		.run(req);
 
+	next();
+}
 
 const SetPasswordValidator=async(req,res,next)=>{
 	await body("password")
@@ -60,11 +74,21 @@ const ForgotPasswordValidator=async(req,res,next)=>{
 		.run(req);
 	next()
 }
-
-
+const ForgotPasswordStdValidator=async(req,res)=>{
+	await body("regnum")
+		.notEmpty()
+        .withMessage("rollnum invalid")
+        .bail()
+		.isLength({ min: 10,max:10 })
+		.withMessage("Roll Number invalid")
+		.run(req);
+	next()
+}
 module.exports = {
 	loginValidator,
 	SetPasswordValidator,
-	ForgotPasswordValidator
+	ForgotPasswordValidator,
+	ForgotPasswordStdValidator,
+	StdloginValidator
 }
 

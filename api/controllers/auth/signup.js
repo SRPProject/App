@@ -1,15 +1,14 @@
-// no need just for testing
+
+
+// **
+//  no need just for testing
+// **
+
 
 var logger=require("../../utils/log")(module);
 const { Admin } = require("../../models/roles")
 const bcrypt=require("bcrypt");
 const saltRounds = 10 
-
-/*
-    PATH : /api/auth/signup-admin 
-    POST : {mail,password}
-    RESPONSE : {status , message }
-*/
 
 const AdminSave = async (req, res) => {
     
@@ -54,6 +53,8 @@ const AdminSave = async (req, res) => {
                         const data = await Admin.create({
                             mail:mail,
                             password:hash,
+                            iscreated:true,
+                            distDepartmentDeptid:req.body.distDepartmentDeptid,
                         })
                         return res.status(200).send({message:"Account created"})
                     }
