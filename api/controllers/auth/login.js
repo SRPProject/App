@@ -43,10 +43,10 @@ const Login = async (req, res) => {
         const password=req.body.password
        
         if(data){
-            if(!data.iscreated)return res.status(401).send({message:"User not created!"});
+            if(!data.iscreated)return res.status(400).send({message:"User not created!"});
             bcrypt.compare(password, data.password, function(err, result) {
                 if(err){
-                    return res.status(401).send({message:"Server Error"})
+                    return res.status(500).send({message:"Server Error"})
                 }
                 else{
                     if (result === true) {
@@ -56,14 +56,14 @@ const Login = async (req, res) => {
                         return res.status(200).json({message:"Login success",accessToken:token,});
                     }
                     else{
-                        return res.status(401).send({ message:"Wrong Password"})
+                        return res.status(400).send({ message:{"password":"Wrong Password"}})
                     }
                 }
                 });
             
         }
         else{
-            return res.status(401).send({ message:"User not Found"})
+            return res.status(400).send({ message:{"regnum":"User not Found"}})
         }
        
     }

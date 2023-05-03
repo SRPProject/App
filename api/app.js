@@ -26,33 +26,29 @@ con.
 const {Admin}=require("./models/roles");
 
 
-app.use('/api/auth', authroutes); 
+app.use('/api/auth', authroutes, (req,res,next)=>{
 
-app.use((req, res, next) => {
+  console.log(req.body)
 
-    const data = utils.token.verifyToken(req);
-    
-    if (data) {
+  return res.send(req.res) 
 
-      if (req.url === "/api/auth/JWTVerify") {
-       
-        return res.status(200).send({ status:"success", data })
-      }
-      else {
-        logger.info(data.role);
-        logger.info(data.id)
-        res.locals.role = data.role
-        res.locals._id = data.id
-        next();
-      }
-    }
-    // token expired or invalid status code 
-    else return res.status(498).send({ status:"failure" }) 
-  // }
+}); 
+
+// middle ware for protected routes 
+app.use((req,res,next)=>{
+
+  const token = req.headers.authorization 
+
+  if(!token || token==="Bearer no_token") return res.status(401).send({message:"token required"})
+
+  const data = verifyToken(token)
+
+  //set locals
+  if(data) next() 
+
+  return res.status(401).send({message:"un-authorised , give me token!!"})
+
 })
-
-
-
 
 
 // admin-only routes 
@@ -64,6 +60,7 @@ app.use('/api/admin',
 
 } , 
  adminroutes );
+
 
 //student-only routes 
 

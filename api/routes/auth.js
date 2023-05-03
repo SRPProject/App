@@ -6,6 +6,8 @@ const auth=require('../controllers/auth')
 const  authValidator=require("../validators/authValidator");
 const { validate } = require("../validators/index");
 
+router.head('/JWTVerify',auth.JWTVerify) ; 
+
 router.post(
   "/admin",
   authValidator.loginValidator,

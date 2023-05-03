@@ -23,10 +23,10 @@ const loginValidator = async (req, res, next) => {
 const StdloginValidator=async (req, res, next) => {
 	await body("regnum")
 		.notEmpty()
-        .withMessage("rollnum invalid")
+        .withMessage({"regnum":"Roll Number is empty"})
         .bail()
 		.isLength({ min: 10,max:10 })
-		.withMessage("Roll Number invalid")
+		.withMessage(JSON.stringify({"regnum":"Roll Number - invalid"}))
 		.run(req);
 	await body("password")
 		.notEmpty()
@@ -74,10 +74,10 @@ const ForgotPasswordValidator=async(req,res,next)=>{
 		.run(req);
 	next()
 }
-const ForgotPasswordStdValidator=async(req,res)=>{
+const ForgotPasswordStdValidator=async(req,res,next)=>{
 	await body("regnum")
 		.notEmpty()
-        .withMessage("rollnum invalid")
+        .withMessage("Roll Number invalid")
         .bail()
 		.isLength({ min: 10,max:10 })
 		.withMessage("Roll Number invalid")

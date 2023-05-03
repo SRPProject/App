@@ -10,10 +10,13 @@ const ForgotPassword = async(req,res)=>{
     try{
         var lcode=0;
         var mail="";
+       
         if(res.locals.stdauthkey===1){
+            
             mail=await isStudent(req.body.regnum);
+            
             if(mail){ lcode=12; }
-            else{ return res.status(401).send({ message: "Unauthorized." });}
+            else{ return res.status(401).send({ message: "Roll Number not exists" });}
         }
         else{
             mail=req.body.mail
@@ -43,7 +46,7 @@ const ForgotPassword = async(req,res)=>{
                {message:Failure}
 */
 
-
+//having doubt on set-password 
 const SetPassword=async (req,res)=>{
     try{
         var uid="";var linkCode="";var obj="";
@@ -159,7 +162,7 @@ const isFA=async (mail)=>{
     return (data!=null)?true:false
 }
 
-const isStudent=async (mail)=>{
+const isStudent=async (regnum)=>{
     const data=await Students.findOne({
         where:{
             regnum:regnum
@@ -205,7 +208,7 @@ const sendVerificationLink=async(req,res,mail,lcode,regnum)=>{
             console.log(isSend);
             
             if (isSend) {
-                return res.status(200).send({ message: "Success" })
+                return res.status(200).send({ message: "Check Your Mail!!" })
             }
             else {
                 logger.error("Mail not sent - Error");
