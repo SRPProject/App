@@ -16,7 +16,7 @@ const ForgotPassword = async(req,res)=>{
             mail=await isStudent(req.body.regnum);
             
             if(mail){ lcode=12; }
-            else{ return res.status(401).send({ message: "Roll Number not exists" });}
+            else{ return res.status(400).send({ message: "Roll Number not exists" });}
         }
         else{
             mail=req.body.mail
@@ -175,7 +175,7 @@ const sendVerificationLink=async(req,res,mail,lcode,regnum)=>{
         var id="";var oobj="";
         linkCode = crypto.randomBytes(lcode).toString("hex");
         const obj=(regnum===0)?await Verification.findOne({where:{mail:mail}}):await Students.findOne({where:{regnum:mail}})
-        console.log(obj);
+       
         if(obj){
             oobj= await obj.update({
                 linkCode:linkCode,

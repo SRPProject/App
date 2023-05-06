@@ -6,6 +6,7 @@ import axiosObj from "../../api"
 import {Link} from "react-router-dom"
 import {toast} from "react-toastify"
 import { ForgotPassword } from "../password";
+import Token from "../../api/token"
 
 const endpoint= "/auth/student"
 
@@ -30,15 +31,21 @@ const Login = ()=>{
         try {
     
             const resp = await axiosObj.post(endpoint,values)
-
-            console.log(resp)
-    
+            
             if(resp.status===200){
-    
+                
+                const data = resp.data 
+                
+                Token.setToken(data.accessToken) 
+
+                window.location = "/"
+
             }
             else if(resp.status===400){
     
-                const temp =  JSON.parse(resp.data.message)
+                let temp =  resp.data.message
+
+                if(typeof temp=== "string") temp = JSON.parse(temp)
                 
                 formik.setStatus({ password:null , regnum:null , ...temp})
 
@@ -105,6 +112,8 @@ const Login = ()=>{
                         required = {true}
                         value = {formik.values.password}
                         onChange={formik.handleChange}
+                        error={ formik.status.password?true:false }
+                        helperText ={ formik.status.password?formik.status.password:"" }
                         />
 
                 <Button

@@ -12,7 +12,7 @@ function App() {
 
   const [loading,setLoading] = useState<Boolean>(true)
   const [data ,setData] = useState<any>([])
-  const [auth,setAuth] = useState<Boolean>(true)
+  const [auth,setAuth] = useState<Boolean>(false)
 
   const value = {
     data ,
@@ -24,14 +24,16 @@ function App() {
 
     (async ()=>{
       
+  
       try {
         
-        const resp = await axiosObj.head(endpoint)
+        const resp = await axiosObj.get(endpoint)
         
-        console.log(resp)
         
         if(resp.status===200) {
+    
           setData(resp.data.data)
+          setAuth(true)
         }
 
       }

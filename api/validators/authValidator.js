@@ -1,20 +1,19 @@
 const { body, header, param, query } = require("express-validator");
-const { validate } = require("../validators");
-
+const { validate ,wrap } = require("../validators");
 
 
 const loginValidator = async (req, res, next) => {
 	await body("mail")
 		.notEmpty()
-		.withMessage("Email is required!")
+		.withMessage("Empty ")
 		.trim()
 		.isEmail()
 		.normalizeEmail()
-		.withMessage("Invalid Email")
+		.withMessage("Invalid")
 		.run(req);
 	await body("password")
 		.notEmpty()
-		.withMessage("password not defined in body")
+		.withMessage("Empty")
 		.run(req);
 
 	next();
@@ -23,14 +22,14 @@ const loginValidator = async (req, res, next) => {
 const StdloginValidator=async (req, res, next) => {
 	await body("regnum")
 		.notEmpty()
-        .withMessage({"regnum":"Roll Number is empty"})
+        .withMessage("Empty")
         .bail()
 		.isLength({ min: 10,max:10 })
-		.withMessage(JSON.stringify({"regnum":"Roll Number - invalid"}))
+		.withMessage("Invalid")
 		.run(req);
 	await body("password")
 		.notEmpty()
-		.withMessage("password not defined in body")
+		.withMessage("Empty")
 		.run(req);
 
 	next();

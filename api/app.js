@@ -12,7 +12,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-
 // DB-Connection 
 con.
   sync().
@@ -23,16 +22,9 @@ con.
     logger.error(err);
     logger.info("Failed to sync db: " + err.message);
   });
-const {Admin}=require("./models/roles");
 
 
-app.use('/api/auth', authroutes, (req,res,next)=>{
-
-  console.log(req.body)
-
-  return res.send(req.res) 
-
-}); 
+app.use('/api/auth', authroutes); 
 
 // middle ware for protected routes 
 app.use((req,res,next)=>{
@@ -41,12 +33,17 @@ app.use((req,res,next)=>{
 
   if(!token || token==="Bearer no_token") return res.status(401).send({message:"token required"})
 
-  const data = verifyToken(token)
+  const data = utils.token.verifyToken(token)
 
   //set locals
-  if(data) next() 
-
-  return res.status(401).send({message:"un-authorised , give me token!!"})
+  if(data!==null) {
+  
+    res.locals.role = data.role 
+    res.locals.id = data.id 
+    
+    next() 
+  }
+  else  return res.status(401).send({message:"un-authorised , give me token!!"})
 
 })
 
@@ -54,9 +51,10 @@ app.use((req,res,next)=>{
 // admin-only routes 
 app.use('/api/admin',
  (req,res,next) => {
+  
   if (res.locals.role == "Admin") {next()}
   
- else{ return res.status(401).send({status:"failure",message:"Admin-only routes"})}
+ else{next('router')}
 
 } , 
  adminroutes );
@@ -67,8 +65,9 @@ app.use('/api/admin',
 app.use('/api/student',
  (req,res,next) => {
     
-  if (res.locals.role == "Student") next()
-  else { return res.status(401).send({status:"failure",message:"Student-only routes"})}
+  if (res.locals.role == "Student") 
+    next()
+  else { next("router")}
 
 },
  studentroutes);

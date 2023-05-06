@@ -4,7 +4,11 @@ var logger=require("./log")(module)
 
 
 const verifyToken = (token) => {
- 
+  
+  token = token.split(" ")[1]
+
+  console.log(token)
+
   try {
     
     const decoded = jwt.verify(token, jwtDetails.secret);

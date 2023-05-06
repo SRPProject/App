@@ -8,6 +8,8 @@ var logger=require("../../utils/log")(module);
 
 const Login = async (req, res) => {
 
+ 
+
     const role = res.locals.role 
     var Role="" ; 
     if (role === "Admin") {
@@ -43,14 +45,16 @@ const Login = async (req, res) => {
         const password=req.body.password
        
         if(data){
-            if(!data.iscreated)return res.status(400).send({message:"User not created!"});
+            
+            if(!data.iscreated) return res.status(400).send({message:{"regnum":"Activate your account"}});
             bcrypt.compare(password, data.password, function(err, result) {
                 if(err){
                     return res.status(500).send({message:"Server Error"})
                 }
                 else{
                     if (result === true) {
-                        let token = jwt.sign({ role , id}, jwtDetails.secret, {
+                        const {mail,regnum,total_sem} = data 
+                        let token = jwt.sign({ role , id ,mail,regnum ,total_sem}, jwtDetails.secret, {
                             expiresIn: jwtDetails.jwtExpiration,
                         });
                         return res.status(200).json({message:"Login success",accessToken:token,});

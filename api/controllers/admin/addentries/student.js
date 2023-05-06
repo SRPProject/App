@@ -25,19 +25,27 @@ const addStudent=async(req,res)=>{
             return res.status(401).send({message:"Student account already exists for roll number : "+req.body.regnum});
         }
         else{
+            //getting no of semester from degrees
+
+            const semcount=await Degree.findByPk(req.body.degreeDegid);
+
+            
+        
             const createacc=await Students.create({
                 regnum: req.body.regnum,
                 mail:req.body.mail,
+                total_sem : semcount.noofsems, 
                 distDepartmentDeptid:Number(req.body.distDepartmentDeptid),
                 batchId:Number(req.body.batchId),
                 degreeDegid:Number(req.body.degreeDegid),
                 regulationRegid:req.body.regulationRegid,
                 facultyFacid:req.body.facultyFacid
             })
+
+            console.log(createacc)
             
             const entry={
                 regnum: req.body.regnum,
-               
                 sex: Number(req.body.sex),
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
@@ -47,10 +55,7 @@ const addStudent=async(req,res)=>{
             }
             
             await StuPersonalDetails.create(entry);
-            //getting no of semester from degrees
-
-            const semcount=await Degree.findByPk(req.body.degreeDegid);
-            //creating entries in marksheets table
+                //creating entries in marksheets table
             const marksheetentry=[]
             for(let i=1;i<=semcount.noofsems;i++){
                 marksheetentry.push({

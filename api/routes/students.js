@@ -33,7 +33,7 @@ router.post("/addscholarhip",
     validate,
     addscholarship
 )
-router.get("/studentsem",   
+router.post("/studentsem",   
     getstudentsem)
 
 

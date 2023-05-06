@@ -107,6 +107,9 @@ const Students=sequelize.define("students",{
     linkCode:{
         type:DataTypes.TEXT
     },
+    total_sem : {
+        type : DataTypes.INTEGER
+    },
     expireTime:{
         type:DataTypes.TEXT,
     },
@@ -143,7 +146,11 @@ const StudentSem=sequelize.define("studentsems",{
     attempts:{type:DataTypes.INTEGER,defaultValue:0},//to maintain arrears
     monthyrpass:{
     type:DataTypes.DATEONLY
-}//Month and year of passing if reattempted
+},//Month and year of passing if reattempted
+    // for not alllowing any further iupdates 
+    isVerified : {
+        type:  DataTypes.BOOLEAN
+    }
 },{
     freezeTableName: true
 })

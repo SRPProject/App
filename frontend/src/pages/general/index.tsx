@@ -6,7 +6,9 @@ const Details = ()=>{
 
     return(
         <div>
-            projects 
+
+            
+
         </div>
     )
 }

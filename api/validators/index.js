@@ -25,6 +25,12 @@ const validate = (req, res, next) => {
 	})
 }
 
+const wrap = (field,message)=>{
+	let obj = {}
+	obj[field] = message
+	return JSON.stringify(obj)
+}
+
 module.exports = {
-	validate,
+	validate, wrap 
 }

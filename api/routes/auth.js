@@ -6,7 +6,7 @@ const auth=require('../controllers/auth')
 const  authValidator=require("../validators/authValidator");
 const { validate } = require("../validators/index");
 
-router.head('/JWTVerify',auth.JWTVerify) ; 
+router.get('/JWTVerify',auth.JWTVerify) ; 
 
 router.post(
   "/admin",
@@ -35,6 +35,7 @@ router.post(
   authValidator.StdloginValidator,
   validate,
   (req, res,next) => {
+  
     res.locals.role = "Student";
     next()
   },

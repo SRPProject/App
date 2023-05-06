@@ -59,7 +59,7 @@ axiosObj.interceptors.response.use(
 
         if(error.response && error.response.status===500) toast.error("Internal Server Error")
 
-        if(!error.response) toast.error("Check Your internet ")
+        if(!error.response) toast.error("Can not reach server ,try again!")
 
         return Promise.reject(error)
     }

@@ -1,14 +1,29 @@
 
-import React, { useEffect } from "react"
+import React, { useContext, useEffect } from "react"
 import {  SideToggle } from "./Sidebar"
 import {Link, useLocation} from "react-router-dom"
 import { AppBar , Typography ,Breadcrumbs, Avatar, Button  } from "@mui/material"
 import { LogoutRounded } from "@mui/icons-material"
-
+import { CustomContext } from "../utils/Context"
+import Token from "../api/token"
 
 const Navbar = ({isMobile}:{isMobile:Boolean})=>{
     
+    const ctx = useContext(CustomContext)
+
+    console.log(ctx.data)
+
     const location = useLocation() 
+
+    const handleLogout = ()=>{
+
+        let token = Token.getService()
+
+        token.clearToken()
+
+        window.location = "/"
+
+    }
 
     var pathnames = window.location.pathname.substring(1).split('/')
 
@@ -79,8 +94,11 @@ const Navbar = ({isMobile}:{isMobile:Boolean})=>{
             
              <div className="nav-account" style={{display:"flex" ,alignItems:"center",gap:(isMobile?".3rem":"1rem")}}>
                 <Avatar></Avatar>
-                 <Typography color="black" variant="overline"> User </Typography>
-                 <Button size="small" startIcon={<LogoutRounded/>}>Logout</Button>
+                 <Typography color="black" variant="overline"> {ctx.data.regnum} </Typography>
+                 <Button size="small" 
+                    startIcon={<LogoutRounded/>}
+                    onClick={handleLogout}
+                 >Logout</Button>
              </div>
 
             </AppBar>
