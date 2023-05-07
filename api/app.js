@@ -39,7 +39,7 @@ app.use((req,res,next)=>{
   if(data!==null) {
   
     res.locals.role = data.role 
-    res.locals.id = data.id 
+    res.locals._id = data.id 
     
     next() 
   }

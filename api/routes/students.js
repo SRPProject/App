@@ -8,6 +8,8 @@ const { validate } = require("../validators/index");
 const {getstudentsem}=require("../controllers/students/getentries/getstudentsem");
 const {updatesem,uploadMarkSheet}=require("../controllers/students/updateentries/semmark");
 const {addintern,addplacement, addscholarship}=require("../controllers/students/addentries/addinterndetails");
+const {getInterndetails}=require("../controllers/students/getentries/getdetails")
+
 const multer=require("multer");
 const upload=multer({storage:multer.memoryStorage({})});
 
@@ -33,10 +35,6 @@ router.post("/addscholarhip",
     validate,
     addscholarship
 )
-router.post("/studentsem",   
-    getstudentsem)
-
-
 router.post("/updateSemMark",
     DetailsValidator.SemMarkValidator,
     validate,
@@ -50,6 +48,10 @@ router.post("/uploadMarkSheet",
     uploadMarkSheet
 )
 
+
+router.get("/studentsem", getstudentsem)
+
+router.get("/getinterndetails",getInterndetails)
 
 router.use(function(req, res, next) {
     return res.status(404).send({message:"Not Found"});

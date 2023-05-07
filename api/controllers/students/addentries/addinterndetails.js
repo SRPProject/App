@@ -11,7 +11,7 @@ const addintern=async(req,res)=>{
             fromperiod: new Date(req.body.fromperiod),
             toperiod:new Date(req.body.toperiod),
             details:req.body.details,
-            studentStId:Number(res.locals.id)
+            studentStId:Number(res.locals._id)
             
         }
         await InternProjects.create(entry);
