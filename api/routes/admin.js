@@ -5,7 +5,6 @@ const {addStudValidator,addFacultyValidator}=require("../validators/adminValidat
 const { validate } = require("../validators/index");
 const {addStudent}=require("../controllers/admin/addentries/student");
 const {addFaculty}=require("../controllers/admin/addentries/faculty");
-const {studentsemscount}=require('../controllers/admin/addentries/student');
 
 router.put('/addDepartment',admin.addDepartments)
 
@@ -21,7 +20,6 @@ router.post('/addFaculty',
   addFaculty
 )
 
-// router.get('/semstercount',studentsemscount);
 
 router.use(function(req, res, next) {
   return res.status(404).send({message:"Not Found"});

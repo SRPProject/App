@@ -3,15 +3,6 @@ const {StuPersonalDetails,Students,StudentSem,MarksheetProofs}=require("../../..
 const {Degree,Subjects}=require("../../../models/comod");
 const {sendVerificationLink}=require("../../auth/password");
 
-const studentsemscount=async(req,res)=>{
-    try{
-        const noofsems=await Degree.findByPk(req.body.degreeDegid);
-        return res.status(200).send({message:noofsems.noofsems});
-    }
-    catch(err){
-        return res.status(500).send({message:"Server error!"});
-    }
-}
 
 const addStudent=async(req,res)=>{
     try{
@@ -92,4 +83,4 @@ const addStudent=async(req,res)=>{
     }
 }
 
-module.exports={addStudent,studentsemscount}
+module.exports={addStudent}
