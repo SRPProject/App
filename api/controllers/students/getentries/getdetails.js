@@ -15,7 +15,7 @@ const getInterndetails=async(req,res)=>{
         return res.status(200).send({message:getIntern})
        }
         else{
-            return res.status(400).send({message:"no data found!"})
+            return res.status(400).send({message:"invalid"})
         }
     }
     catch(err){
@@ -24,5 +24,23 @@ const getInterndetails=async(req,res)=>{
     }
 }
 
+const getplacement=async(req,res)=>{
+    try{
+        const stid=res.locals._id;
+        const getplacement=await Placement.findAll({
+            where:{studentStId:stid}
+        })
+        if(getplacement){
+            return res.status(200).send({message:getplacement})
+        }
+        else{
+            return res.status(400).send({message:"invalid"})
+        }
+    }
+    catch(err){
+        logger.error(err);
+        return res.status(500).send({message:"Server Error Try again."})
+    }
+}
 
-module.exports={getInterndetails}
+module.exports={getInterndetails,getplacement}
