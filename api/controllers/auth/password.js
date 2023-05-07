@@ -35,40 +35,50 @@ const ForgotPassword = async(req,res)=>{
     }
 }
 
-
-
-
-
-/*
-    PATH : /api/auth/set-password 
-    POST : userId , linkCode 
-    RESPONSE : {message:Success}
-               {message:Failure}
-*/
-
 //having doubt on set-password 
 const SetPassword=async (req,res)=>{
     try{
-        var uid="";var linkCode="";var obj="";
+        var uid=req.body.userId;//for students it should be regnum
+        var linkCode=req.body.linkCode;
+        var obj="";
+        var iscreated=true;
         if(res.locals.stdauthkey===1){
-             uid=req.body.userId;//here regnum of students
-            linkCode=req.body.linkCode;
             obj=await Students.findOne({
                 where:{
                     regnum:uid,
                     linkCode:linkCode,
                 }
             })
+            iscreated=(obj)?obj.iscreated:true;
         }
-        else{
-            uid=req.body.userId;
-            linkCode=req.body.linkCode;
+        else if(linkCode.length===8){
+            //check  in admin table
             obj=await Verification.findOne({
                 where:{
                     verifyId:uid,
                     linkCode:linkCode,
                 }
             })
+            val=(obj)?await Admin.findOne({where:{
+                mail:obj.mail
+            }}):""
+            iscreated=(val)?val.iscreated:true;
+           
+        }
+        else if(linkCode.length===16){
+            obj=await Verification.findOne({
+                where:{
+                    verifyId:uid,
+                    linkCode:linkCode,
+                }
+            })
+            val=(obj)?await Faculty.findOne({where:{
+                mail:obj.mail
+            }}):""
+            iscreated=(val)?val.iscreated:true;
+        }
+        else{
+            return res.status(400).send({message:"Invalid Link"});
         }    
        
        
@@ -77,7 +87,7 @@ const SetPassword=async (req,res)=>{
         }
         else{
             var val="";
-            if(obj.expireTime-Date.now()<0){
+            if(iscreated && obj.expireTime-Date.now()<0){
                 console.log(obj.expireTime-Date.now())
                 return res.status(400).send({message:"Invaid link or Expired...."});
             }
@@ -221,7 +231,6 @@ const sendVerificationLink=async(req,res,mail,lcode,regnum)=>{
         }
     }
     catch(err){
-        console.log(err);
         logger.error(err);
         return res.status(500).send({ message: "Server Error." })   
     }
