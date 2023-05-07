@@ -30,10 +30,10 @@ const addplacement=async(req,res)=>{
             selection:req.body.selection,
             salary:Number(req.body.salary),
             comptype:req.body.comptype,
-            studentStId:Number(res.locals._id)
+            studentStId:Number(res.locals.id)
         }
         await Placement.create(entry);
-        return res.status(200).send({message:"PLacement Details added !!"});
+        return res.status(200).send({message:"Placement Details added !!"});
 
     }
     catch(err){

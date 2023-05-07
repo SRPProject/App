@@ -194,6 +194,7 @@ const Placement=sequelize.define("placements",{
     salary:{type:DataTypes.INTEGER},
     comptype:{type:DataTypes.TEXT}//service / product
 })
+
 const MarksheetProofs=sequelize.define("marksheets",{
     id:{
         allowNull:false,
