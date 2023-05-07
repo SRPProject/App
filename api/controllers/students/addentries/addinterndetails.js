@@ -11,14 +11,14 @@ const addintern=async(req,res)=>{
             fromperiod: new Date(req.body.fromperiod),
             toperiod:new Date(req.body.toperiod),
             details:req.body.details,
-            studentStId:Number(res.locals._id)
+            studentStId:Number(res.locals.id)
             
         }
         await InternProjects.create(entry);
-        return res.status(200).send({message:"Added Successfully"});
+        return res.status(200).send({message:"Intern details added"});
     }
     catch(err){
-        logger.error(err);
+        logger.error(err.message);
         return res.status(500).send({message:"Server Error"});
     }
 }
@@ -33,7 +33,7 @@ const addplacement=async(req,res)=>{
             studentStId:Number(res.locals._id)
         }
         await Placement.create(entry);
-        return res.status(200).send({message:"Added Successfully"});
+        return res.status(200).send({message:"PLacement Details added !!"});
 
     }
     catch(err){
