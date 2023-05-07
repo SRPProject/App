@@ -8,7 +8,7 @@ const { validate } = require("../validators/index");
 const {getstudentsem}=require("../controllers/students/getentries/getstudentsem");
 const {updatesem,uploadMarkSheet}=require("../controllers/students/updateentries/semmark");
 const {addintern,addplacement, addscholarship}=require("../controllers/students/addentries/addinterndetails");
-const {getInterndetails,getplacement}=require("../controllers/students/getentries/getdetails")
+const {getInterndetails,getplacement,getPersonalDetails}=require("../controllers/students/getentries/getdetails")
 
 const multer=require("multer");
 const upload=multer({storage:multer.memoryStorage({})});
@@ -47,6 +47,8 @@ router.post("/uploadMarkSheet",
     validate,
     uploadMarkSheet
 )
+
+router.get("/getPersonalDetails",getPersonalDetails)
 
 router.get("/studentsem", getstudentsem)
 
