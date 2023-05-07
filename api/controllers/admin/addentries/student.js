@@ -41,18 +41,16 @@ const addStudent=async(req,res)=>{
                 regulationRegid:req.body.regulationRegid,
                 facultyFacid:req.body.facultyFacid
             })
-
-            console.log(createacc)
-            
             const entry={
                 regnum: req.body.regnum,
-                sex: Number(req.body.sex),
+                sex: (req.body.sex),
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
                 dob: new Date(req.body.dob),
                 studentStId: createacc.st_id,
                
             }
+
             
             await StuPersonalDetails.create(entry);
                 //creating entries in marksheets table

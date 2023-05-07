@@ -16,7 +16,7 @@ const StuPersonalDetails=sequelize.define("studentpersonal",{
         allowNull:false,
         validate:{notNull:true,notEmpty: true},
     },
-    sex:{type:DataTypes.INTEGER},
+    sex:{type:DataTypes.CHAR},
     cutoffmark:{
         type:DataTypes.DECIMAL,
     },
@@ -80,9 +80,12 @@ const StuPersonalDetails=sequelize.define("studentpersonal",{
     type:DataTypes.TEXT,
 },
     localgphone:{type:DataTypes.INTEGER},
-    localgmail:{type:DataTypes.TEXT,validate:{isEmail:true}}
+    localgmail:{type:DataTypes.TEXT,validate:{isEmail:true}},
+    isfilled:{type:DataTypes.BOOLEAN,defaultValue:'0'},
 
-},{
+},
+
+{
     freezeTableName: true
 })
 const Students=sequelize.define("students",{

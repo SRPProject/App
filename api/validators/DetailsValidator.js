@@ -3,31 +3,8 @@ const { validate } = require(".");
 var  logger=require("../utils/log")(module);
 
 const addDetailsValidator=async(req,res,next)=>{
-    await body("mail")
-		.notEmpty()
-		.withMessage("Email is required!")
-		.trim()
-		.isEmail()
-		.normalizeEmail()
-		.withMessage("Invalid Email")
-		.run(req);
-
-    await body("regnum")
-		.notEmpty()
-        .withMessage("rollnum invalid")
-        .bail()
-		.isLength({ min: 10,max:10 })
-		.withMessage("rollnum length invalid")
-		.run(req);
-
-	await body("sex")
-		.notEmpty()
-        .withMessage("gender field invalid")
-        .bail()
-		.isLength({ min: 1,max:1 })
-		.withMessage("gender field invalid")
-		.run(req);
-
+    console.log(req.body.admittedon);
+	
 	await body("cutoffmark")
 		.notEmpty()
 		.withMessage("cutoffmark not defined")
@@ -36,29 +13,13 @@ const addDetailsValidator=async(req,res,next)=>{
     await body("admittedon")
         .notEmpty()
 		.withMessage("admittedon not defined")
-		.run(req)
-
-    await body("firstname")
-		.notEmpty()
-		.withMessage("firstname invalid")
-		.run(req);
-
-    await body("lastname")
-		.notEmpty()
-		.withMessage("firstname invalid")
-		.run(req);
-
-    await body("dob")
-        .notEmpty()
-        .withMessage("dob invalid")
         .bail()
         .isDate()
         .withMessage("Must be a valid date")
-        .run(req)
-       
+		.run(req)       
     await body("bloodgroup")
         .notEmpty()
-        .withMessage("dob invalid")
+        .withMessage("blood group invalid")
         .run(req);
 
     await body("specialcategory")

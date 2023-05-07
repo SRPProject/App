@@ -2,7 +2,7 @@ var logger=require("../utils/log")(module);
 
 const express=require('express')
 const router=express.Router()
-const generaldetails=require('../controllers/students/addentries/generaldetails')
+const generaldetails=require('../controllers/students/updateentries/generaldetails')
 const  DetailsValidator=require("../validators/DetailsValidator");
 const { validate } = require("../validators/index");
 const {getstudentsem}=require("../controllers/students/getentries/getstudentsem");
@@ -14,7 +14,7 @@ const multer=require("multer");
 const upload=multer({storage:multer.memoryStorage({})});
 
 
-router.post("/general",
+router.post("/updateStudentPersonal",
     DetailsValidator.addDetailsValidator,
     validate,
     generaldetails.addgereralDetails
@@ -47,7 +47,6 @@ router.post("/uploadMarkSheet",
     validate,
     uploadMarkSheet
 )
-
 
 router.get("/studentsem", getstudentsem)
 
