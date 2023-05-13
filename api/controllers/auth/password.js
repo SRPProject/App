@@ -235,8 +235,65 @@ const sendVerificationLink=async(req,res,mail,lcode,regnum)=>{
         return res.status(500).send({ message: "Server Error." })   
     }
 }
+
+const sendBulkVerificationLink=async(req,res,mail,lcode,regnum)=>{
+    try{
+        var id="";var oobj="";
+        linkCode = crypto.randomBytes(lcode).toString("hex");
+        const obj=(regnum===0)?await Verification.findOne({where:{mail:mail}}):await Students.findOne({where:{regnum:mail}})
+       
+        if(obj){
+            oobj= await obj.update({
+                linkCode:linkCode,
+                expireTime:(Date.now()*1000)
+            })
+            id=(regnum===0)?oobj.verifyId:oobj.st_id;
+        }
+        else{
+            oobj=await Verification.create({
+                linkCode:linkCode,
+                mail:mail,
+                expireTime:(Date.now()*1000)
+                })
+            id=oobj.verifyId
+        }
+        logger.info(id);
+        if(id){
+                 //send mail 
+            const [addregnum,addstdurl]=(regnum===0)?["",""]:[("-"+regnum),"student/"]
+
+            const link = process.env.DOMAIN_NAME+"/auth/password-set/"+addstdurl + id+addregnum + "/" + linkCode;
+            logger.info(link);
+            const html =  `<h3>Reset Link: </h3> 
+                            <p><a> ${link} </a></p>` ; 
+
+            const subject = `Password Set-link ; Expires on ${oobj.expireTime}`; 
+
+            const isSend =await sendMail(html, subject, oobj.mail);
+
+            console.log(isSend);
+            
+            if (isSend) {
+                logger.info("Mail sent for user-->"+regnum);
+            }
+            else {
+                logger.error("Mail not sent - Error"+regnum);
+                // return res.status(500).send({ message: "Server Error." })
+            }
+        }
+        else{
+            logger.error("Id not found - Error");
+            // return res.status(500).send({ message: "Server Error." })
+        }
+    }
+    catch(err){
+        logger.error(err);
+        return res.status(500).send({ message: "Server Error." })   
+    }
+}
 module.exports = {
     ForgotPassword,
     SetPassword ,
-    sendVerificationLink
+    sendVerificationLink,
+    sendBulkVerificationLink
 }
