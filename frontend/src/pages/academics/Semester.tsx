@@ -6,7 +6,7 @@ import AutorenewIcon from '@mui/icons-material/Autorenew';
 import axiosObj from "../../api"
 import Loader from "../../components/Loader";
 import { FileUpload } from "@mui/icons-material";
-
+import  {toast} from "react-toastify"
 
 
 const endpoint = "/student/studentsem"
@@ -121,11 +121,50 @@ const Semester =({sem,data,setData}:{sem:any,data:any,setData:any})=>{
     )
 }
 
+const updateMarks = async (updated:any)=>{
+
+    // transform to array 
+
+    let data = []
+
+    Object.keys(updated.current).map((el:any)=>{
+    
+        data.push( {...updated.current[el],subjectSubid:el} )
+    
+    })
+   
+
+    const endpoint = "/student/updateSemMark"
+
+    const resp = await axiosObj.post(endpoint,{
+        marks :  JSON.stringify(data)
+    })
+
+    if(resp.status==200){
+        toast.success("Marks updated Successfully")
+    }
+
+    console.log(resp)
+
+}
+
 const Container = ({data,sem}:{data:any,sem:number})=>{
 
     const [value,setValue] = useState(0)
 
+    const [requestSent,setRequestSent] = useState(false)
     console.log(data)
+
+    /*
+        {
+            "subject_code" : {
+                "attempts" : 0 ,
+                "monthy"
+            }
+        }
+
+    */
+    const updated =React.useRef({})
 
     const tabs = [
         "Core Subjects" ,
@@ -155,11 +194,19 @@ const Container = ({data,sem}:{data:any,sem:number})=>{
                 }
             </Tabs>
             
-            <Button style={{width :"max-content"}} onClick={()=>updateMark()} variant="contained">Update Marks</Button>
+            <Button style={{width :"max-content"}} onClick={async()=> {
+                setRequestSent(true)
+                await updateMarks(updated)
+                setRequestSent(false)
+            }} variant="contained"disabled={requestSent}>
+                { 
+                    requestSent ? "Please wait ..." : "Update Marks"
+                }
+            </Button>
 
             <div className="sub-types">
                 <Typography style={{margin:"0 1rem"}} variant="h5">{tabs[value]}</Typography>
-                <SubjectType data={data[tabs[value]]}></SubjectType>
+                <SubjectType updated={updated} data={data[tabs[value]]}></SubjectType>
             </div>
             
 
@@ -168,10 +215,43 @@ const Container = ({data,sem}:{data:any,sem:number})=>{
 }
 
 
+const SubjectType = ({data,updated}:{data:any,updated:any})=>{
 
-const SubjectType = ({data}:{data:any})=>{
+    /*
+        update the property of subject ;
+        delete property from object if it reaches original value 
+    */
+    const updatedData = (subjectCode:string,key:string,value:string|number,original:any)=>{
 
-    console.log(data)
+        // scoredgrade , attempts , monthyrpass
+
+        // create object if it is not found 
+        if(!(subjectCode in updated.current)){
+            updated.current[[subjectCode]] = Object.assign({},original) 
+        }
+
+
+        updated.current[[subjectCode]][key] = value 
+
+        if(key==="monthyrpass"){
+            if(value===""){
+                updated.current[[subjectCode]][key] = null 
+            }
+        }
+
+        let obj = updated.current[[subjectCode]]
+
+        // if updated values are same as original value remove this key from object "updated"
+
+        if(obj.scoredgrade==original.scoredgrade && obj.attempts==original.attempts && obj.monthyrpass==original.monthyrpass ){
+            delete updated.current[[subjectCode]]
+        }
+        
+        console.log(original)
+        console.log(updated.current)
+
+    }
+
     if(data.length===0){
         return (
             <div>
@@ -184,25 +264,52 @@ const SubjectType = ({data}:{data:any})=>{
 
     return(
         <div>
-        {
+        {   
+            // scoredgrade , attempts , monthyrpass
             data.map((el:any)=>{
                 
+                const currDate = new Date().toISOString().split('T')[0] ; 
+
+        
+                // for persisting values upon re-rendering 
+                let originalValues = {
+                    scoredgrade : el.scoredgrade ,
+                    attempts : el.attempts ,
+                    monthyrpass : !el.monthyrpass?currDate : el.monthyrpass 
+                }
+
+                console.log(originalValues)
+
+                let updatedValues ={
+                    scoredgrade : null ,
+                    attempts : null ,
+                    monthyrpass : originalValues.monthyrpass
+                }
+
+               // console.log(originalValues)
+
+                if( el.subcode in updated.current ){
+                    updatedValues = updated.current[[el.subid]]
+                }
+
                 return (
-                    <div className="subjects">
+                    <div className="subjects" >
                         <Card sx={{padding:"1rem"}}>  
                             <Typography variant="h6">{el.subname} 
                                 <Typography variant="body1">{el.subcode}</Typography>
                             </Typography>
                             <Typography variant="caption">
-                                Total Credit : {el.credit}
+                                Total Credit : { el.credit}
                             </Typography>
-                            <select style={{display:"block"}}>
+                            <select style={{display:"block"}} onChange={(e:eny)=>{
+                                    updatedData(el.subid,"scoredgrade",e.target.value,originalValues)
+                                }} >
                                 <option selected disabled>
                                     Select Grade Obtained
                                 </option>
                                 {[10,9,8,7].map((item:any)=>{
                                     return(
-                                        <option selected={(item===el.scoredgrade)} >
+                                        <option selected={ (updatedValues.scoredgrade==item) || (item===el.scoredgrade)} >
                                             {item}
                                         </option>
                                 )
@@ -211,13 +318,21 @@ const SubjectType = ({data}:{data:any})=>{
                             <div >
                                 <Typography margin="1rem 0" variant="caption">Number of attempts </Typography>
                                 <br/>
-                                <input type="number" style={{padding:".25rem"}} min={0} max={3}></input>
+                                <input type="number" onChange={(e:eny)=>{
+                                    updatedData(el.subid,"attempts",Number(e.target.value),originalValues)
+                                }} defaultValue={updatedValues.attempts?updatedValues.attempts:el.attempts} style={{padding:".25rem"}} min={0} max={3}></input>
                             </div>
                            
                             <div style={{margin:"1rem 0"}}>
                                 <Typography margin="1rem 0" variant="caption">Month and Year Of passing</Typography>
                                 <br/>
-                                <input type="month"  style={{padding:".25rem"}} ></input>
+                                <input  defaultValue={ 
+                                    updatedValues.monthyrpass ? updatedValues.monthyrpass : originalValues.monthyrpass
+                                }
+                                type="date"  onChange={(e:eny)=>{
+                                   
+                                    updatedData(el.subid,"monthyrpass",e.target.value,originalValues)
+                                }} style={{padding:".25rem"}} ></input>
                             </div>
                         </Card> 
                     
@@ -254,13 +369,14 @@ const AddSubject = ()=>{
     )
 }
 
-const VerficationFile = ()=>{
+const VerficationFile = (sem:number)=>{
     return(
         <div className="file-upload"  >
 
                 <form>
                 <Typography>Verification File</Typography>
                 <TextField 
+                    inputProps={{accept:"application/pdf"}}
                     required
                     size="small"
                     fullWidth

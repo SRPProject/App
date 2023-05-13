@@ -27,7 +27,7 @@ const getstudentsem=async (req,res)=>{
 
         const data=await sequelize.query(` 
 
-            select credit,subcode,scoredgrade,subname,typeofsub,subid,attempts from studentsems a , subjects b 
+            select credit,subcode,scoredgrade,subname,typeofsub,subid,attempts,monthyrpass from studentsems a , subjects b 
             where 
             (a."subjectSubid" = b."subid" 
             and 
