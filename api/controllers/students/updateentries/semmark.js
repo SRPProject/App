@@ -36,6 +36,8 @@ const updatesem=async(req,res)=>{
     }
 }
 
+
+
 const uploadMarkSheet=async(req,res)=>{
     try {
         console.log(req.body.semno)

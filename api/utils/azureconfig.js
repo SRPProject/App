@@ -12,4 +12,4 @@ const  containerClient=(containerName)=>{
     return blobServiceClient.getContainerClient(containerName);
 }
 
-module.exports={containerClient}
+module.exports={containerClient,blobServiceClient}

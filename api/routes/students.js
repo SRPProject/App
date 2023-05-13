@@ -6,7 +6,7 @@ const generaldetails=require('../controllers/students/updateentries/generaldetai
 const  DetailsValidator=require("../validators/DetailsValidator");
 const { validate } = require("../validators/index");
 const {getstudentsem}=require("../controllers/students/getentries/getstudentsem");
-const {updatesem,uploadMarkSheet}=require("../controllers/students/updateentries/semmark");
+const {updatesem,uploadMarkSheet,getmarksheet}=require("../controllers/students/updateentries/semmark");
 const {addintern,addplacement, addscholarship}=require("../controllers/students/addentries/adddetails");
 const {getInterndetails,getplacement,getPersonalDetails,getScholarship,studentsemscount}=require("../controllers/students/getentries/getdetails")
 
@@ -41,6 +41,8 @@ router.post("/updateSemMark",
     updatesem
 
 )
+
+
 router.post("/uploadMarkSheet",
     upload.single('marksheet'),
     DetailsValidator.MarksheetValidator,

@@ -107,7 +107,7 @@ const Semester =({sem,data,setData}:{sem:any,data:any,setData:any})=>{
 
             </div>
 
-            <VerficationFile/>
+            <VerficationFile sem={sem}/>
 
             {
                  loading ? 
@@ -247,8 +247,7 @@ const SubjectType = ({data,updated}:{data:any,updated:any})=>{
             delete updated.current[[subjectCode]]
         }
         
-        console.log(original)
-        console.log(updated.current)
+    
 
     }
 
@@ -369,19 +368,52 @@ const AddSubject = ()=>{
     )
 }
 
-const VerficationFile = (sem:number)=>{
+const saveFile = async (sem:any)=>{
+
+    const files = document.getElementById("file").files 
+
+    if(files.length==0) {
+        toast.error("Choose file first")
+
+        return ; 
+    }
+    const endpoint = "/student/uploadMarkSheet"
+    
+    const formData = new FormData()
+
+    formData.append("semno",sem)
+    formData.append("marksheet",files[0])
+
+    const resp = await axiosObj.post(endpoint,formData,{
+        headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+    })
+
+    if(resp.status===200){
+        toast.success("File has been uploaded successfully")
+    }
+    else if(resp.status===400){
+        toast.error(resp.data.message)
+    }
+    
+}
+
+const VerficationFile = ({sem}:{sem:number})=>{
+
+    const [submitting,setSubmitting] = useState(false)
+
     return(
         <div className="file-upload"  >
 
-                <form>
                 <Typography>Verification File</Typography>
                 <TextField 
                     inputProps={{accept:"application/pdf"}}
-                    required
                     size="small"
                     fullWidth
                     type="file"
                     sx={{margin:"1rem 0"}}
+                    id="file"
                  >
                 
                </TextField>
@@ -390,9 +422,15 @@ const VerficationFile = (sem:number)=>{
                 endIcon={<FileUpload/>}
                 variant="contained"
                 disableElevation
-                type="submit"
+                type="button"
+                disabled={submitting}
+                onClick={async()=>{
+                    setSubmitting(true) 
+                    await saveFile(sem)
+                    setSubmitting(false)
+                }}
                 >Save File</Button>
-                </form>
+                <br/>
                 <Typography variant="caption" style={{margin:"2rem 0"}}> 
                     Note : Update Marks first if you have not 
                 </Typography>
