@@ -5,22 +5,24 @@ var {StudentSem,MarksheetProofs}=require("../../../models/students");
 
 const updatesem=async(req,res)=>{
     try{
-        
-        const studentId = res.locals._id 
-        
+      
+        // const arr={"studentStId":2,marks:[{"subjectSubid":32 ,"scoredgrade":10,"monthyrpass":"2020/1/1"},{"subjectSubid":33 ,"scoredgrade":10,"monthyrpass":"2020/1/1"},{"subjectSubid":34 ,"scoredgrade":10,"monthyrpass":"2020/1/1"}]}
         const marr=res.locals.marks;
         var updatearr=[]
         for(let i=0;i<marr.length;i++){
-            let getrow=await StudentSem.findOne({where : {subjectSubid:marr[i].subjectSubid , studentStId:studentId}})
+            let getrow=await StudentSem.findOne({where : {subjectSubid:marr[i].subjectSubid , studentStId:res.locals._id}})
             
             if(getrow===null){
                 return res.status(400).send({message:"Subject Id : "+marr[i].subjectSubid +" doesn't belongs to!"});
             }
-            else{//to give previlege (variable) by 'or' operator 
+            else if(getrow.scoredgrade===0 ){//to give previlege (variable) by 'or' operator 
                 updatearr.push(`UPDATE studentsems
                 SET scoredgrade=${marr[i].scoredgrade}, attempts=${getrow.attempts+1},monthyrpass='${marr[i].monthyrpass}' 
                 WHERE id=${getrow.id};`
                 )
+            }
+            else{
+                return res.status(400).send({message:"Grade for this subject : "+marr[i].subjectSubid+" already addded"});
             }
         }
 
@@ -28,7 +30,7 @@ const updatesem=async(req,res)=>{
             await sequelize.query(updatearr[i]);
         }
 
-        return res.status(200).send({message:"Marks has been updated !!"});
+        return res.status(200).send({messgae:"Ok"});
     }
     catch(err){
         logger.error(err);

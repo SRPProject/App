@@ -12,7 +12,7 @@ const StuPersonalDetails=sequelize.define("studentpersonal",{
         primaryKey: true
     },
     regnum:{
-        type:DataTypes.INTEGER,
+        type:DataTypes.BIGINT,
         allowNull:false,
         validate:{notNull:true,notEmpty: true},
     },
@@ -101,7 +101,7 @@ const Students=sequelize.define("students",{
         validate:{isEmail:true,notNull:true,notEmpty: true}
     },
     regnum:{
-        type:DataTypes.INTEGER,
+        type:DataTypes.BIGINT,
         allowNull:false,
         unique:true,
         validate:{notNull:true,notEmpty: true},
