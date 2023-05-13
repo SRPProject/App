@@ -2,7 +2,7 @@ import Projects from "../pages/projects"
 import Details from "../pages/general"
 import Academics from "../pages/academics"
 import Dashboard from "../pages/dashboard" 
-import Cocurricular from "../pages/cocurricular"
+import Cocurricular from "../pages/scholarship"
 import Placements from "../pages/placements"
 import Intern from "../pages/internships"
 
@@ -40,9 +40,9 @@ const data = [
         'element' : Projects
     },
     {
-        'title' : 'Extra-Curricular',
+        'title' : 'Scholarships',
         'icon' : EmojiEventsIcon,
-        'to' : '/cocurricular' ,
+        'to' : '/scholarhsip' ,
         'element' : Cocurricular
     },
     {

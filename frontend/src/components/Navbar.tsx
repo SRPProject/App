@@ -11,7 +11,6 @@ const Navbar = ({isMobile}:{isMobile:Boolean})=>{
     
     const ctx = useContext(CustomContext)
 
-    console.log(ctx.data)
 
     const location = useLocation() 
 

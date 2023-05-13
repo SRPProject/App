@@ -1,9 +1,10 @@
 
 
-import React, { useContext,useState } from "react"
-import {Select ,MenuItem,FormControl ,FormHelperText,Button} from '@mui/material';
+import React, { useEffect , useContext,useState } from "react"
+import {Select ,MenuItem,FormControl ,FormHelperText,Button, Typography} from '@mui/material';
 import { CustomContext } from "../../utils/Context";
 import Semester from "./Semester";
+import "./index.scss"
 
 const Academics= ()=>{
 
@@ -15,6 +16,7 @@ const Academics= ()=>{
 
     return(
         <div>
+            <Typography marginBottom={"1rem"}>Select a Semester</Typography>
             <FormControl  style={{display:"flex"}}>
 
               <Select size="small" 
@@ -25,19 +27,17 @@ const Academics= ()=>{
                        map((el:any)=>{
                         if(el==0) return <div></div>
                         return (
-                            <MenuItem selected={(el===1)} value={el}>{el}</MenuItem>
+                            <MenuItem selected={(el===1)} value={el}>Semester - {el}</MenuItem>
                         )
                        })
 
                     }
               </Select> 
-            
-                <FormHelperText>Select Semester</FormHelperText>
 
-                <Button variant="contained" sx={{width:"max-content",margin:"1rem 0"}}>View</Button>
+        
             </FormControl>
              
-            <Semester sem={sem} data={data} setData={data} > </Semester>
+            <Semester sem={sem} data={data} setData={setData} > </Semester>
 
         </div>
     )
