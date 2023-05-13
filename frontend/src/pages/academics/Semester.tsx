@@ -60,7 +60,7 @@ const Semester =({sem,data,setData}:{sem:any,data:any,setData:any})=>{
         }
         else {
             
-            //request for mrak !!
+            //request for getting student sem marks 
             (
                 async ()=>{
                     
@@ -110,8 +110,10 @@ const Semester =({sem,data,setData}:{sem:any,data:any,setData:any})=>{
             <VerficationFile/>
 
             {
-                 loading ? <Skeleton width="1000" height ="100vh" variant="rectangular" animation="wave"></Skeleton> : 
-                 data[sem]&&<Container data={data[sem]} />
+                 loading ? 
+                 <Skeleton width="1000" height ="100vh" variant="rectangular" animation="wave"></Skeleton> 
+                 : 
+                 data[sem]&&<Container sem={sem}  data={data[sem]} />
             }
 
             
@@ -119,7 +121,7 @@ const Semester =({sem,data,setData}:{sem:any,data:any,setData:any})=>{
     )
 }
 
-const Container = ({data}:{data:any})=>{
+const Container = ({data,sem}:{data:any,sem:number})=>{
 
     const [value,setValue] = useState(0)
 
@@ -135,7 +137,6 @@ const Container = ({data}:{data:any})=>{
 
     return(
         <div className="main">
-            
             
             <Tabs
                 onChange={(e,val)=>setValue(val)}
@@ -154,7 +155,7 @@ const Container = ({data}:{data:any})=>{
                 }
             </Tabs>
             
-            <Button style={{width :"max-content"}}  variant="contained">Update Marks</Button>
+            <Button style={{width :"max-content"}} onClick={()=>updateMark()} variant="contained">Update Marks</Button>
 
             <div className="sub-types">
                 <Typography style={{margin:"0 1rem"}} variant="h5">{tabs[value]}</Typography>
@@ -174,7 +175,7 @@ const SubjectType = ({data}:{data:any})=>{
     if(data.length===0){
         return (
             <div>
-                <Typography variant="h6" padding={"2rem"}>
+                <Typography variant="h6" padding={"2rem 1rem"}>
                     No Subjects Where Added 
                 </Typography>
             </div>
@@ -185,7 +186,7 @@ const SubjectType = ({data}:{data:any})=>{
         <div>
         {
             data.map((el:any)=>{
-                const [open,setOpen] = useState(false)
+                
                 return (
                     <div className="subjects">
                         <Card sx={{padding:"1rem"}}>  
@@ -199,7 +200,7 @@ const SubjectType = ({data}:{data:any})=>{
                                 <option selected disabled>
                                     Select Grade Obtained
                                 </option>
-                                {['O','A+','A','B+','B','C','D'].map((item:any)=>{
+                                {[10,9,8,7].map((item:any)=>{
                                     return(
                                         <option selected={(item===el.scoredgrade)} >
                                             {item}
@@ -207,28 +208,19 @@ const SubjectType = ({data}:{data:any})=>{
                                 )
                                 })}   
                             </select>
-                        </Card> 
-                        <Button onClick={()=>setOpen(prev=>!prev)}>RE-attempts?</Button>
-
-                        <Collapse in={open}>
-                        <div className="re-attempts">
-                            <Typography margin="1rem 0" variant="body1">Re-appears - if any </Typography>
-                            
-                            <div>
+                            <div >
                                 <Typography margin="1rem 0" variant="caption">Number of attempts </Typography>
-                                <input type="number" style={{padding:".5rem"}} min={0} max={3}></input>
+                                <br/>
+                                <input type="number" style={{padding:".25rem"}} min={0} max={3}></input>
                             </div>
                            
-                            <div>
+                            <div style={{margin:"1rem 0"}}>
                                 <Typography margin="1rem 0" variant="caption">Month and Year Of passing</Typography>
-                                <input type="month"  style={{padding:".5rem"}} ></input>
+                                <br/>
+                                <input type="month"  style={{padding:".25rem"}} ></input>
                             </div>
-
-                        </div>
-                        
-                        </Collapse>
-                       
-                       
+                        </Card> 
+                    
                     </div>
                 )
             })
