@@ -10,8 +10,7 @@ const sequelize =require("../../../config/dbconnection");
 const getstudentsem=async (req,res)=>{
     
     try{
-        const stid=res.locals._id;
-        const semno=1;
+
         // const getstdsubs=await Students.findAll({
         //     where:{st_id:stid},
         //     include:{
@@ -23,20 +22,42 @@ const getstudentsem=async (req,res)=>{
         //       }
         // })
 
+        const stid=res.locals._id;
+        const semno= !req.query.semno?1:req.query.semno;
 
+        if(semno){
+            const getstdsubs=await sequelize.query(`select 
+                ss.scoredgrade,
+                ss.attempts,
+                ss.monthyrpass,
+                ss.semsubbelongs,
+                subjects.subid,
+                subjects.credit,
+                subjects.subcode,
+                subjects.subname,
+                subjects.typeofsub 
+                    from studentsems as ss inner join subjects 
+                    on ss."subjectSubid" = "subjects"."subid" 
+                    where ss."studentStId"=${res.locals._id} and "ss"."semsubbelongs"=${semno}
+            `)
+            return res.status(200).send({message:getstdsubs[0]});
+        }
+        else{
+            return res.status(200).send({message:"semester not valid"});
+        }
 
-        const data=await sequelize.query(` 
+        // const data=await sequelize.query(` 
 
-            select credit,subcode,scoredgrade,subname,typeofsub,subid,attempts,monthyrpass from studentsems a , subjects b 
-            where 
-            (a."subjectSubid" = b."subid" 
-            and 
-            a."studentStId" = ${res.locals._id} 
-            and 
-            b."semsubbelongs" = 1 )
-            order by b."typeofsub"
+        //     select credit,subcode,scoredgrade,subname,typeofsub,subid,attempts,monthyrpass from studentsems a , subjects b 
+        //     where 
+        //     (a."subjectSubid" = b."subid" 
+        //     and 
+        //     a."studentStId" = ${res.locals._id} 
+        //     and 
+        //     b."semsubbelongs" = 1 )
+        //     order by b."typeofsub"
 
-        `)
+        // `)
 
         
 
