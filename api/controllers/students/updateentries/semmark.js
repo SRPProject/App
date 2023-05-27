@@ -15,15 +15,13 @@ const updatesem=async(req,res)=>{
             if(getrow===null){
                 return res.status(400).send({message:"Subject Id : "+marr[i].subjectSubid +" doesn't belongs to!"});
             }
-            else if(getrow.scoredgrade===0 ){//to give previlege (variable) by 'or' operator 
+            else { 
                 updatearr.push(`UPDATE studentsems
                 SET scoredgrade=${marr[i].scoredgrade}, attempts=${getrow.attempts+1},monthyrpass='${marr[i].monthyrpass}' 
                 WHERE id=${getrow.id};`
                 )
             }
-            else{
-                return res.status(400).send({message:"Grade for this subject : "+marr[i].subjectSubid+" already addded"});
-            }
+        
         }
 
         for(let i=0;i<updatearr.length;i++){

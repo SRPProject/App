@@ -216,14 +216,7 @@ const scholarshipvalidator=async(req,res,next)=>{
 
 }
 const SemMarkValidator=async(req,res,next)=>{
-    await body("studentStId")
-        .notEmpty()
-        .withMessage("studentStId not defined in body")
-        .bail()
-        .isNumeric()
-        .withMessage("studentStId Invalid")
-        .run(req)
-
+   
     await body("marks")
         //marks should  be array of json eg:  [{"subjectSubid":32 ,"scoredgrade":10,"monthyrpass":"2020/1/1"}]
         .custom(async (value) => {
