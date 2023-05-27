@@ -3,7 +3,7 @@ const {Students}=require("../../../models/students");
 
 const {Subjects}=require("../../../models/comod");
 
-const sequelize = require("../../../config/dbconnection")
+const sequelize =require("../../../config/dbconnection");
 
 // to be implemented : get all subjects of students of semester !!
 
@@ -17,13 +17,30 @@ const getstudentsem=async (req,res)=>{
         //     include:{
         //         model: Subjects,
         //         through: { attributes: [] } 
+        // select * from studentsems as a inner join subjects as b 
+        // on a."subjectSubid" = b."subid"
+        // where a."studentStId"=${res.locals._id} and b."semsubbelongs"=${semno}
         //       }
         // })
-        const getstdsubs=await sequelize.query(`select * from studentsems as ss inner join subjects 
-        on ss."subjectSubid" = "subjects"."subid" 
-        where ss."studentStId"=${res.locals._id} and "subjects"."semsubbelongs"=${semno}
+
+
+
+        const data=await sequelize.query(` 
+
+            select credit,subcode,scoredgrade,subname,typeofsub,subid,attempts,monthyrpass from studentsems a , subjects b 
+            where 
+            (a."subjectSubid" = b."subid" 
+            and 
+            a."studentStId" = ${res.locals._id} 
+            and 
+            b."semsubbelongs" = 1 )
+            order by b."typeofsub"
+
         `)
-        return res.status(200).send({message:getstdsubs});
+
+        
+
+        return res.status(200).send({message:data[0]});
 
     }
     catch(err){

@@ -1,18 +1,20 @@
-import Projects from "../pages/projects"
+import ExtraCurricular from "../pages/extra-curricular"
 import Details from "../pages/general"
 import Academics from "../pages/academics"
 import Dashboard from "../pages/dashboard" 
-import Cocurricular from "../pages/scholarship"
+import Scholarships from "../pages/scholarship"
 import Placements from "../pages/placements"
 import Intern from "../pages/internships"
+
 
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium'
 import DetailsIcon from '@mui/icons-material/Details'
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents'
 import WorkspacesIcon from '@mui/icons-material/Workspaces'
-import LibraryBooksIcon from '@mui/icons-material/LibraryBooks'
 import SchoolIcon from '@mui/icons-material/School'
+import  Sports  from "@mui/icons-material/Sports"
+
 
 const data = [
     {
@@ -34,17 +36,17 @@ const data = [
       'element' : Details
     },
     {
-       'title' : 'Projects' ,
-       'icon' : LibraryBooksIcon,
-        'to' : '/projects',
-        'element' : Projects
-    },
-    {
         'title' : 'Scholarships',
         'icon' : EmojiEventsIcon,
-        'to' : '/scholarhsip' ,
-        'element' : Cocurricular
+        'to' : '/scholarhship' ,
+        'element' : Scholarships
     },
+    {
+      'title' : 'Extra Curricular' ,
+      'icon' : Sports,
+      'to' : '/extra-curricular', 
+      'element' : ExtraCurricular ,
+   },
     {
       'title' : 'Internships',
       'icon' : WorkspacePremiumIcon,
@@ -56,7 +58,14 @@ const data = [
        'icon' : WorkspacesIcon,
        'to' : '/placement', 
        'element' : Placements
-    }
+    },
+    
   ]
 
+export const ExtraCurricularData = [
+   'Nptel' ,
+   'Sports' ,
+   'Culturals' ,
+   'Workshops' ,
+]
 export default data

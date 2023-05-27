@@ -1,8 +1,8 @@
 
 
 import React,{useEffect, useState} from "react"
-import { Button, Card, CardActions, CardHeader, Collapse, Dialog, Modal, TextField, Typography } from "@mui/material"
-import { AddOutlined } from "@mui/icons-material"
+import { Button, Card, Dialog, Modal, TextField, Typography } from "@mui/material"
+import { AddOutlined, DateRange, UploadFile } from "@mui/icons-material"
 import {toast} from "react-toastify"
 import axiosObj from "../../api"
 
@@ -63,15 +63,52 @@ const submit = async(event:any)=>{
 
 const Intern = ()=>{
 
-    const [div,setDiv] = useState([])
+    const [data,setData] = useState([])
 
     const [open,setOpen] = useState(false)
 
+    useEffect(()=>{
 
+        (
+            async function(){
+                const endpoint = "/student/getinterndetails"
+
+                const resp = await axiosObj.get(endpoint)
+                
+                setData(resp.data.message)
+                
+            }
+        )()
+
+    },[])
 
     return(
         <div>
             
+            <div >
+
+
+                {
+                    data.map((el:any)=>{
+                        return(
+                            <Card sx={{padding:"2rem",margin:"1rem 0",gap:"2rem",display:"flex",flexDirection:"column"}}>
+                                <Typography variant="h6">{el.inname}</Typography>
+                                <Typography style={{display:"flex",alignItems:"center",gap:"1rem"}} variant="caption">
+                                    <DateRange></DateRange>
+                                    {el.fromperiod} - {el.toperiod}
+                                </Typography>
+                                <Typography variant="body1">
+                                    {el.details}
+                                </Typography>
+
+
+                            </Card>
+                        )
+                    })
+                }
+
+            </div>
+
             <Button 
             onClick={()=>setOpen(true) }
             endIcon={<AddOutlined></AddOutlined>}
