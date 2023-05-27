@@ -15,21 +15,19 @@ import {
   Tabs,
   Tab,
 } from "@mui/material";
-import VerifiedIcon from "@mui/icons-material/Verified";
-import AutorenewIcon from "@mui/icons-material/Autorenew";
+
 import axiosObj from "../../api";
-import Loader from "../../components/Loader";
 import { FileUpload } from "@mui/icons-material";
 import { toast } from "react-toastify";
 
-const endpoint = "/student/studentsem";
+
 
 const util = (obj: any) => {
   let temp = {
     "Core Subjects": [],
     "Professional Electives": [],
     "Open-Elective": [],
-    Humanities: [],
+    "Humanities": [],
     "Audit-course": [],
   };
 
@@ -74,10 +72,14 @@ const Semester = ({
       //request for getting student sem marks
       (async () => {
         setLoading(true);
+        
+        const endpoint = "/student/studentsem";
 
         const resp = await axiosObj.get(endpoint);
 
         const obj = resp.data.message;
+
+        console.log(resp.data)
 
         const normalized = util(obj); // spilt based on type of subjects
 

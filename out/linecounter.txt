@@ -1,0 +1,149 @@
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2023-05-27 17:35:33
+count workspace : c:\Users\Dell\Desktop\kumaran\srp_project
+total files : 121
+total code lines : 20435
+total comment lines : 329
+total blank lines : 2794
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |          .json|          12390|              4|            100|     61|
+   |           .tsx|           3234|             70|            820|     16|
+   |          .scss|            212|             20|             52|    1.0|
+   |            .js|           2778|            180|            546|     14|
+   |            .ts|             10|              4|              2|  0.049|
+   |           .css|              0|              0|              0|    0.0|
+   |          .html|             26|              0|              0|   0.13|
+   |               |             44|             40|              5|   0.22|
+   |           .svg|              2|              0|              0| 0.0098|
+   |           .cjs|             28|              0|              0|   0.14|
+   |           .txt|            143|             11|             47|   0.70|
+   |           .log|           1568|              0|           1222|    7.7|
+   -------------------------------------------------------------------------
+.gitignore, code is 3, comment is 21, blank is 1.
+admin-frontend\.eslintrc.cjs, code is 14, comment is 0, blank is 0.
+admin-frontend\.gitignore, code is 14, comment is 9, blank is 2.
+admin-frontend\index.html, code is 13, comment is 0, blank is 0.
+admin-frontend\package.json, code is 43, comment is 0, blank is 1.
+admin-frontend\public\vite.svg, code is 1, comment is 0, blank is 0.
+admin-frontend\src\api\index.js, code is 41, comment is 4, blank is 26.
+admin-frontend\src\api\token.js, code is 25, comment is 1, blank is 17.
+admin-frontend\src\App.scss, code is 73, comment is 10, blank is 16.
+admin-frontend\src\App.tsx, code is 61, comment is 0, blank is 22.
+admin-frontend\src\components\Footer.tsx, code is 0, comment is 0, blank is 0.
+admin-frontend\src\components\Loader.tsx, code is 10, comment is 0, blank is 3.
+admin-frontend\src\components\Navbar.tsx, code is 91, comment is 0, blank is 16.
+admin-frontend\src\components\Notifications.tsx, code is 0, comment is 0, blank is 0.
+admin-frontend\src\components\Sidebar.tsx, code is 120, comment is 1, blank is 13.
+admin-frontend\src\main.tsx, code is 9, comment is 0, blank is 3.
+admin-frontend\src\pages\academics\index.scss, code is 33, comment is 0, blank is 10.
+admin-frontend\src\pages\academics\index.tsx, code is 32, comment is 0, blank is 15.
+admin-frontend\src\pages\academics\Semester.tsx, code is 416, comment is 25, blank is 64.
+admin-frontend\src\pages\api\index.tsx, code is 111, comment is 0, blank is 21.
+admin-frontend\src\pages\dashboard\index.scss, code is 0, comment is 0, blank is 0.
+admin-frontend\src\pages\dashboard\index.tsx, code is 59, comment is 0, blank is 20.
+admin-frontend\src\pages\extra-curricular\index.tsx, code is 91, comment is 6, blank is 11.
+admin-frontend\src\pages\general\index.tsx, code is 79, comment is 0, blank is 25.
+admin-frontend\src\pages\internships\index.tsx, code is 126, comment is 0, blank is 50.
+admin-frontend\src\pages\login\index.css, code is 0, comment is 0, blank is 0.
+admin-frontend\src\pages\login\index.tsx, code is 108, comment is 1, blank is 45.
+admin-frontend\src\pages\password\index.tsx, code is 50, comment is 0, blank is 21.
+admin-frontend\src\pages\placements\index.tsx, code is 94, comment is 1, blank is 32.
+admin-frontend\src\pages\scholarship\index.tsx, code is 99, comment is 0, blank is 39.
+admin-frontend\src\react-app-env.d.ts, code is 0, comment is 1, blank is 0.
+admin-frontend\src\utils.scss, code is 0, comment is 0, blank is 0.
+admin-frontend\src\utils\Context.tsx, code is 12, comment is 0, blank is 6.
+admin-frontend\src\utils\data.js, code is 65, comment is 0, blank is 6.
+admin-frontend\src\utils\Routes.tsx, code is 49, comment is 1, blank is 4.
+admin-frontend\tsconfig.json, code is 20, comment is 2, blank is 2.
+admin-frontend\tsconfig.node.json, code is 10, comment is 0, blank is 0.
+admin-frontend\vite.config.ts, code is 5, comment is 1, blank is 1.
+api\.env, code is 10, comment is 1, blank is 0.
+api\.gitignore, code is 3, comment is 0, blank is 0.
+api\app.js, code is 53, comment is 5, blank is 27.
+api\config\config.js, code is 22, comment is 7, blank is 5.
+api\config\db.config.js, code is 13, comment is 0, blank is 0.
+api\config\dbconnection.js, code is 3, comment is 0, blank is 0.
+api\controllers\admin\addentries\admin.js, code is 111, comment is 5, blank is 10.
+api\controllers\admin\addentries\faculty.js, code is 27, comment is 0, blank is 3.
+api\controllers\admin\addentries\student.js, code is 151, comment is 25, blank is 44.
+api\controllers\auth\index.js, code is 17, comment is 0, blank is 9.
+api\controllers\auth\login.js, code is 68, comment is 0, blank is 13.
+api\controllers\auth\password.js, code is 261, comment is 11, blank is 28.
+api\controllers\auth\signup.js, code is 46, comment is 5, blank is 26.
+api\controllers\students\addentries\adddetails.js, code is 91, comment is 1, blank is 13.
+api\controllers\students\getentries\getdetails.js, code is 149, comment is 10, blank is 18.
+api\controllers\students\getentries\getstudentsem.js, code is 43, comment is 8, blank is 7.
+api\controllers\students\updateentries\generaldetails.js, code is 49, comment is 1, blank is 4.
+api\controllers\students\updateentries\semmark.js, code is 59, comment is 1, blank is 8.
+api\logs\common.log, code is 1299, comment is 0, blank is 1063.
+api\logs\error.log, code is 269, comment is 0, blank is 159.
+api\models\comod.js, code is 106, comment is 5, blank is 14.
+api\models\roles.js, code is 105, comment is 19, blank is 29.
+api\models\students.js, code is 201, comment is 13, blank is 22.
+api\package-lock.json, code is 8968, comment is 0, blank is 6.
+api\package.json, code is 40, comment is 0, blank is 0.
+api\routes\admin.js, code is 34, comment is 0, blank is 16.
+api\routes\auth.js, code is 67, comment is 1, blank is 13.
+api\routes\students.js, code is 60, comment is 0, blank is 8.
+api\srpapi.postman_collection.json, code is 2088, comment is 0, blank is 85.
+api\utils\azureconfig.js, code is 29, comment is 4, blank is 8.
+api\utils\commonfns.js, code is 31, comment is 2, blank is 3.
+api\utils\constraints.js, code is 39, comment is 1, blank is 1.
+api\utils\dbconnection.js, code is 3, comment is 21, blank is 3.
+api\utils\index.js, code is 8, comment is 0, blank is 2.
+api\utils\jsonTransformer.js, code is 14, comment is 7, blank is 2.
+api\utils\log.js, code is 44, comment is 7, blank is 9.
+api\utils\mail.js, code is 16, comment is 0, blank is 7.
+api\utils\token.js, code is 18, comment is 0, blank is 10.
+api\validators\adminValidators.js, code is 211, comment is 3, blank is 38.
+api\validators\authValidator.js, code is 85, comment is 0, blank is 8.
+api\validators\DetailsValidator.js, code is 258, comment is 1, blank is 35.
+api\validators\index.js, code is 24, comment is 7, blank is 5.
+frontend\.eslintrc.cjs, code is 14, comment is 0, blank is 0.
+frontend\.gitignore, code is 14, comment is 9, blank is 2.
+frontend\index.html, code is 13, comment is 0, blank is 0.
+frontend\package-lock.json, code is 43, comment is 0, blank is 0.
+frontend\package.json, code is 43, comment is 0, blank is 0.
+frontend\public\vite.svg, code is 1, comment is 0, blank is 0.
+frontend\src\api\index.js, code is 41, comment is 4, blank is 26.
+frontend\src\api\token.js, code is 25, comment is 1, blank is 17.
+frontend\src\App.scss, code is 73, comment is 10, blank is 16.
+frontend\src\App.tsx, code is 61, comment is 0, blank is 22.
+frontend\src\components\Footer.tsx, code is 0, comment is 0, blank is 0.
+frontend\src\components\Loader.tsx, code is 10, comment is 0, blank is 3.
+frontend\src\components\Navbar.tsx, code is 91, comment is 0, blank is 16.
+frontend\src\components\Notifications.tsx, code is 0, comment is 0, blank is 0.
+frontend\src\components\Sidebar.tsx, code is 120, comment is 1, blank is 13.
+frontend\src\main.tsx, code is 9, comment is 0, blank is 3.
+frontend\src\pages\academics\index.scss, code is 33, comment is 0, blank is 10.
+frontend\src\pages\academics\index.tsx, code is 32, comment is 0, blank is 15.
+frontend\src\pages\academics\Semester.tsx, code is 416, comment is 25, blank is 64.
+frontend\src\pages\api\index.tsx, code is 111, comment is 0, blank is 21.
+frontend\src\pages\dashboard\index.scss, code is 0, comment is 0, blank is 0.
+frontend\src\pages\dashboard\index.tsx, code is 59, comment is 0, blank is 20.
+frontend\src\pages\extra-curricular\index.tsx, code is 91, comment is 6, blank is 11.
+frontend\src\pages\general\index.tsx, code is 79, comment is 0, blank is 25.
+frontend\src\pages\internships\index.tsx, code is 126, comment is 0, blank is 50.
+frontend\src\pages\login\index.css, code is 0, comment is 0, blank is 0.
+frontend\src\pages\login\index.tsx, code is 108, comment is 1, blank is 45.
+frontend\src\pages\password\index.tsx, code is 50, comment is 0, blank is 21.
+frontend\src\pages\placements\index.tsx, code is 94, comment is 1, blank is 32.
+frontend\src\pages\scholarship\index.tsx, code is 99, comment is 0, blank is 39.
+frontend\src\react-app-env.d.ts, code is 0, comment is 1, blank is 0.
+frontend\src\utils.scss, code is 0, comment is 0, blank is 0.
+frontend\src\utils\Context.tsx, code is 12, comment is 0, blank is 6.
+frontend\src\utils\data.js, code is 65, comment is 0, blank is 6.
+frontend\src\utils\Routes.tsx, code is 49, comment is 1, blank is 4.
+frontend\tsconfig.json, code is 20, comment is 2, blank is 2.
+frontend\tsconfig.node.json, code is 10, comment is 0, blank is 0.
+frontend\vite.config.ts, code is 5, comment is 1, blank is 1.
+hi.txt, code is 143, comment is 11, blank is 47.
+package-lock.json, code is 1100, comment is 0, blank is 3.
+package.json, code is 5, comment is 0, blank is 1.
+===============================================================================
