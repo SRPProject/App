@@ -191,4 +191,62 @@ const addBulkStdsValiadtor=async(req,res,next)=>{
 
   next()
 }
-module.exports={addStudValidator,addFacultyValidator,addDeptValidator,addRegValidator,addDegreeValidator,addBulkStdsValiadtor}
+const addSubjectValidator=async(req,res,next)=>{
+  // subcode , subname ,typeofsub ,regulationRegid ,degreeDegid,distDepartmentDeptid,semsubbelongs
+
+  //semsubbelongs should contain if typeofsub ===1
+  await body("credit")
+    .notEmpty()
+    .withMessage("Credit not defined in body")
+    .bail()
+    .isNumeric()
+    .withMessage("Credit Invalid")
+    .run(req)
+
+  await body("degreeDegid")
+    .notEmpty()
+    .withMessage("Degree id not defined in body")
+    .bail()
+    .isNumeric()
+    .withMessage("Invalid Degree id")
+    .run(req)
+  
+  await body("distDepartmentDeptid")
+    .notEmpty()
+    .withMessage("Department id not defined in body")
+    .bail()
+    .isNumeric()
+    .withMessage("Invalid Department id")
+    .run(req)
+
+  await body("regulationRegid")
+    .notEmpty()
+    .withMessage("Regulation id not defined in body")
+    .bail()
+    .isNumeric()
+    .withMessage("Invalid Regulation id")
+    .run(req)
+
+  await body("subcode")
+    .notEmpty()
+    .withMessage("Subject Code Invalid")
+    .run(req)
+  
+  await body("subname")
+    .notEmpty()
+    .trim()
+    .withMessage("Subject Name Invalid")
+    .run(req)
+    
+  await body("typeofsub")
+    .notEmpty()
+    .withMessage("Type of Subject Invalid")
+    .bail()
+    .isNumeric()
+    .withMessage("Type of Subject Invalid")
+    .run(req)
+
+  next()
+
+}
+module.exports={addStudValidator,addFacultyValidator,addDeptValidator,addRegValidator,addDegreeValidator,addBulkStdsValiadtor,addSubjectValidator}

@@ -272,11 +272,30 @@ const MarksheetValidator=async(req,res,next)=>{
 
 
 }
+const addSubElectivesValidator=async(req,res,next)=>{
+    await body("subjectSubid")
+        .notEmpty()
+        .withMessage("Subject id not defined in body")
+        .bail()
+        .isNumeric()
+        .withMessage("Invalid Subject id")
+        .run(req)
+        
+    await body("semsubbelongs")
+        .notEmpty()
+        .withMessage("Semester no not defined in body")
+        .bail()
+        .isNumeric()
+        .withMessage("Invalid Semester")
+        .run(req)
+    next()
+}
 module.exports={
     addDetailsValidator,
     internDetailsValidator,
     placementDetailsValidator,
     scholarshipvalidator,
     SemMarkValidator,
-    MarksheetValidator
+    MarksheetValidator,
+    addSubElectivesValidator
 }

@@ -68,4 +68,59 @@ const addDegree=async(req,res)=>{
         return res.status(500).send({ message: "Server Error." });
     }
 }
-module.exports={addDepartments,addRegulation,addDegree}
+const addingSubjects=async (req,res)=>{
+    try{
+        //type of subjects==>1 compulsory,2 professional elective ,3 humanities elective,4 audit 
+        //fields credit subcode , subname ,typeofsub ,regulationRegid ,degreeDegid,distDepartmentDeptid,semsubbelongs
+
+        const entry={
+            subcode:req.body.subcode,
+            subname:req.body.subname,
+            typeofsub:req.body.typeofsub,
+            regulationRegid:req.body.regulationRegid,
+            degreeDegid:req.body.degreeDegid,
+            semsubbelongs:req.body.semsubbelongs,
+            distDepartmentDeptid:req.body.distDepartmentDeptid,
+            credit:req.body.credit
+        }
+        if(entry.typeofsub !== 1){entry.semsubbelongs=0;}
+
+        //Subjects Names will be in Uppercase
+        entry.subname=(entry.subname).trim().toUpperCase();
+
+
+        const sub=await Subjects.findOne({where:entry})
+        if(sub===null){
+            const MaxSemNum=await Degree.findOne({where:{degid:req.body.degreeDegid}})
+            if(MaxSemNum){
+                if(entry.typeofsub === 1){
+                    //for core(compulsory subject) need to check semster no. 
+                    //should be within the degree table semester no
+                    if((entry.semsubbelongs>=1 && entry.semsubbelongs<=MaxSemNum)){
+                        await Subjects.create(entry);
+                        return res.status(200).send({message:"Subjects added Successfuly"});
+                    }
+                    else{
+                        return res.status(400).send({message:"Invalid Semester Number!"});
+                    }
+                }
+                else{
+                    entry.semsubbelongs=0;
+                    await Subjects.create(entry);
+                    return res.status(200).send({message:"Subjects added Successfuly"});
+                }
+            }
+            else{
+                return res.status(400).send({message:"Invalid Degree !"});
+            }
+        }
+        else{
+            return res.status(400).send({message:"Subjects entry Already Exists!"});
+        }
+    }
+    catch(err){
+        logger.error(err);
+        return res.status(500).send({ message: "Server Error." });
+    }
+}
+module.exports={addDepartments,addRegulation,addDegree,addingSubjects}

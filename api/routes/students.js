@@ -7,8 +7,8 @@ const  DetailsValidator=require("../validators/DetailsValidator");
 const { validate } = require("../validators/index");
 const {getstudentsem}=require("../controllers/students/getentries/getstudentsem");
 const {updatesem,uploadMarkSheet}=require("../controllers/students/updateentries/semmark");
-const {addintern,addplacement, addscholarship}=require("../controllers/students/addentries/adddetails");
-const {getInterndetails,getplacement,getPersonalDetails,getScholarship,studentsemscount}=require("../controllers/students/getentries/getdetails")
+const {addintern,addplacement, addscholarship,addSubElectives}=require("../controllers/students/addentries/adddetails");
+const {getInterndetails,getplacement,getPersonalDetails,getScholarship,studentsemscount,getSubjects,getMarkSheet}=require("../controllers/students/getentries/getdetails")
 
 const multer=require("multer");
 const upload=multer({storage:multer.memoryStorage({})});
@@ -48,15 +48,20 @@ router.post("/uploadMarkSheet",
     uploadMarkSheet
 )
 
+router.post("/addSubElectives",
+    DetailsValidator.addSubElectivesValidator,
+    validate,addSubElectives
+)
+
 router.get("/studentsemcount",studentsemscount);
 router.get("/getPersonalDetails",getPersonalDetails)
-
 router.get("/studentsem", getstudentsem)
-
+router.get("/getMarkSheet",getMarkSheet);
 router.get("/getinterndetails",getInterndetails)
-
 router.get("/getplacementdetails",getplacement);
 router.get("/getscholarshipdetails",getScholarship);
+router.get("/getsubjects",getSubjects);
+
 router.use(function(req, res, next) {
     return res.status(404).send({message:"Not Found"});
 });

@@ -6,11 +6,11 @@ const upload=multer({storage:multer.memoryStorage({})});
 const admin=require('../controllers/admin/addentries/admin')
 
 const {addStudValidator,addFacultyValidator,addDeptValidator,
-  addRegValidator,addDegreeValidator,addBulkStdsValiadtor}=require("../validators/adminValidators");
+  addRegValidator,addDegreeValidator,addBulkStdsValiadtor,addSubjectValidator}=require("../validators/adminValidators");
 
 const { validate } = require("../validators/index");
 
-const {addStudent,addBulkStudents}=require("../controllers/admin/addentries/student");
+const {addStudent,addBulkStudents,addbulk}=require("../controllers/admin/addentries/student");
 
 const {addFaculty}=require("../controllers/admin/addentries/faculty");
 
@@ -22,7 +22,7 @@ router.post('/addRegulation',addRegValidator,validate,admin.addRegulation);
 
 router.post("/addDegree",addDegreeValidator,validate,admin.addDegree);
 
-
+router.post("/addSubjects",addSubjectValidator,validate,admin.addingSubjects)
 router.post('/addStudent',
     addStudValidator,
     validate,

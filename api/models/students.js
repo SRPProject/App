@@ -151,6 +151,13 @@ const StudentSem=sequelize.define("studentsems",{
     type:DataTypes.DATEONLY
 },//Month and year of passing if reattempted
     // for not alllowing any further iupdates 
+
+    semsubbelongs:{
+        type:DataTypes.INTEGER,
+        defaultValue:0,
+        allowNull:false,
+        validate:{notNull:true,notEmpty: true}
+    },
     isVerified : {
         type:  DataTypes.BOOLEAN
     }

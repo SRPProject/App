@@ -1,0 +1,2173 @@
+{
+	"info": {
+		"_postman_id": "4430d73c-bca1-4902-860b-2449d848a43e",
+		"name": "srpapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27121287",
+		"_collection_link": "https://red-rocket-402627.postman.co/workspace/My-Workspace~6e79e5a1-0d08-42f9-8848-7e697902256f/collection/27121287-4430d73c-bca1-4902-860b-2449d848a43e?action=share&creator=27121287&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "create admin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "mail",
+							"value": "skanivan12@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "asdfghjk",
+							"type": "default"
+						},
+						{
+							"key": "distDepartmentDeptid",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/auth/signup-admin",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"auth",
+						"signup-admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "mail",
+							"value": "skanivan12@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/auth/admin/",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"auth",
+						"admin",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin forgot-password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "mail",
+							"value": "skanivan12@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "asdfghjkl",
+							"type": "default",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/auth/forgot-password",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"auth",
+						"forgot-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin set-password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "userId",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "linkCode",
+							"value": "12444d99",
+							"type": "default"
+						},
+						{
+							"key": "confirmpassword",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/auth/set-password/",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"auth",
+						"set-password",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin login Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "mail",
+							"value": "skanivan12@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/auth/admin/",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"auth",
+						"admin",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin-adding faculty",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{admintoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "mail",
+							"value": "neonlite90@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "distDepartmentDeptid",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/admin/addFaculty",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"admin",
+						"addFaculty"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin-adding Subjects",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{admintoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "subcode",
+							"value": "AD5096",
+							"type": "text"
+						},
+						{
+							"key": "credit",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "subname",
+							"value": "Unnat Bharat Abhiyan",
+							"type": "text"
+						},
+						{
+							"key": "typeofsub",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "regulationRegid",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "degreeDegid",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "semsubbelongs",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "distDepartmentDeptid",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/admin/addSubjects",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"admin",
+						"addSubjects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin-adding departments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{admintoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "deptName",
+							"value": "English",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/admin/addDepartment",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"admin",
+						"addDepartment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin-adding regulation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{admintoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "regyear",
+							"value": "2019.  ",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/admin/addRegulation",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"admin",
+						"addRegulation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin-adding Degree",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{admintoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "degreename",
+							"value": "M TECH",
+							"type": "text"
+						},
+						{
+							"key": "noofsems",
+							"value": "4",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/admin/addDegree",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"admin",
+						"addDegree"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin-adding Bulk Students",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{admintoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "studentslist",
+							"type": "file",
+							"src": "/Users/kanivan/Downloads/stupr.xlsx"
+						},
+						{
+							"key": "facultyFacid",
+							"value": "7",
+							"type": "text"
+						},
+						{
+							"key": "distDepartmentDeptid",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "regulationRegid",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "degreeDegid",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "batchId",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/admin/addBulkStudents",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"admin",
+						"addBulkStudents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "faculty set-password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "userId",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "linkCode",
+							"value": "c20aa9d9910533d9",
+							"type": "text"
+						},
+						{
+							"key": "confirmpassword",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/auth/set-password/",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"auth",
+						"set-password",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "faculty login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "mail",
+							"value": "neonlite90@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/auth/faculty/",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"auth",
+						"faculty",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin-adding student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{admintoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "mail",
+							"value": "sivakanivan3@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "regnum",
+							"value": "20201150110",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "M",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "user",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "S",
+							"type": "text"
+						},
+						{
+							"key": "dob",
+							"value": "2002/12/12",
+							"type": "text"
+						},
+						{
+							"key": "distDepartmentDeptid",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "batchId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "degreeDegid",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "regulationRegid",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "facultyFacid",
+							"value": "7",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/admin/addStudent",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"admin",
+						"addStudent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "student set-password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "userId",
+							"value": "2020115040",
+							"type": "text"
+						},
+						{
+							"key": "linkCode",
+							"value": "dae1e58f01b2f28d9b1c0627",
+							"type": "text"
+						},
+						{
+							"key": "confirmpassword",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/auth/set-password-student",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"auth",
+						"set-password-student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "student login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "regnum",
+							"value": "2020115093",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/auth/student/",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"auth",
+						"student",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin-addding dept",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "deptName",
+							"value": "Information Technology",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/admin/addDepartment/",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"admin",
+						"addDepartment",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "password set",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/password-set/641d6170259b7e16de34c921/a2aee88a",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"password-set",
+						"641d6170259b7e16de34c921",
+						"a2aee88a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-student-countofsem",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/studentsemcount",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"studentsemcount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-studentsemmark",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "marks",
+							"value": "[{\"subjectSubid\":31,\"scoredgrade\":10,\"monthyrpass\":\"2020/1/1\"},{\"subjectSubid\":32 ,\"scoredgrade\":10,\"monthyrpass\":\"2020/1/1\"},{\"subjectSubid\":33 ,\"scoredgrade\":10,\"monthyrpass\":\"2020/1/1\"}]",
+							"type": "text"
+						},
+						{
+							"key": "studentStId",
+							"value": "27",
+							"type": "text"
+						},
+						{
+							"key": "marks",
+							"value": "[{\"subjectSubid\":32 ,\"scoredgrade\":10,\"monthyrpass\":\"2020/1/1\"}]",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/updateSemMark",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"updateSemMark"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-student-semdetails",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/studentsem?semno=3",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"studentsem"
+					],
+					"query": [
+						{
+							"key": "semno",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get-student-semdetails",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseapiurl}}/student/studentsem",
+							"host": [
+								"{{baseapiurl}}"
+							],
+							"path": [
+								"student",
+								"studentsem"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "5650"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1612-KqbdE44zHdDiIKwKFftqZLUaJZY\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 27 Apr 2023 12:41:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": [\n        {\n            \"st_id\": 9,\n            \"regnum\": 2020115039,\n            \"password\": null,\n            \"iscreated\": false,\n            \"createdAt\": \"2023-04-27T12:30:24.481Z\",\n            \"updatedAt\": \"2023-04-27T12:30:24.481Z\",\n            \"distDepartmentDeptid\": 1,\n            \"batchId\": 1,\n            \"degreeDegid\": 1,\n            \"regulationRegid\": 1,\n            \"subjects\": [\n                {\n                    \"subid\": 22,\n                    \"credit\": 4,\n                    \"subcode\": \"HS5151\",\n                    \"subname\": \"Technical English\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 1,\n                    \"createdAt\": \"2023-03-30T16:34:43.190Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:43.190Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 23,\n                    \"credit\": 4,\n                    \"subcode\": \"MA5158\",\n                    \"subname\": \"Engineering Mathematics\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 1,\n                    \"createdAt\": \"2023-03-30T16:34:45.064Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:45.064Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 24,\n                    \"credit\": 3,\n                    \"subcode\": \"PH5151\",\n                    \"subname\": \"Engineering Physics\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 1,\n                    \"createdAt\": \"2023-03-30T16:34:45.325Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:45.325Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 25,\n                    \"credit\": 3,\n                    \"subcode\": \"CY5151\",\n                    \"subname\": \"Engineering Chemistry\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 1,\n                    \"createdAt\": \"2023-03-30T16:34:45.594Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:45.594Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 26,\n                    \"credit\": 3,\n                    \"subcode\": \"GE5153\",\n                    \"subname\": \"Problem Solving and Python Programming\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 1,\n                    \"createdAt\": \"2023-03-30T16:34:45.861Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:45.861Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 27,\n                    \"credit\": 2,\n                    \"subcode\": \"BS5161\",\n                    \"subname\": \"Basic Sciences Laboratory\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 1,\n                    \"createdAt\": \"2023-03-30T16:34:46.134Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:46.134Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 28,\n                    \"credit\": 2,\n                    \"subcode\": \"GE5161\",\n                    \"subname\": \"Problem Solving and Python Programming Laboratory\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 1,\n                    \"createdAt\": \"2023-03-30T16:34:46.397Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:46.397Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 29,\n                    \"credit\": 4,\n                    \"subcode\": \"HS5251\",\n                    \"subname\": \"Professional Communication\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 2,\n                    \"createdAt\": \"2023-03-30T16:34:46.662Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:46.662Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 30,\n                    \"credit\": 4,\n                    \"subcode\": \"MA5252\",\n                    \"subname\": \"Engineering Mathematics II\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 2,\n                    \"createdAt\": \"2023-03-30T16:34:46.928Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:46.928Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 31,\n                    \"credit\": 3,\n                    \"subcode\": \"IT5201\",\n                    \"subname\": \"Information Technology Essentials\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 2,\n                    \"createdAt\": \"2023-03-30T16:34:47.297Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:47.297Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 32,\n                    \"credit\": 3,\n                    \"subcode\": \"EE5251\",\n                    \"subname\": \"Basics of Electrical and Electronics Engineering\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 2,\n                    \"createdAt\": \"2023-03-30T16:34:47.611Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:47.611Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 33,\n                    \"credit\": 3,\n                    \"subcode\": \"GE5151\",\n                    \"subname\": \"Engineering Graphics\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 2,\n                    \"createdAt\": \"2023-03-30T16:34:47.893Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:47.893Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 34,\n                    \"credit\": 2,\n                    \"subcode\": \"IT5211\",\n                    \"subname\": \"Information Technology Essentials Laboratory\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 2,\n                    \"createdAt\": \"2023-03-30T16:34:48.174Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:48.174Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 35,\n                    \"credit\": 2,\n                    \"subcode\": \"EE5261\",\n                    \"subname\": \"Electrical and Electronics Engineering Laboratory\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 2,\n                    \"createdAt\": \"2023-03-30T16:34:48.602Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:48.602Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 36,\n                    \"credit\": 4,\n                    \"subcode\": \"MA5302\",\n                    \"subname\": \"Discrete Mathematics\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 3,\n                    \"createdAt\": \"2023-03-30T16:34:49.893Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:49.893Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 37,\n                    \"credit\": 3,\n                    \"subcode\": \"IT5301\",\n                    \"subname\": \"Digital Logic and Design\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 3,\n                    \"createdAt\": \"2023-03-30T16:34:50.281Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:50.281Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 38,\n                    \"credit\": 3,\n                    \"subcode\": \"IT5352\",\n                    \"subname\": \"Programming and Data Structures\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 3,\n                    \"createdAt\": \"2023-03-30T16:34:50.562Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:50.562Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 39,\n                    \"credit\": 3,\n                    \"subcode\": \"IT5351\",\n                    \"subname\": \"Database Management Systems\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 3,\n                    \"createdAt\": \"2023-03-30T16:34:50.940Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:50.940Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 40,\n                    \"credit\": 3,\n                    \"subcode\": \"IT5302\",\n                    \"subname\": \"Software Engineering\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 3,\n                    \"createdAt\": \"2023-03-30T16:34:51.302Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:51.302Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 41,\n                    \"credit\": 2,\n                    \"subcode\": \"IT5311\",\n                    \"subname\": \"Programming and Data Structures Laboratory\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 3,\n                    \"createdAt\": \"2023-03-30T16:34:51.609Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:51.609Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 42,\n                    \"credit\": 2,\n                    \"subcode\": \"IT5312\",\n                    \"subname\": \"Database Management Systems Laboratory\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 3,\n                    \"createdAt\": \"2023-03-30T16:34:51.911Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:51.911Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                }\n            ]\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "get-student-interndetails",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/getinterndetails",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"getinterndetails"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get-student-interndetails",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access-",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseapiurl}}/student/getinterndetails",
+							"host": [
+								"{{baseapiurl}}"
+							],
+							"path": [
+								"student",
+								"getinterndetails"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "583"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"247-qoW43tP37mLIEutENnItCJ8dRnI\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 07 May 2023 08:47:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"inname\": \"hghgh\",\n            \"fromperiod\": \"2023-05-09\",\n            \"toperiod\": \"2023-05-24\",\n            \"details\": \"hghghgh\",\n            \"createdAt\": \"2023-05-06T14:56:00.458Z\",\n            \"updatedAt\": \"2023-05-06T14:56:00.458Z\",\n            \"studentStId\": 18\n        },\n        {\n            \"id\": 2,\n            \"inname\": \"gtgtg\",\n            \"fromperiod\": \"2023-05-10\",\n            \"toperiod\": \"2023-05-17\",\n            \"details\": \"gtgtgt\",\n            \"createdAt\": \"2023-05-06T14:57:57.563Z\",\n            \"updatedAt\": \"2023-05-06T14:57:57.563Z\",\n            \"studentStId\": 18\n        },\n        {\n            \"id\": 3,\n            \"inname\": \"BNY \",\n            \"fromperiod\": \"2023-05-12\",\n            \"toperiod\": \"2023-05-19\",\n            \"details\": \"ssasas\",\n            \"createdAt\": \"2023-05-06T15:02:22.986Z\",\n            \"updatedAt\": \"2023-05-06T15:02:22.986Z\",\n            \"studentStId\": 18\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "get-student-placementdetails",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/getplacementdetails",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"getplacementdetails"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get-student-placementdetails",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access-",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseapiurl}}/student/getinterndetails",
+							"host": [
+								"{{baseapiurl}}"
+							],
+							"path": [
+								"student",
+								"getinterndetails"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "583"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"247-qoW43tP37mLIEutENnItCJ8dRnI\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 07 May 2023 08:47:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"inname\": \"hghgh\",\n            \"fromperiod\": \"2023-05-09\",\n            \"toperiod\": \"2023-05-24\",\n            \"details\": \"hghghgh\",\n            \"createdAt\": \"2023-05-06T14:56:00.458Z\",\n            \"updatedAt\": \"2023-05-06T14:56:00.458Z\",\n            \"studentStId\": 18\n        },\n        {\n            \"id\": 2,\n            \"inname\": \"gtgtg\",\n            \"fromperiod\": \"2023-05-10\",\n            \"toperiod\": \"2023-05-17\",\n            \"details\": \"gtgtgt\",\n            \"createdAt\": \"2023-05-06T14:57:57.563Z\",\n            \"updatedAt\": \"2023-05-06T14:57:57.563Z\",\n            \"studentStId\": 18\n        },\n        {\n            \"id\": 3,\n            \"inname\": \"BNY \",\n            \"fromperiod\": \"2023-05-12\",\n            \"toperiod\": \"2023-05-19\",\n            \"details\": \"ssasas\",\n            \"createdAt\": \"2023-05-06T15:02:22.986Z\",\n            \"updatedAt\": \"2023-05-06T15:02:22.986Z\",\n            \"studentStId\": 18\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "get-student-scholarshipetails",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/getscholarshipdetails",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"getscholarshipdetails"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get-student-placementdetails",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access-",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseapiurl}}/student/getinterndetails",
+							"host": [
+								"{{baseapiurl}}"
+							],
+							"path": [
+								"student",
+								"getinterndetails"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "583"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"247-qoW43tP37mLIEutENnItCJ8dRnI\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 07 May 2023 08:47:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"inname\": \"hghgh\",\n            \"fromperiod\": \"2023-05-09\",\n            \"toperiod\": \"2023-05-24\",\n            \"details\": \"hghghgh\",\n            \"createdAt\": \"2023-05-06T14:56:00.458Z\",\n            \"updatedAt\": \"2023-05-06T14:56:00.458Z\",\n            \"studentStId\": 18\n        },\n        {\n            \"id\": 2,\n            \"inname\": \"gtgtg\",\n            \"fromperiod\": \"2023-05-10\",\n            \"toperiod\": \"2023-05-17\",\n            \"details\": \"gtgtgt\",\n            \"createdAt\": \"2023-05-06T14:57:57.563Z\",\n            \"updatedAt\": \"2023-05-06T14:57:57.563Z\",\n            \"studentStId\": 18\n        },\n        {\n            \"id\": 3,\n            \"inname\": \"BNY \",\n            \"fromperiod\": \"2023-05-12\",\n            \"toperiod\": \"2023-05-19\",\n            \"details\": \"ssasas\",\n            \"createdAt\": \"2023-05-06T15:02:22.986Z\",\n            \"updatedAt\": \"2023-05-06T15:02:22.986Z\",\n            \"studentStId\": 18\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "get-student-marksheetURL",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/getMarkSheet?semno=10",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"getMarkSheet"
+					],
+					"query": [
+						{
+							"key": "semno",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get-student-placementdetails",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access-",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseapiurl}}/student/getinterndetails",
+							"host": [
+								"{{baseapiurl}}"
+							],
+							"path": [
+								"student",
+								"getinterndetails"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "583"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"247-qoW43tP37mLIEutENnItCJ8dRnI\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 07 May 2023 08:47:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"inname\": \"hghgh\",\n            \"fromperiod\": \"2023-05-09\",\n            \"toperiod\": \"2023-05-24\",\n            \"details\": \"hghghgh\",\n            \"createdAt\": \"2023-05-06T14:56:00.458Z\",\n            \"updatedAt\": \"2023-05-06T14:56:00.458Z\",\n            \"studentStId\": 18\n        },\n        {\n            \"id\": 2,\n            \"inname\": \"gtgtg\",\n            \"fromperiod\": \"2023-05-10\",\n            \"toperiod\": \"2023-05-17\",\n            \"details\": \"gtgtgt\",\n            \"createdAt\": \"2023-05-06T14:57:57.563Z\",\n            \"updatedAt\": \"2023-05-06T14:57:57.563Z\",\n            \"studentStId\": 18\n        },\n        {\n            \"id\": 3,\n            \"inname\": \"BNY \",\n            \"fromperiod\": \"2023-05-12\",\n            \"toperiod\": \"2023-05-19\",\n            \"details\": \"ssasas\",\n            \"createdAt\": \"2023-05-06T15:02:22.986Z\",\n            \"updatedAt\": \"2023-05-06T15:02:22.986Z\",\n            \"studentStId\": 18\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "get-student-personaldetails",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/getPersonalDetails",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"getPersonalDetails"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get-student-personaldetails",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access-",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseapiurl}}/student/getPersonalDetails",
+							"host": [
+								"{{baseapiurl}}"
+							],
+							"path": [
+								"student",
+								"getPersonalDetails"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "947"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3b3-7VEr5IC+fHX1q26SqbNjpuTrcGk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 07 May 2023 14:30:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": {\n        \"sp_id\": 2,\n        \"regnum\": 2020115093,\n        \"sex\": \"M                                                                                                                                                                                                                                                              \",\n        \"cutoffmark\": \"999\",\n        \"admittedon\": \"2002-12-12\",\n        \"firstname\": \"Srirambabu\",\n        \"lastname\": \"R K\",\n        \"dob\": \"2002-12-12\",\n        \"bloodgroup\": \"A+\",\n        \"specialcategory\": \"YES\",\n        \"community\": \"hack\",\n        \"volunteer\": \"NSS\",\n        \"accomodation\": 0,\n        \"fathername\": \"system\",\n        \"fatherjob\": \"interface\",\n        \"fatherincome\": 623,\n        \"mothername\": \"panel\",\n        \"motherjob\": \"firewall\",\n        \"motherincome\": 539,\n        \"parentaddress\": \"bus\",\n        \"parentemail\": \"winona87@gmail.com\",\n        \"parentphonenum\": 1234567890,\n        \"localgname\": \"bandwidth\",\n        \"localgaddr\": \"sensor\",\n        \"localgphone\": 1234567890,\n        \"localgmail\": \"domingo.dach79@hotmail.com\",\n        \"isfilled\": true,\n        \"createdAt\": \"2023-05-07T12:58:32.083Z\",\n        \"updatedAt\": \"2023-05-07T13:38:35.370Z\",\n        \"studentStId\": 26\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "get-student-subjects",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/getsubjects?typeofsub=1",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"getsubjects"
+					],
+					"query": [
+						{
+							"key": "typeofsub",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get-student-personaldetails",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access-",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseapiurl}}/student/getPersonalDetails",
+							"host": [
+								"{{baseapiurl}}"
+							],
+							"path": [
+								"student",
+								"getPersonalDetails"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "947"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3b3-7VEr5IC+fHX1q26SqbNjpuTrcGk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 07 May 2023 14:30:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": {\n        \"sp_id\": 2,\n        \"regnum\": 2020115093,\n        \"sex\": \"M                                                                                                                                                                                                                                                              \",\n        \"cutoffmark\": \"999\",\n        \"admittedon\": \"2002-12-12\",\n        \"firstname\": \"Srirambabu\",\n        \"lastname\": \"R K\",\n        \"dob\": \"2002-12-12\",\n        \"bloodgroup\": \"A+\",\n        \"specialcategory\": \"YES\",\n        \"community\": \"hack\",\n        \"volunteer\": \"NSS\",\n        \"accomodation\": 0,\n        \"fathername\": \"system\",\n        \"fatherjob\": \"interface\",\n        \"fatherincome\": 623,\n        \"mothername\": \"panel\",\n        \"motherjob\": \"firewall\",\n        \"motherincome\": 539,\n        \"parentaddress\": \"bus\",\n        \"parentemail\": \"winona87@gmail.com\",\n        \"parentphonenum\": 1234567890,\n        \"localgname\": \"bandwidth\",\n        \"localgaddr\": \"sensor\",\n        \"localgphone\": 1234567890,\n        \"localgmail\": \"domingo.dach79@hotmail.com\",\n        \"isfilled\": true,\n        \"createdAt\": \"2023-05-07T12:58:32.083Z\",\n        \"updatedAt\": \"2023-05-07T13:38:35.370Z\",\n        \"studentStId\": 26\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "student-adding elective subjects",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "subjectSubid",
+							"value": "55",
+							"type": "text"
+						},
+						{
+							"key": "semsubbelongs",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/addSubElectives",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"addSubElectives"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "student-upload- sem marksheet",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "marksheet",
+							"type": "file",
+							"src": "/Users/kanivan/Downloads/IOT_Assign1_2020115093.pdf"
+						},
+						{
+							"key": "semno",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/uploadMarkSheet",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"uploadMarkSheet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "student-updating general details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cutoffmark",
+							"value": "{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "admittedon",
+							"value": "2002/12/12",
+							"type": "text"
+						},
+						{
+							"key": "bloodgroup",
+							"value": "A+",
+							"type": "text"
+						},
+						{
+							"key": "specialcategory",
+							"value": "YES",
+							"type": "text"
+						},
+						{
+							"key": "community",
+							"value": "{{$randomVerb}}",
+							"type": "text"
+						},
+						{
+							"key": "volunteer",
+							"value": "NSS",
+							"type": "text"
+						},
+						{
+							"key": "accomodation",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "fathername",
+							"value": "{{$randomNoun}}",
+							"type": "text"
+						},
+						{
+							"key": "fatherjob",
+							"value": "{{$randomNoun}}",
+							"type": "text"
+						},
+						{
+							"key": "fatherincome",
+							"value": "{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "motherjob",
+							"value": "{{$randomNoun}}",
+							"type": "text"
+						},
+						{
+							"key": "mothername",
+							"value": "{{$randomNoun}}",
+							"type": "text"
+						},
+						{
+							"key": "motherincome",
+							"value": "{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "parentaddress",
+							"value": "{{$randomNoun}}",
+							"type": "text"
+						},
+						{
+							"key": "parentemail",
+							"value": "{{$randomEmail}}",
+							"type": "text"
+						},
+						{
+							"key": "parentphonenum",
+							"value": "1234567890",
+							"type": "text"
+						},
+						{
+							"key": "localgname",
+							"value": "{{$randomNoun}}",
+							"type": "text"
+						},
+						{
+							"key": "localgaddr",
+							"value": "{{$randomNoun}}",
+							"type": "text"
+						},
+						{
+							"key": "localgphone",
+							"value": "1234567890",
+							"type": "text"
+						},
+						{
+							"key": "localgmail",
+							"value": "{{$randomEmail}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/updateStudentPersonal",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"updateStudentPersonal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "student-adding scholarhips",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "{{$randomWord}}",
+							"type": "text"
+						},
+						{
+							"key": "ryear",
+							"value": "2023",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "250000",
+							"type": "text"
+						},
+						{
+							"key": "scholarshipproof",
+							"type": "file",
+							"src": "/Users/kanivan/Downloads/NM Engineering - Steps to Create IBM Cloud Account.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/addscholarhip",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"addscholarhip"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "student-adding intern details",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "inname",
+							"value": "{{$randomWord}}",
+							"type": "text"
+						},
+						{
+							"key": "fromperiod",
+							"value": "2002/12/12",
+							"type": "text"
+						},
+						{
+							"key": "toperiod",
+							"value": "2002/12/12",
+							"type": "text"
+						},
+						{
+							"key": "details",
+							"value": "{{$randomWords}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/addinterndetails",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"addinterndetails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "student-adding placement",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiU3R1ZGVudCIsImlkIjoxOCwibWFpbCI6InZldHR1a2lsaTAwQGdtYWlsLmNvbSIsInJlZ251bSI6MjAyMDExNTA0OSwidG90YWxfc2VtIjo4LCJpYXQiOjE2ODM0NDkwMDMsImV4cCI6MTY4MzQ1MjYwM30.UeredQw0YoiXVJG6quj30HsuxAsO4LUb-MvVfJyrp64",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "compname",
+							"value": "{{$randomWord}}",
+							"type": "text"
+						},
+						{
+							"key": "selection",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "{{$randomInt}}",
+							"type": "text"
+						},
+						{
+							"key": "comptype",
+							"value": "service",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/addplacements",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"addplacements"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseapiurl",
+			"value": "localhost:3001/api"
+		},
+		{
+			"key": "studenttoken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiU3R1ZGVudCIsImlkIjoyNiwibWFpbCI6InViYWJtYXJpcnNAZ21haWwuY29tIiwicmVnbnVtIjoiMjAyMDExNTA5MyIsInRvdGFsX3NlbSI6OCwiaWF0IjoxNjg1MTI3MTk5LCJleHAiOjE2ODUyMTM1OTl9.6o1bOqSqop6P1KNQptoCuDVqSVeDljm-bnyz5JVs950",
+			"type": "string"
+		},
+		{
+			"key": "admintoken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQWRtaW4iLCJpZCI6MSwibWFpbCI6InNrYW5pdmFuMTJAZ21haWwuY29tIiwiaWF0IjoxNjg1MTU5NDA2LCJleHAiOjE2ODUyNDU4MDZ9.73uRpCkguZ1QkF5LJlEMSylM7hVzdku7KzaNTpvLKyI",
+			"type": "string"
+		},
+		{
+			"key": "faculttoken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiRmFjdWx0eSIsImlkIjo3LCJtYWlsIjoibmVvbmxpdGU5MEBnbWFpbC5jb20iLCJpYXQiOjE2ODM2MzI0MjIsImV4cCI6MTY4MzYzNjAyMn0.NKc1otZKzEc8M4rEOCE2IqgEucq7dqIVHmtvhj0X_tw",
+			"type": "string"
+		}
+	]
+}
