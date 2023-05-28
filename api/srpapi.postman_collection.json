@@ -912,6 +912,41 @@
 			"response": []
 		},
 		{
+			"name": "get-student-sample sheet",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/studentsemcount",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"studentsemcount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "update-studentsemmark",
 			"event": [
 				{
@@ -1660,30 +1695,59 @@
 					]
 				}
 			},
+			"response": []
+		},
+		{
+			"name": "get-student-workshops",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/getworkshops",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"getworkshops"
+					]
+				}
+			},
 			"response": [
 				{
-					"name": "get-student-personaldetails",
+					"name": "get-student-workshops",
 					"originalRequest": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "access-",
-								"value": "",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "{{baseapiurl}}/student/getPersonalDetails",
+							"raw": "{{baseapiurl}}/student/getworkshops",
 							"host": [
 								"{{baseapiurl}}"
 							],
 							"path": [
 								"student",
-								"getPersonalDetails"
+								"getworkshops"
 							]
 						}
 					},
@@ -1705,15 +1769,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "947"
+							"value": "1336"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"3b3-7VEr5IC+fHX1q26SqbNjpuTrcGk\""
+							"value": "W/\"538-37bgQjLG7udztXEkEUO3kPqhVCo\""
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 07 May 2023 14:30:28 GMT"
+							"value": "Sun, 28 May 2023 04:03:37 GMT"
 						},
 						{
 							"key": "Connection",
@@ -1725,7 +1789,391 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"message\": {\n        \"sp_id\": 2,\n        \"regnum\": 2020115093,\n        \"sex\": \"M                                                                                                                                                                                                                                                              \",\n        \"cutoffmark\": \"999\",\n        \"admittedon\": \"2002-12-12\",\n        \"firstname\": \"Srirambabu\",\n        \"lastname\": \"R K\",\n        \"dob\": \"2002-12-12\",\n        \"bloodgroup\": \"A+\",\n        \"specialcategory\": \"YES\",\n        \"community\": \"hack\",\n        \"volunteer\": \"NSS\",\n        \"accomodation\": 0,\n        \"fathername\": \"system\",\n        \"fatherjob\": \"interface\",\n        \"fatherincome\": 623,\n        \"mothername\": \"panel\",\n        \"motherjob\": \"firewall\",\n        \"motherincome\": 539,\n        \"parentaddress\": \"bus\",\n        \"parentemail\": \"winona87@gmail.com\",\n        \"parentphonenum\": 1234567890,\n        \"localgname\": \"bandwidth\",\n        \"localgaddr\": \"sensor\",\n        \"localgphone\": 1234567890,\n        \"localgmail\": \"domingo.dach79@hotmail.com\",\n        \"isfilled\": true,\n        \"createdAt\": \"2023-05-07T12:58:32.083Z\",\n        \"updatedAt\": \"2023-05-07T13:38:35.370Z\",\n        \"studentStId\": 26\n    }\n}"
+					"body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"name\": \"Cyber security\",\n            \"heldby\": \"protocol\",\n            \"certificate\": \"https://distceg.blob.core.windows.net/workshopcertificates/26_workshop_Cyber%20security_1685232588360.pdf?st=2023-05-28T04%3A03%3A37Z&se=2023-05-28T04%3A23%3A37Z&sp=r&sv=2018-03-28&sr=b&sig=aZhhILhHqykG165PiN0vlUt7VFwAOwRoOWdFMmqsd0s%3D\",\n            \"dateattended\": \"2021-12-12\",\n            \"createdAt\": \"2023-05-28T00:09:54.455Z\",\n            \"updatedAt\": \"2023-05-28T00:09:54.455Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Cyber security\",\n            \"heldby\": \"application\",\n            \"certificate\": \"https://distceg.blob.core.windows.net/workshopcertificates/26_workshop_Cyber%20security_1685232599309.pdf?st=2023-05-28T04%3A03%3A37Z&se=2023-05-28T04%3A23%3A37Z&sp=r&sv=2018-03-28&sr=b&sig=Qle73uXCJ6Jan1oNEN18c6G5Wc3Hq%2FGERCt9IapEDOk%3D\",\n            \"dateattended\": \"2021-12-12\",\n            \"createdAt\": \"2023-05-28T00:10:09.476Z\",\n            \"updatedAt\": \"2023-05-28T00:10:09.476Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Cyber security       \",\n            \"heldby\": \"application\",\n            \"certificate\": \"https://distceg.blob.core.windows.net/workshopcertificates/26_workshop_Cyber%20security%20%20%20%20%20%20%20_1685232729297.pdf?st=2023-05-28T04%3A03%3A37Z&se=2023-05-28T04%3A23%3A37Z&sp=r&sv=2018-03-28&sr=b&sig=zcXBw5rMbgYwwtvht3sVP5eEfeqCewFeT5wNLeK4L4A%3D\",\n            \"dateattended\": \"2021-12-12\",\n            \"createdAt\": \"2023-05-28T00:12:16.555Z\",\n            \"updatedAt\": \"2023-05-28T00:12:16.555Z\",\n            \"studentStId\": 26\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "get-student-extracourses",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/getextracourses",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"getextracourses"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get-student-extracourses",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseapiurl}}/student/getextracourses",
+							"host": [
+								"{{baseapiurl}}"
+							],
+							"path": [
+								"student",
+								"getextracourses"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1203"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4b3-/k5B0hzFlh0naW8mboKC5HSH89c\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 May 2023 04:32:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"name\": \"Rest\",\n            \"certificate\": \"https://distceg.blob.core.windows.net/extracourseproofs/26_extracourse_1685247738554.pdf?st=2023-05-28T04%3A32%3A07Z&se=2023-05-28T04%3A52%3A07Z&sp=r&sv=2018-03-28&sr=b&sig=XOghiQwI%2BqKqcKYdZdRaRTo7QZpUVfi9qMaqeTdWUWk%3D\",\n            \"duration\": 437,\n            \"typeofcourse\": \"NPTEL\",\n            \"createdAt\": \"2023-05-28T04:22:20.736Z\",\n            \"updatedAt\": \"2023-05-28T04:22:20.736Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Junction\",\n            \"certificate\": \"https://distceg.blob.core.windows.net/extracourseproofs/26_extracourse_1685247775641.pdf?st=2023-05-28T04%3A32%3A07Z&se=2023-05-28T04%3A52%3A07Z&sp=r&sv=2018-03-28&sr=b&sig=Cq3d%2FRHVQKHhJ%2FsRI2AOwIH8SW2rZMgFPPpzxZQwwOg%3D\",\n            \"duration\": 335,\n            \"typeofcourse\": \"NPTEL\",\n            \"createdAt\": \"2023-05-28T04:22:58.152Z\",\n            \"updatedAt\": \"2023-05-28T04:22:58.152Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 3,\n            \"name\": \"BEAUTY\",\n            \"certificate\": \"https://distceg.blob.core.windows.net/extracourseproofs/26_extracourse_1685247833912.pdf?st=2023-05-28T04%3A32%3A07Z&se=2023-05-28T04%3A52%3A07Z&sp=r&sv=2018-03-28&sr=b&sig=HoJP8aeMm94%2FCgy8PfXzorS29mq18hD7hErPMgHVzVE%3D\",\n            \"duration\": 314,\n            \"typeofcourse\": \"NPTEL\",\n            \"createdAt\": \"2023-05-28T04:23:56.315Z\",\n            \"updatedAt\": \"2023-05-28T04:23:56.315Z\",\n            \"studentStId\": 26\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "get-student-PaperPublishing",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/getPaperPublishing",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"getPaperPublishing"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get-student-PaperPublishing",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseapiurl}}/student/getPaperPublishing",
+							"host": [
+								"{{baseapiurl}}"
+							],
+							"path": [
+								"student",
+								"getPaperPublishing"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1635"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"663-hBxnBiE3h64VxMiF2dqOUPoSd5Q\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 May 2023 06:40:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"authors\": \"HANDMADE DIRECT\",\n            \"title\": \"APPLICATION\",\n            \"journalname\": \"REQ.BODY.JOURNALNAME\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 1,\n            \"createdAt\": \"2023-05-28T06:19:46.459Z\",\n            \"updatedAt\": \"2023-05-28T06:19:46.459Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 2,\n            \"authors\": \"COMPRESSING HANDCRAFTED DIRECTIVES FISH\",\n            \"title\": \"COPYING\",\n            \"journalname\": \"REQ.BODY.JOURNALNAME\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 1,\n            \"createdAt\": \"2023-05-28T06:19:50.039Z\",\n            \"updatedAt\": \"2023-05-28T06:19:50.039Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 3,\n            \"authors\": \"GLOVES KANSAS INCREDIBLE\",\n            \"title\": \"BRICKS-AND-CLICKS\",\n            \"journalname\": \"DIVISION\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 1,\n            \"createdAt\": \"2023-05-28T06:20:40.572Z\",\n            \"updatedAt\": \"2023-05-28T06:20:40.572Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 4,\n            \"authors\": \"TUNA VIRTUAL INTEGRATE BORDERS MINDSHARE\",\n            \"title\": \"HANDCRAFTED BLUETOOTH HTTP\",\n            \"journalname\": \"METRICS\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 3,\n            \"createdAt\": \"2023-05-28T06:23:24.317Z\",\n            \"updatedAt\": \"2023-05-28T06:23:24.317Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 5,\n            \"authors\": \"TABLE UNBRANDED USER-FRIENDLY ERGONOMIC WYOMING\",\n            \"title\": \"DISTRICT PROFIT-FOCUSED BUCKINGHAMSHIRE\",\n            \"journalname\": \"SET\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 4,\n            \"createdAt\": \"2023-05-28T06:23:29.648Z\",\n            \"updatedAt\": \"2023-05-28T06:23:29.648Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 6,\n            \"authors\": \"GORGEOUS PERSISTENT DEPOSIT GARDEN OVERRIDE\",\n            \"title\": \"RUBBER METAL BUCKINGHAMSHIRE VIRTUAL\",\n            \"journalname\": \"FAULT-TOLERANT\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 5,\n            \"createdAt\": \"2023-05-28T06:23:34.811Z\",\n            \"updatedAt\": \"2023-05-28T06:23:34.811Z\",\n            \"studentStId\": 26\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "get-student-EventHackathon",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/getPaperPublishing",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"getPaperPublishing"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get-student-PaperPublishing",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseapiurl}}/student/getPaperPublishing",
+							"host": [
+								"{{baseapiurl}}"
+							],
+							"path": [
+								"student",
+								"getPaperPublishing"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1635"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"663-hBxnBiE3h64VxMiF2dqOUPoSd5Q\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 May 2023 06:40:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"authors\": \"HANDMADE DIRECT\",\n            \"title\": \"APPLICATION\",\n            \"journalname\": \"REQ.BODY.JOURNALNAME\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 1,\n            \"createdAt\": \"2023-05-28T06:19:46.459Z\",\n            \"updatedAt\": \"2023-05-28T06:19:46.459Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 2,\n            \"authors\": \"COMPRESSING HANDCRAFTED DIRECTIVES FISH\",\n            \"title\": \"COPYING\",\n            \"journalname\": \"REQ.BODY.JOURNALNAME\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 1,\n            \"createdAt\": \"2023-05-28T06:19:50.039Z\",\n            \"updatedAt\": \"2023-05-28T06:19:50.039Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 3,\n            \"authors\": \"GLOVES KANSAS INCREDIBLE\",\n            \"title\": \"BRICKS-AND-CLICKS\",\n            \"journalname\": \"DIVISION\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 1,\n            \"createdAt\": \"2023-05-28T06:20:40.572Z\",\n            \"updatedAt\": \"2023-05-28T06:20:40.572Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 4,\n            \"authors\": \"TUNA VIRTUAL INTEGRATE BORDERS MINDSHARE\",\n            \"title\": \"HANDCRAFTED BLUETOOTH HTTP\",\n            \"journalname\": \"METRICS\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 3,\n            \"createdAt\": \"2023-05-28T06:23:24.317Z\",\n            \"updatedAt\": \"2023-05-28T06:23:24.317Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 5,\n            \"authors\": \"TABLE UNBRANDED USER-FRIENDLY ERGONOMIC WYOMING\",\n            \"title\": \"DISTRICT PROFIT-FOCUSED BUCKINGHAMSHIRE\",\n            \"journalname\": \"SET\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 4,\n            \"createdAt\": \"2023-05-28T06:23:29.648Z\",\n            \"updatedAt\": \"2023-05-28T06:23:29.648Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 6,\n            \"authors\": \"GORGEOUS PERSISTENT DEPOSIT GARDEN OVERRIDE\",\n            \"title\": \"RUBBER METAL BUCKINGHAMSHIRE VIRTUAL\",\n            \"journalname\": \"FAULT-TOLERANT\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 5,\n            \"createdAt\": \"2023-05-28T06:23:34.811Z\",\n            \"updatedAt\": \"2023-05-28T06:23:34.811Z\",\n            \"studentStId\": 26\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "get-student-Higher Education",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/getHigherEducation",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"getHigherEducation"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get-student-Higher Education",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseapiurl}}/student/getHigherEducation",
+							"host": [
+								"{{baseapiurl}}"
+							],
+							"path": [
+								"student",
+								"getHigherEducation"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "684"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2ac-luz8PZXz8Tke0hb6fWnlASZO6Ls\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 May 2023 06:39:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"universityname\": \"ZERO CORPORATE\",\n            \"yearofadmission\": 2022,\n            \"specialization\": \"instruction\",\n            \"degreename\": \"M.Tech\",\n            \"createdAt\": \"2023-05-28T06:38:18.736Z\",\n            \"updatedAt\": \"2023-05-28T06:38:18.736Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 2,\n            \"universityname\": \"CROSS-PLATFORM WISCONSIN MOBILE ERGONOMIC\",\n            \"yearofadmission\": 2022,\n            \"specialization\": \"knowledge\",\n            \"degreename\": \"M.Tech\",\n            \"createdAt\": \"2023-05-28T06:38:21.435Z\",\n            \"updatedAt\": \"2023-05-28T06:38:21.435Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 3,\n            \"universityname\": \"RUBLE OPERATIONS MARKETS\",\n            \"yearofadmission\": 2022,\n            \"specialization\": \"Mouse\",\n            \"degreename\": \"M.Tech\",\n            \"createdAt\": \"2023-05-28T06:38:23.029Z\",\n            \"updatedAt\": \"2023-05-28T06:38:23.029Z\",\n            \"studentStId\": 26\n        }\n    ]\n}"
 				}
 			]
 		},
@@ -1820,6 +2268,431 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "student-adding workshops",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Cyber security       ",
+							"type": "text"
+						},
+						{
+							"key": "heldby",
+							"value": "application      ",
+							"type": "text"
+						},
+						{
+							"key": "dateattended",
+							"value": "2021/12/12",
+							"type": "text"
+						},
+						{
+							"key": "worshopcertificate",
+							"type": "file",
+							"src": "/Users/kanivan/Downloads/Bayesian Classification.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/addWorkshops",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"addWorkshops"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "student-adding PaperPublishing",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "authors",
+							"value": "{{$randomWords}}",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "{{$randomWords}}",
+							"type": "text"
+						},
+						{
+							"key": "journalname",
+							"value": "{{$randomWord}}",
+							"type": "text"
+						},
+						{
+							"key": "doilink",
+							"value": "https://www.annauniv.edu/DIST/",
+							"type": "text"
+						},
+						{
+							"key": "Category",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/addPaperPublishing",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"addPaperPublishing"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "student-adding HigherEducation",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "universityname",
+							"value": "{{$randomWords}}",
+							"type": "text"
+						},
+						{
+							"key": "yearofadmission",
+							"value": "2022",
+							"type": "text"
+						},
+						{
+							"key": "specialization",
+							"value": "{{$randomWord}}",
+							"type": "text"
+						},
+						{
+							"key": "degreename",
+							"value": "M.Tech",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "5",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/addHigherEducation",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"addHigherEducation"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "student-adding PaperPublishing Copy",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "universityname",
+									"value": "{{$randomWords}}",
+									"type": "text"
+								},
+								{
+									"key": "yearofadmission",
+									"value": "2022",
+									"type": "text"
+								},
+								{
+									"key": "specialization",
+									"value": "{{$randomWord}}",
+									"type": "text"
+								},
+								{
+									"key": "degreename",
+									"value": "M.Tech",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "5",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseapiurl}}/student/addHigherEducation",
+							"host": [
+								"{{baseapiurl}}"
+							],
+							"path": [
+								"student",
+								"addHigherEducation"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "33"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"21-ipdK4bGviOGVE57ywEnG2e09yu0\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 May 2023 06:38:23 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Added Successfully!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "student-adding EventHackathon",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "{{$randomWords}}",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "organizedBy",
+							"value": "{{$randomWords}}",
+							"type": "text"
+						},
+						{
+							"key": "dateattended",
+							"value": "2022/12/12",
+							"type": "text"
+						},
+						{
+							"key": "participationlevel",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "certificate",
+							"type": "file",
+							"src": "/Users/kanivan/Downloads/Bayesian Classification.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/addEventHackathon",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"addEventHackathon"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "student-adding EventHackathon",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "{{$randomWords}}",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "organizedBy",
+									"value": "{{$randomWords}}",
+									"type": "text"
+								},
+								{
+									"key": "dateattended",
+									"value": "2022/12/12",
+									"type": "text"
+								},
+								{
+									"key": "participationlevel",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "certificate",
+									"type": "file",
+									"src": "/Users/kanivan/Downloads/Bayesian Classification.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseapiurl}}/student/addEventHackathon",
+							"host": [
+								"{{baseapiurl}}"
+							],
+							"path": [
+								"student",
+								"addEventHackathon"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "33"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"21-ipdK4bGviOGVE57ywEnG2e09yu0\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 May 2023 07:32:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Added Successfully!\"\n}"
+				}
+			]
 		},
 		{
 			"name": "student-updating general details",
@@ -2002,7 +2875,7 @@
 						{
 							"key": "scholarshipproof",
 							"type": "file",
-							"src": "/Users/kanivan/Downloads/NM Engineering - Steps to Create IBM Cloud Account.pdf"
+							"src": []
 						}
 					]
 				},
@@ -2014,6 +2887,59 @@
 					"path": [
 						"student",
 						"addscholarhip"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "student-adding extracourses",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "beauty",
+							"type": "text"
+						},
+						{
+							"key": "duration",
+							"value": "314",
+							"type": "text"
+						},
+						{
+							"key": "typeofcourse",
+							"value": "nptel",
+							"type": "text"
+						},
+						{
+							"key": "certificate",
+							"type": "file",
+							"src": "/Users/kanivan/Downloads/Bayesian Classification.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/addExtracourses",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"addExtracourses"
 					]
 				}
 			},
@@ -2156,12 +3082,12 @@
 		},
 		{
 			"key": "studenttoken",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiU3R1ZGVudCIsImlkIjoyNiwibWFpbCI6InViYWJtYXJpcnNAZ21haWwuY29tIiwicmVnbnVtIjoiMjAyMDExNTA5MyIsInRvdGFsX3NlbSI6OCwiaWF0IjoxNjg1MTI3MTk5LCJleHAiOjE2ODUyMTM1OTl9.6o1bOqSqop6P1KNQptoCuDVqSVeDljm-bnyz5JVs950",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiU3R1ZGVudCIsImlkIjoyNiwibWFpbCI6InViYWJtYXJpcnNAZ21haWwuY29tIiwicmVnbnVtIjoiMjAyMDExNTA5MyIsInRvdGFsX3NlbSI6OCwiaWF0IjoxNjg1MjMxNDczLCJleHAiOjE2ODUzMTc4NzN9.s5S_xdA3g4F5khS-5szEy4BLxAELrFHl4B8BEnIn44k",
 			"type": "string"
 		},
 		{
 			"key": "admintoken",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQWRtaW4iLCJpZCI6MSwibWFpbCI6InNrYW5pdmFuMTJAZ21haWwuY29tIiwiaWF0IjoxNjg1MTU5NDA2LCJleHAiOjE2ODUyNDU4MDZ9.73uRpCkguZ1QkF5LJlEMSylM7hVzdku7KzaNTpvLKyI",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQWRtaW4iLCJpZCI6MSwibWFpbCI6InNrYW5pdmFuMTJAZ21haWwuY29tIiwiaWF0IjoxNjg1MjYwMTkwLCJleHAiOjE2ODUzNDY1OTB9.5hzC8hjF1fgREIYJTWOZloN8-Da1VpXN0jmEXmfaSzE",
 			"type": "string"
 		},
 		{

@@ -3,7 +3,7 @@ const sequelize = require("../config/dbconnection");
 var DataTypes = require('sequelize/lib/data-types');
 
 const {Departments,Degree,Regulation,Subjects,Batch}=require("./comod");
-const {StuPersonalDetails,Students,Scholarship,StudentSem,InternProjects,Placement,MarksheetProofs}=require("./students");
+const {StuPersonalDetails,Students,Scholarship,StudentSem,InternProjects,Placement,MarksheetProofs,Workshops,ExtraCourses,EventHackathon,PaperPublished,HigherEducation}=require("./students");
 
 
 const Admin = sequelize.define("dist_admin", {
@@ -147,5 +147,26 @@ MarksheetProofs.belongsTo(Students);
 //Faculty - Student one to many
 Faculty.hasMany(Students);
 Students.belongsTo(Faculty);
+
+//Student - Workshops one to many relationship
+Students.hasMany(Workshops);
+Workshops.belongsTo(Students);
+
+
+//Student - ExtraCourses one to many relationship
+Students.hasMany(ExtraCourses);
+ExtraCourses.belongsTo(Students);
+
+//Student - EventHackathon
+Students.hasMany(EventHackathon);
+EventHackathon.belongsTo(Students);
+
+//Student - PaperPublished one to many relationship
+Students.hasMany(PaperPublished);
+PaperPublished.belongsTo(Students);
+
+//Student - HigherEducation one to  many relationship
+Students.hasMany(HigherEducation);
+HigherEducation.belongsTo(Students);
 
 module.exports={Admin,Faculty,Verification}

@@ -11,7 +11,7 @@ const {addStudValidator,addFacultyValidator,addDeptValidator,
 const { validate } = require("../validators/index");
 
 const {addStudent,addBulkStudents,addbulk}=require("../controllers/admin/addentries/student");
-
+const {getSampleExcel}=require("../controllers/admin/getentries/student")
 const {addFaculty}=require("../controllers/admin/addentries/faculty");
 
 
@@ -42,6 +42,7 @@ router.post('/addBulkStudents',
   addBulkStudents
 )
 
+router.get("/getbulkStudentssheet",getSampleExcel)
 
 router.use(function(req, res, next) {
   return res.status(404).send({message:"Not Found"});

@@ -7,8 +7,8 @@ const  DetailsValidator=require("../validators/DetailsValidator");
 const { validate } = require("../validators/index");
 const {getstudentsem}=require("../controllers/students/getentries/getstudentsem");
 const {updatesem,uploadMarkSheet}=require("../controllers/students/updateentries/semmark");
-const {addintern,addplacement, addscholarship,addSubElectives}=require("../controllers/students/addentries/adddetails");
-const {getInterndetails,getplacement,getPersonalDetails,getScholarship,studentsemscount,getSubjects,getMarkSheet}=require("../controllers/students/getentries/getdetails")
+const {addintern,addplacement, addscholarship,addSubElectives,addWorkshops,addExtraCourses,addPaperPublishing,addHigherEducation,addEventHackathon}=require("../controllers/students/addentries/adddetails");
+const {getInterndetails,getplacement,getPersonalDetails,getScholarship,studentsemscount,getSubjects,getMarkSheet,getWorkshops,getExtraCourses,getPaperPublishing,getHigherEducation,getEventHackathon}=require("../controllers/students/getentries/getdetails")
 
 const multer=require("multer");
 const upload=multer({storage:multer.memoryStorage({})});
@@ -53,6 +53,37 @@ router.post("/addSubElectives",
     validate,addSubElectives
 )
 
+router.post("/addWorkshops",
+    upload.single('worshopcertificate'),
+    DetailsValidator.addWorkshopValidator,
+    validate,
+    addWorkshops
+
+)
+router.post("/addExtracourses",
+    upload.single('certificate'),
+    DetailsValidator.addExtraCoursesValidator,
+    validate,
+    addExtraCourses
+)
+
+router.post("/addPaperPublishing",
+    DetailsValidator.PaperPublishingValidator,
+    validate,
+    addPaperPublishing);
+router.post("/addHigherEducation",
+    DetailsValidator.HigherEducationValidator,
+    validate,
+    addHigherEducation
+)
+
+router.post("/addEventHackathon",
+    upload.single('certificate'),
+    DetailsValidator.EventHackathonValidator,
+    validate,
+    addEventHackathon
+)
+
 router.get("/studentsemcount",studentsemscount);
 router.get("/getPersonalDetails",getPersonalDetails)
 router.get("/studentsem", getstudentsem)
@@ -61,6 +92,11 @@ router.get("/getinterndetails",getInterndetails)
 router.get("/getplacementdetails",getplacement);
 router.get("/getscholarshipdetails",getScholarship);
 router.get("/getsubjects",getSubjects);
+router.get('/getworkshops',getWorkshops);
+router.get('/getextracourses',getExtraCourses);
+router.get("/getPaperPublishing",getPaperPublishing);
+router.get("/getHigherEducation",getHigherEducation);
+router.get("/getEventHackathon",getEventHackathon)
 
 router.use(function(req, res, next) {
     return res.status(404).send({message:"Not Found"});
