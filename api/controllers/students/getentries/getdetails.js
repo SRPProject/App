@@ -1,7 +1,7 @@
 var logger = require("../../../utils/log")(module);
 
 const {Subjects,Degree}=require("../../../models/comod");
-const {InternProjects,Placement,StuPersonalDetails,Scholarship,Students,MarksheetProofs,Workshops,ExtraCourses,EventHackathon,PaperPublished,HigherEducation}=require("../../../models/students")
+const {Internships,Placement,StuPersonalDetails,Scholarship,Students,MarksheetProofs,Workshops,ExtraCourses,EventHackathon,PaperPublished,HigherEducation, Projects}=require("../../../models/students")
 const {containerClient,azureBlobSaSUrl}=require("../../../utils/azureconfig");
 
 
@@ -9,7 +9,7 @@ const {containerClient,azureBlobSaSUrl}=require("../../../utils/azureconfig");
 const getInterndetails=async(req,res)=>{
     try{
         const stid=res.locals._id;
-        const getIntern=await InternProjects.findAll({
+        const getIntern=await Internships.findAll({
             where :{studentStId:stid}
         })
        if(getIntern){
@@ -268,4 +268,23 @@ const getEventHackathon=async(req,res)=>{
         return res.status(500).send({message:"Server Error Try again."});
     }
 }
-module.exports={getInterndetails,getplacement,getPersonalDetails,getScholarship,studentsemscount,getSubjects,getMarkSheet,getWorkshops,getExtraCourses,getPaperPublishing,getHigherEducation,getEventHackathon}
+
+const getProjects=async(req,res)=>{
+    try{
+        const ProjectDetails=await Projects.findAll({where:{studentStId:res.locals._id}});
+        if(ProjectDetails){
+            for(let i=0;i<ProjectDetails.length;i++){
+                ProjectDetails[i]['certificate']=await azureBlobSaSUrl("projectsproofs",ProjectDetails[i]['certificate']);
+            }
+            return res.status(200).send({message:ProjectDetails});
+            
+        }else{
+            return res.status(400).send({message:"No entry found.."});
+        }
+    }
+    catch(err){
+        logger.error(err);
+        return res.status(500).send({message:"Server Error Try again."});
+    }
+}
+module.exports={getInterndetails,getplacement,getPersonalDetails,getScholarship,studentsemscount,getSubjects,getMarkSheet,getWorkshops,getExtraCourses,getPaperPublishing,getHigherEducation,getEventHackathon,getProjects}

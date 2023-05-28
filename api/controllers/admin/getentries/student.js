@@ -34,7 +34,7 @@ const getStudentScholarship=async(req,res)=>{
                                 (select st_id,regnum,mail from "students"  where "students"."distDepartmentDeptid"=${rq.distDepartmentDeptid} and "students"."batchId"=${rq.batchId} and "students"."degreeDegid"=${rq.degreeDegid} and "students"."regulationRegid"=${rq.regulationRegid}) as sttb 
                                 inner join studentpersonal on sttb.st_id=studentpersonal."studentStId" )
                     as tb inner join "scholarships" on tb."st_id"=scholarships."studentStId" 
-                    );
+                    )order by tb.regnum;
                 `
                 /*
                 Query Explanation (from inner sub-query to outer level-query):
@@ -64,4 +64,88 @@ const getStudentScholarship=async(req,res)=>{
         return res.status(500).send({message:"Server Error Try again"})
     }
 }
-module.exports={getSampleExcel,getStudentScholarship}
+
+const getProjectReport=async(req,res)=>{
+    try{
+        let rq=req.query;
+        if(rq.batchId && rq.degreeDegid && rq.regulationRegid && rq.distDepartmentDeptid ){
+            
+            const getProjectsReport=await sequelize.query(
+                `
+                    select  tb.regnum as rollnumber,tb.firstname as firstname,tb.lastname as lastname,projects.title as projecttitle,projects.guidename as guidename,projects.fromperiod as from,projects.toperiod as to,projects.sourcecodelink as sourcecode,projects.certificate as fileURL
+                    from (
+                        (select studentpersonal.firstname,studentpersonal.lastname,sttb.st_id,sttb.regnum
+                            from 
+                                (select st_id,regnum,mail from "students"  where "students"."distDepartmentDeptid"=${rq.distDepartmentDeptid} and "students"."batchId"=${rq.batchId} and "students"."degreeDegid"=${rq.degreeDegid} and "students"."regulationRegid"=${rq.regulationRegid}) as sttb 
+                                inner join studentpersonal on sttb.st_id=studentpersonal."studentStId" )
+                    as tb inner join "projects" on tb."st_id"=projects."studentStId"
+                    )  order by tb.regnum;
+                `
+                
+            )
+            for(let i=0;i<getProjectsReport[0].length;i++){
+                getProjectsReport[0][i]["fileurl"]=await azureBlobSaSUrl("projectsproofs",getProjectsReport[0][i]["fileurl"]);
+            }
+            return res.status(200).send({message:getProjectsReport[0]});
+        }
+    }
+    catch(err){
+        logger.error(err);
+        return res.status(500).send({message:"Server Error Try again"})
+    }
+}
+
+const getInternshipsReport=async(req,res)=>{
+    try{
+        let rq=req.query;
+        if(rq.batchId && rq.degreeDegid && rq.regulationRegid && rq.distDepartmentDeptid ){
+            
+            const getInternships=await sequelize.query(
+                `
+                    select  tb.regnum as rollnumber,tb.firstname as firstname,tb.lastname as lastname,internships.inname as companyname,internships.fromperiod as from,internships.toperiod as to,internships.details as details
+                    from (
+                        (select studentpersonal.firstname,studentpersonal.lastname,sttb.st_id,sttb.regnum
+                            from 
+                                (select st_id,regnum,mail from "students"  where "students"."distDepartmentDeptid"=${rq.distDepartmentDeptid} and "students"."batchId"=${rq.batchId} and "students"."degreeDegid"=${rq.degreeDegid} and "students"."regulationRegid"=${rq.regulationRegid}) as sttb 
+                                inner join studentpersonal on sttb.st_id=studentpersonal."studentStId" )
+                    as tb inner join "internships" on tb."st_id"=internships."studentStId" 
+                    ) order by tb.regnum;
+                `
+                
+            )
+            return res.status(200).send({message:getInternships[0]});
+        }
+    }
+    catch(err){
+        logger.error(err);
+        return res.status(500).send({message:"Server Error Try again"})
+    }
+}
+const getPlacementReport=async(req,res)=>{
+    try{
+        let rq=req.query;
+        if(rq.batchId && rq.degreeDegid && rq.regulationRegid && rq.distDepartmentDeptid ){
+            
+            const getPlacements=await sequelize.query(
+                `
+                    select  tb.regnum as rollnumber,tb.firstname as firstname,tb.lastname as lastname,placements.compname as companyname,placements.selection as selection,placements.salary as salary,placements.comptype as comptype
+                    from (
+                        (select studentpersonal.firstname,studentpersonal.lastname,sttb.st_id,sttb.regnum
+                            from 
+                                (select st_id,regnum,mail from "students"  where "students"."distDepartmentDeptid"=${rq.distDepartmentDeptid} and "students"."batchId"=${rq.batchId} and "students"."degreeDegid"=${rq.degreeDegid} and "students"."regulationRegid"=${rq.regulationRegid}) as sttb 
+                                inner join studentpersonal on sttb.st_id=studentpersonal."studentStId" )
+                    as tb inner join "placements" on tb."st_id"=placements."studentStId" 
+                    ) order by placements.salary;
+                `
+                
+            )
+            return res.status(200).send({message:getPlacements[0]});
+        }
+    }
+    catch(err){
+        logger.error(err);
+        return res.status(500).send({message:"Server Error Try again"})
+    }
+
+}
+module.exports={getSampleExcel,getStudentScholarship,getProjectReport,getPlacementReport,getInternshipsReport}

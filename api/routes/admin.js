@@ -11,7 +11,7 @@ const {addStudValidator,addFacultyValidator,addDeptValidator,
 const { validate } = require("../validators/index");
 
 const {addStudent,addBulkStudents}=require("../controllers/admin/addentries/student");
-const {getSampleExcel,getStudentScholarship}=require("../controllers/admin/getentries/student")
+const {getSampleExcel,getStudentScholarship,getProjectReport,getPlacementReport,getInternshipsReport}=require("../controllers/admin/getentries/student")
 const {addFaculty}=require("../controllers/admin/addentries/faculty");
 
 const  {getDepartments,getRegulations,getDegrees,getBatches}=require("../controllers/admin/getentries/admin")
@@ -45,6 +45,11 @@ router.post('/addBulkStudents',
 router.post("/addBatches",addBatchValidator,validate,admin.addBatches)
 
 router.get("/getscholarship",getStudentScholarship);
+router.get("/getProjectReport",getProjectReport);
+router.get("/getPlacementReport",getPlacementReport);
+router.get("/getInternshipsReport",getInternshipsReport);
+
+
 router.get("/getbulkStudentssheet",getSampleExcel);
 
 router.get("/getDepartments",getDepartments);

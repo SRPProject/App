@@ -1,6 +1,6 @@
 var logger = require("../../../utils/log")(module);
 const { Degree } = require("../../../models/comod");
-var {Scholarship,InternProjects,Placement, StudentSem, Students,Workshops,ExtraCourses,EventHackathon,PaperPublished,HigherEducation}=require("../../../models/students");
+var {Scholarship,Internships,Placement, StudentSem, Students,Workshops,ExtraCourses,EventHackathon,PaperPublished,HigherEducation,Projects}=require("../../../models/students");
 const {containerClient}=require("../../../utils/azureconfig");
 
 
@@ -11,12 +11,18 @@ const addintern=async(req,res)=>{
             inname: req.body.inname,
             fromperiod: new Date(req.body.fromperiod),
             toperiod:new Date(req.body.toperiod),
-            details:req.body.details,
-            studentStId:Number(res.locals._id)
             
+            studentStId:Number(res.locals._id)
         }
-        await InternProjects.create(entry);
-        return res.status(200).send({message:"Intern details added"});
+        const checkExists=await Internships.findOne({where:entry})
+        if(checkExists){
+            return res.status(400).send({message:"Already exists."})
+        }
+        else{
+            entry.details=req.body.details,
+            await Internships.create(entry);
+            return res.status(200).send({message:"Intern details added"});
+        }
     }
     catch(err){
         logger.error(err.message);
@@ -26,16 +32,22 @@ const addintern=async(req,res)=>{
 
 const addplacement=async(req,res)=>{
     try{
-        const entry={
-            compname:req.body.compname,
+        let entry={
+            compname:(req.body.compname),
             selection:req.body.selection,
             salary:Number(req.body.salary),
             comptype:req.body.comptype,
-            studentStId:Number(res.locals.id)
+            studentStId:Number(res.locals._id)
         }
-        await Placement.create(entry);
-        return res.status(200).send({message:"Placement Details added !!"});
-
+        
+        const checkExists=await Placement.findOne({where:entry})
+        if(checkExists){
+            return res.status(400).send({message:"Already exists."})
+        }
+        else{
+            await Placement.create(entry);
+            return res.status(200).send({message:"Placement Details added !!"});
+        }
     }
     catch(err){
         logger.error(err);
@@ -44,19 +56,29 @@ const addplacement=async(req,res)=>{
 }
 const addscholarship=async(req,res)=>{
     try{
-        const blobname=res.locals._id+"_scholarship"+req.body.ryear+"_"+Date.now()+".pdf";
-        const blockBlobClient = containerClient("scholarshiproofs").getBlockBlobClient(blobname);
-        const data =req.file.buffer;
-        await blockBlobClient.upload(data, data.length);
+        
         const entry={
             name:req.body.name,
             ryear:Number(req.body.ryear),
             amount:Number(req.body.amount),
             studentStId:Number(res.locals._id),
-            proofname:blobname
         }
-        await Scholarship.create(entry);
-        return res.status(200).send({message:"Added Successfully"});
+
+        const checkExists=await Scholarship.findOne({where:entry})
+
+        if(checkExists){
+            return res.status(400).send({message:"Already exists."})
+        }
+        else{
+            const blobname=res.locals._id+"_scholarship"+req.body.ryear+"_"+Date.now()+".pdf";
+            const blockBlobClient = containerClient("scholarshiproofs").getBlockBlobClient(blobname);
+            const data =req.file.buffer;
+            await blockBlobClient.upload(data, data.length);
+            entry.proofname=blobname;
+            await Scholarship.create(entry);
+            return res.status(200).send({message:"Added Successfully"});
+        }
+       
 
 
     }
@@ -247,4 +269,37 @@ const addEventHackathon=async(req,res)=>{
     }
 
 }
-module.exports={addintern,addplacement,addscholarship,addSubElectives,addWorkshops,addExtraCourses,addPaperPublishing,addHigherEducation,addEventHackathon}
+
+const addProjects=async(req,res)=>{
+    try{
+        let entry={
+            title:req.body.title,
+            guidename:req.body.guidename,
+            fromperiod:new Date(req.body.fromperiod),
+            toperiod:new Date(req.body.toperiod),
+            studentStId:res.locals._id,
+        }
+        const checkExists=await Projects.findOne({where:entry})
+        if(checkExists){
+            return res.status(400).send({message:"Already exists."})
+        }
+        else{
+            const blobname=res.locals._id+"_projects_"+Date.now()+".pdf";
+            const blockBlobClient = containerClient("projectsproofs").getBlockBlobClient(blobname);
+            const data =req.file.buffer;
+            await blockBlobClient.upload(data, data.length);
+
+            entry.certificate=blobname;
+            entry.sourcecodelink=req.body.sourcecodelink;
+
+            await Projects.create(entry);
+            return res.status(200).send({message:"Added Successfully!"});
+
+        }
+    }
+    catch(err){
+        logger.error(err);
+        return res.status(500).send({message:"Server Error Try again"})
+    }
+}
+module.exports={addintern,addplacement,addscholarship,addSubElectives,addWorkshops,addExtraCourses,addPaperPublishing,addHigherEducation,addEventHackathon,addProjects}
