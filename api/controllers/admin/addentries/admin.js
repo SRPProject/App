@@ -123,4 +123,24 @@ const addingSubjects=async (req,res)=>{
         return res.status(500).send({ message: "Server Error." });
     }
 }
-module.exports={addDepartments,addRegulation,addDegree,addingSubjects}
+const addBatches=async(req,res)=>{
+    try{
+        let entry={
+            startyr:req.body.startyr,
+            endyr:req.body.endyr
+        }
+        const checkexists=await Batch.findOne({where:entry});
+        if(checkexists){
+            return res.status(400).send({message:"Batch already exists!"})
+        }
+        else{
+            await Batch.create(entry);
+            return res.status(200).send({message:"Added Successfully"})
+        }
+    }
+    catch(err){
+        logger.error(err);
+        return res.status(500).send({ message: "Server Error." });
+    }
+}
+module.exports={addDepartments,addRegulation,addDegree,addingSubjects,addBatches}

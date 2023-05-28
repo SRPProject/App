@@ -249,4 +249,32 @@ const addSubjectValidator=async(req,res,next)=>{
   next()
 
 }
-module.exports={addStudValidator,addFacultyValidator,addDeptValidator,addRegValidator,addDegreeValidator,addBulkStdsValiadtor,addSubjectValidator}
+
+const addBatchValidator=async(req,res,next)=>{
+  await body("startyr")
+    .notEmpty()
+    .withMessage("start year invalid")
+    .bail()
+    .isNumeric()
+    .withMessage("start year invalid")
+    .run(req)
+  await body("endyr")
+    .notEmpty()
+    .withMessage("end year invalid")
+    .bail()
+    .isNumeric()
+    .withMessage("end year invalid")
+    .run(req)
+  
+  await body('endyr')     
+    .custom(async(value,{req})=>{  
+      if(req.body.endyr && req.body.startyr ){
+        if(Number(req.body.endyr) <= Number(req.body.startyr) ){ throw new Error("End year should be greater than start year")} 
+      }  
+    
+    })
+    .run(req)
+  
+  next()
+}
+module.exports={addStudValidator,addFacultyValidator,addDeptValidator,addRegValidator,addDegreeValidator,addBulkStdsValiadtor,addSubjectValidator,addBatchValidator}

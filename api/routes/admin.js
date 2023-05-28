@@ -6,15 +6,15 @@ const upload=multer({storage:multer.memoryStorage({})});
 const admin=require('../controllers/admin/addentries/admin')
 
 const {addStudValidator,addFacultyValidator,addDeptValidator,
-  addRegValidator,addDegreeValidator,addBulkStdsValiadtor,addSubjectValidator}=require("../validators/adminValidators");
+  addRegValidator,addDegreeValidator,addBulkStdsValiadtor,addSubjectValidator,addBatchValidator}=require("../validators/adminValidators");
 
 const { validate } = require("../validators/index");
 
-const {addStudent,addBulkStudents,addbulk}=require("../controllers/admin/addentries/student");
-const {getSampleExcel}=require("../controllers/admin/getentries/student")
+const {addStudent,addBulkStudents}=require("../controllers/admin/addentries/student");
+const {getSampleExcel,getStudentScholarship}=require("../controllers/admin/getentries/student")
 const {addFaculty}=require("../controllers/admin/addentries/faculty");
 
-
+const  {getDepartments,getRegulations,getDegrees,getBatches}=require("../controllers/admin/getentries/admin")
 
 router.post('/addDepartment',addDeptValidator,validate,admin.addDepartments);
 
@@ -42,7 +42,16 @@ router.post('/addBulkStudents',
   addBulkStudents
 )
 
-router.get("/getbulkStudentssheet",getSampleExcel)
+router.post("/addBatches",addBatchValidator,validate,admin.addBatches)
+
+router.get("/getscholarship",getStudentScholarship);
+router.get("/getbulkStudentssheet",getSampleExcel);
+
+router.get("/getDepartments",getDepartments);
+router.get("/getRegulations",getRegulations);
+router.get("/getDegrees",getDegrees);
+router.get("/getBatches",getBatches);
+
 
 router.use(function(req, res, next) {
   return res.status(404).send({message:"Not Found"});
