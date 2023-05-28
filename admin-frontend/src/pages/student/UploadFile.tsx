@@ -1,11 +1,12 @@
 import { Button, TextField } from "@mui/material";
-import { useState, useEffect,memo } from "react";
+import { useState, useEffect, memo, useContext } from "react";
 import axiosObj from "../../api";
 import fs from "fs";
+import { CustomContext } from "../../utils/Routes";
 
 const UploadFile = ({
   setActiveStep,
-  url,
+
   dRef,
 }: {
   dRef: any;
@@ -13,13 +14,13 @@ const UploadFile = ({
   url: any;
 }) => {
   const [uploaded, setUploaded] = useState(false);
+  const { url } = useContext(CustomContext);
 
   return (
     <div className="container">
       <a href={url}>Download Sample Excel file</a>
 
       <TextField
-        
         onChange={(e: any) => {
           dRef.current["studentslist"] = e.target.files[0];
           console.log(dRef);

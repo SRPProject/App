@@ -5,19 +5,13 @@ import SelectOption from "./SelectOption";
 import UploadFile from "./UploadFile";
 import axiosObj from "../../api";
 import FormData from "form-data";
+import { toast } from "react-toastify";
 
 const Student = () => {
-  const degree = ["MSC", "BSC", "B.Tech", "M.Tech", "M.sc"];
-
-  const batch = ["2021-2024", "2021-2025"];
-
-  const regulation = ["R2021", "R2019"];
 
   const steps = ["Select Options", "Upload Excel", "Confirm"];
 
   const [activeStep, setActiveStep] = useState(0);
-
-  const [url, setUrl] = useState("");
 
   const dRef = useRef({
     studentslist: null,
@@ -28,14 +22,6 @@ const Student = () => {
     batchId: 1,
   });
 
-  useEffect(() => {
-    (async function () {
-      const endpoint = "/admin/getbulkStudentssheet";
-      const resp = await axiosObj.get(endpoint);
-      setUrl(resp.data.message);
-      console.log(resp.data);
-    })();
-  }, []);
 
   return (
     <div className="student">
@@ -53,14 +39,11 @@ const Student = () => {
         {activeStep == 0 && (
           <SelectOption
             setActiveStep={setActiveStep}
-            degree={degree}
-            batch={batch}
-            regulation={regulation}
             dRef={dRef}
           />
         )}
         {activeStep == 1 && (
-          <UploadFile dRef={dRef} url={url} setActiveStep={setActiveStep} />
+          <UploadFile dRef={dRef}  setActiveStep={setActiveStep} />
         )}
         {activeStep == 2 && (
           <Confirm dRef={dRef} setActiveStep={setActiveStep} />
@@ -86,7 +69,15 @@ const submit = async (arr: any) => {
     },
   });
 
-  console.log(resp);
+  if (resp.status === 200) {
+    toast.success("Students added successfully");
+
+    setTimeout(() => {
+      window.location = "/";
+    }, [5000]);
+  } else {
+    toast.error(resp.data.message);
+  }
 };
 
 const Confirm = ({
@@ -96,14 +87,25 @@ const Confirm = ({
   setActiveStep: any;
   dRef: any;
 }) => {
+  const [submitting, setSubmitting] = useState(false);
+
   return (
     <div className="container">
-      <ul>
-        <li>Make sure excel sheet format is valid</li>
-        <li>Once students added , it is difficult to modify</li>
-      </ul>
-      <Typography>Are You sure of adding students?</Typography>
-
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "2rem",
+        }}
+      >
+        <Typography variant="h5">Are You sure of adding students?</Typography>
+        <Typography variant="caption">
+          Make sure excel sheet format is valid
+        </Typography>
+        <Typography variant="caption">
+          Once students added , it is difficult to modify
+        </Typography>
+      </div>
       <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
         <Button
           variant="contained"
@@ -113,13 +115,16 @@ const Confirm = ({
           Previous
         </Button>
         <Button
+          disabled={submitting}
           variant="contained"
           style={{ alignSelf: "flex-start" }}
-          onClick={() => {
-            submit(dRef.current);
+          onClick={async () => {
+            setSubmitting(true);
+            await submit(dRef.current);
+            setSubmitting(false);
           }}
         >
-          Confirm
+          {submitting ? "Please wait.." : "Confirm"}
         </Button>
       </div>
     </div>

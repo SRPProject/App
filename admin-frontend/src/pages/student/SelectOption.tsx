@@ -7,13 +7,11 @@ import {
   MenuList,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CustomContext } from "../../utils/Routes";
 
 const SelectOption = ({
   setActiveStep,
-  batch,
-  degree,
-  regulation,
   dRef,
 }: {
   setActiveStep: any;
@@ -22,6 +20,8 @@ const SelectOption = ({
   regulation: any;
   dRef: any;
 }) => {
+  const { batch, degree, regulation } = useContext(CustomContext);
+
   const [selectedDegree, setSelectedDegree] = useState(
     dRef.current.degreeDegid
   );
@@ -35,28 +35,28 @@ const SelectOption = ({
     <div className="container">
       <Container
         name="Degree"
-        arr={degree}
         val={selectedDegree}
         setVal={setSelectedDegree}
         dRef={dRef}
+        arr={degree}
         id="degreeDegid"
       />
 
       <Container
         name="Regulation"
-        arr={batch}
         val={selectedRegulation}
         setVal={setSelectedRegulation}
         dRef={dRef}
+        arr={regulation}
         id="regulationRegid"
       />
 
       <Container
         name="Batch"
-        arr={regulation}
         val={selectedBatch}
         setVal={setSelectedBatch}
         dRef={dRef}
+        arr={batch}
         id="batchId"
       />
 
@@ -91,33 +91,34 @@ const Container = ({
       <Card sx={{ padding: "2rem" }}>
         <Typography variant="h5">Select {name}</Typography>
         <MenuList>
-          {arr.map((el: any, index: any) => {
-            const temp = index == val;
+          {arr &&
+            arr.map((el: any) => {
+              const temp = el["id"] == val;
 
-            return (
-              <MenuItem
-                style={{
-                  backgroundColor: temp && "aliceblue",
-                  display: "flex",
-                  flexDirection: "row",
-                  gap: "1rem",
-                  alignItems: "center",
-                }}
-                onClick={() => {
-                  dRef.current[[id]] = index;
-                  setVal(index);
-                }}
-              >
-                {temp && (
-                  <Icon>
-                    <DoneRounded />
-                  </Icon>
-                )}
+              return (
+                <MenuItem
+                  style={{
+                    backgroundColor: temp && "aliceblue",
+                    display: "flex",
+                    flexDirection: "row",
+                    gap: "1rem",
+                    alignItems: "center",
+                  }}
+                  onClick={() => {
+                    dRef.current[[id]] = el["id"];
+                    setVal(el["id"]);
+                  }}
+                >
+                  {temp && (
+                    <Icon>
+                      <DoneRounded />
+                    </Icon>
+                  )}
 
-                {el}
-              </MenuItem>
-            );
-          })}
+                  {el["name"]}
+                </MenuItem>
+              );
+            })}
         </MenuList>
       </Card>
     </div>

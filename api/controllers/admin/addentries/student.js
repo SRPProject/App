@@ -16,7 +16,7 @@ const addStudent=async(req,res)=>{
         });
         
         if(checkacc){
-            return res.status(401).send({message:"Student account already exists for roll number : "+req.body.regnum});
+            return res.status(400).send({message:"Student account already exists for roll number : "+req.body.regnum});
         }
         else{
             //getting no of semester from degrees
@@ -82,7 +82,7 @@ const addStudent=async(req,res)=>{
     }
     catch(err){
         logger.error(err);
-        return res.status(500).send({message:"Server Error Try again"})
+        return res.status(500).send({message:err.message})
     }
 }
 const extractDatafromExcel=async(req,res)=>{
@@ -94,7 +94,7 @@ const extractDatafromExcel=async(req,res)=>{
     }
     catch(err){
         logger.error(err);
-        return res.status(500).send({message:"Server Error Try again"})
+        return res.status(400).send({message:"Server Error Try again"})
     }
 }
 const addBulkStudents=async (req,res)=>{
@@ -213,7 +213,7 @@ const addBulkStudents=async (req,res)=>{
     }
     catch(err){
         logger.error(err);
-        return res.status(500).send({message:"Server Error Try again"})
+        return res.status(400).send({message:err.message})
     }
 }
 
