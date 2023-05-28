@@ -63,7 +63,7 @@ const submit = async(event:any)=>{
 
 const Intern = ()=>{
 
-    const [data,setData] = useState([])
+    const [internData,setInternData] = useState([])
 
     const [open,setOpen] = useState(false)
 
@@ -75,7 +75,7 @@ const Intern = ()=>{
 
                 const resp = await axiosObj.get(endpoint)
                 
-                setData(resp.data.message)
+                setInternData(resp.data.message)
                 
             }
         )()
@@ -89,7 +89,7 @@ const Intern = ()=>{
 
 
                 {
-                    data.map((el:any)=>{
+                    internData.map((el:any)=>{
                         return(
                             <Card sx={{padding:"2rem",margin:"1rem 0",gap:"2rem",display:"flex",flexDirection:"column"}}>
                                 <Typography variant="h6">{el.inname}</Typography>
@@ -139,7 +139,7 @@ const Intern = ()=>{
                     {
 
                         data.map((el:any)=>{
-
+                            
                             return (
                                 <TextField
                                     multiline={el.multiline?true:false}

@@ -1,138 +1,130 @@
-
-import React,{useEffect, useState} from "react"
-import { Button, Card, CardActions, CardHeader, Collapse, Dialog, Modal, TextField, Typography } from "@mui/material"
-import { AddOutlined } from "@mui/icons-material"
-import {toast} from "react-toastify"
-import axiosObj from "../../api"
+import React, { useEffect, useState } from "react";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardHeader,
+  Collapse,
+  Dialog,
+  Modal,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { AddOutlined } from "@mui/icons-material";
+import { toast } from "react-toastify";
+import axiosObj from "../../api";
 
 const data = [
-    {
-        "title" : "Scholarship name" ,
-        "name" : "name" ,
-        "type" : "text"
-    },{
-        "title" : "Received Year" ,
-        "name" :"ryear",
-        "type" :"date"
-    },
-    {
-        "title" : "Amount Received" ,
-        "name" :"amount",
-        "type" :"number"
-    },
-    {
-        "title" : "Details" ,
-        "name" :"proofname",
-        "type" :"text" ,
-        "multiline" : true 
-    },
-
-]
+  {
+    title: "Scholarship name",
+    name: "name",
+    type: "text",
+  },
+  {
+    title: "Received Year",
+    name: "ryear",
+    type: "date",
+  },
+  {
+    title: "Amount Received",
+    name: "amount",
+    type: "number",
+  },
+  {
+    title: "Scholarship Proof",
+    name: "scholarshipproof",
+    type: "file",
+  },
+];
 
 const styles = {
+  card: {
+    padding: "2rem",
+    display: "flex",
+    flexDirection: "column",
+  },
+};
 
-    'card' : {
-        "padding" : "2rem",
-        "display" : 'flex',
-        "flexDirection" : "column"
-    }
+const endpoint = "/student/addscholarhip";
 
-}
+const Scholarships = () => {
+  const [open, setOpen] = useState(false);
 
-const endpoint = "/student/addinterndetails"
+  const submit = async () => {
+    let submitData = new FormData();
 
-const submit = async(event:any)=>{
+    data.map((el: any) => {
+      let id = el.name;
 
-    event.preventDefault()
+      if (el.type === "file") {
+        submitData.append(id, document.getElementById(id)!.files[0]);
+        console.log(el);
+      } else {
+        submitData.append(id, document.getElementById(id)!.value);
+      }
+    });
 
-    let temp = {}
-    
-    data.forEach((el:any)=>{
-        temp[el.name] = document.getElementById(el.name)!.value
-    })
+    console.log([...submitData]);
 
-    const resp = await axiosObj.post(endpoint,temp)
+    const resp = await axiosObj.post(endpoint, submitData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
 
-    if(resp.status===200){
-        toast.success(resp.data.message)
-    }
-    
+    console.log(resp);
+  };
 
-}
+  return (
+    <div>
+      <Button
+        onClick={() => setOpen(true)}
+        endIcon={<AddOutlined></AddOutlined>}
+      >
+        Add a Scholarship
+      </Button>
 
-const Scholarships = ()=>{
+      <Dialog open={open} onClose={() => setOpen(false)}>
+        <form
+          onSubmit={async (event) => {
+            event.preventDefault();
 
-    const [div,setDiv] = useState([])
+            await submit();
 
-    const [open,setOpen] = useState(false)
+            setOpen(false);
+          }}
+        >
+          <Card sx={styles.card}>
+            <Typography variant="h5">Add Scholarship Details</Typography>
 
+            {data.map((el: any) => {
+              return (
+                <TextField
+                  multiline={el.multiline ? true : false}
+                  required
+                  style={{ margin: "1rem 0" }}
+                  type={el.type}
+                  placeholder={el.title}
+                  id={el.name}
+                  variant="standard"
+                  helperText={el.title}
+                ></TextField>
+              );
+            })}
 
-
-    return(
-        <div>
-            
-            <Button 
-            onClick={()=>setOpen(true) }
-            endIcon={<AddOutlined></AddOutlined>}
-            >Add a Scholarship</Button>
-
-
-            <Dialog open={open} 
-                onClose={()=>setOpen(false)}
+            <Button
+              type="submit"
+              disableElevation
+              variant="contained"
+              onClick={submit}
             >
-                <form onSubmit={async(event)=>{
-                    
-                    await submit(event)
+              Save
+            </Button>
+          </Card>
+        </form>
+      </Dialog>
+    </div>
+  );
+};
 
-                    setOpen(false)
-                    
-                }}>
-
-                <Card
-                    sx={
-                        styles.card
-                    }
-                >
-                    
-                    <Typography variant="h5">
-                        Add Scholarship Details 
-                    </Typography>
-
-                    {
-
-                        data.map((el:any)=>{
-
-                            return (
-                                <TextField
-                                    multiline={el.multiline?true:false}
-                                    required 
-                                    style={{margin:"1rem 0"}}
-                                    type={el.type}
-                                    placeholder={el.title}
-                                    id={el.name}
-                                    variant ="standard"
-                                    helperText={el.title}
-                                >
-                                </TextField>
-                            )
-
-                        })
-
-                    }
-
-                    <Button
-                    type="submit"
-                    disableElevation
-                    variant="contained"
-                    >Save</Button>
-
-                </Card>
-                </form>
-            </Dialog>
-            
-
-        </div>
-    )
-}
-
-export default Scholarships
+export default Scholarships;

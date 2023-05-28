@@ -20,14 +20,12 @@ import axiosObj from "../../api";
 import { FileUpload } from "@mui/icons-material";
 import { toast } from "react-toastify";
 
-
-
 const util = (obj: any) => {
   let temp = {
     "Core Subjects": [],
     "Professional Electives": [],
     "Open-Elective": [],
-    "Humanities": [],
+    Humanities: [],
     "Audit-course": [],
   };
 
@@ -67,19 +65,20 @@ const Semester = ({
   console.log(data);
 
   useEffect(() => {
+
     if (sem in data) {
     } else {
       //request for getting student sem marks
       (async () => {
         setLoading(true);
-        
+
         const endpoint = "/student/studentsem";
 
         const resp = await axiosObj.get(endpoint);
 
         const obj = resp.data.message;
 
-        console.log(resp.data)
+        console.log(resp.data);
 
         const normalized = util(obj); // spilt based on type of subjects
 
@@ -461,10 +460,65 @@ const saveFile = async (sem: any) => {
 };
 
 export const VerficationFile = ({ sem }: { sem: number }) => {
-  const [submitting, setSubmitting] = useState(false);
+  
+
+  const [loading, setLoading] = useState(true);
+
+  const [uploaded, setUploaded] = useState(null);
+
+  console.log(loading)
+
+  useEffect(() => {
+    
+    (async function () {
+
+      setLoading(true);
+      setUploaded(null) ;
+
+      const endpoint = "student/getMarkSheet";
+
+      const resp = await axiosObj.get(endpoint, { params: { semno: sem } });
+
+      // file uploaded
+      if (resp.status === 200) {
+        console.log(resp.data.message)
+        setUploaded(resp.data.message);
+      }
+
+      setLoading(false);
+    })();
+  }, [sem]);
 
   return (
     <div className="file-upload">
+      {loading ? (
+        <Skeleton />
+      ) : uploaded ? (
+        <FileUploaded url={uploaded} />
+      ) : (
+        <FileNotUploaded sem={sem} />
+      )}
+    </div>
+  );
+};
+
+const FileUploaded = ({ url }: { url: String }) => {
+  return (
+    <div>
+      <Typography variant="h5">
+      Verification File has already uploaded
+      </Typography>
+      <a href={url} download={true}>
+        Download
+      </a>
+    </div>
+  );
+};
+
+const FileNotUploaded = ({ sem }: { sem: any }) => {
+  const [submitting, setSubmitting] = useState(false);
+  return (
+    <div>
       <Typography>Verification File</Typography>
       <TextField
         inputProps={{ accept: "application/pdf" }}
