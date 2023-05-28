@@ -76,7 +76,8 @@ select {
     padding: .5rem 1rem;
     outline:  none;
     border:none; 
-    background-color: darken(#3E8EDE,10%);
+    border-radius: 5px;
+    background-color: #3E8EDE;
     cursor: pointer;
     color: white ; 
     margin : 1rem 0 ;
@@ -84,7 +85,12 @@ select {
 
 option{
     color: black;
+    border-radius: 5px;
     background-color: white;
+}
+
+ul li {
+    list-style: none;
 }
 
 // input::-webkit-outer-spin-button,

@@ -19,11 +19,13 @@ export const Auth = () => {
   return (
     <div className="main">
       <BrowserRouter>
-        {!isMobile && <Sidebar isMobile={false} />}{" "}
         {/* don't show sidebar for desktop */}
+        {!isMobile && <Sidebar isMobile={false} />}{" "}
+
         <div className="body" style={{ marginTop: isMobile ? "20vh" : "0" }}>
           <Navbar isMobile={isMobile} />{" "}
           {/* isMobile is passed so as to make custom styling for mobile */}
+      
           <Routes>
             {Data.map((el: any) => {
               const El = el.element
@@ -31,7 +33,7 @@ export const Auth = () => {
                 <Route path={el.to + "/*"} element={<El />}></Route>
               );
             })}
-            <Route path="*" element={<Navigate to="/add-student" />}></Route>
+            <Route path="*" element={<Navigate to="/manage-student" />}></Route>
           </Routes>
         </div>
       </BrowserRouter>

@@ -30,7 +30,7 @@ const Navbar = ({ isMobile }: { isMobile: Boolean }) => {
 
   const style = {
     position: isMobile ? "fixed" : "relative",
-    padding: isMobile ? ".5rem 1rem" : "2rem 1rem",
+    padding: ".5rem 1rem",
     borderRadius: isMobile ? "0" : "10px",
     backgroundColor: "white",
     paddingLeft: "0",
@@ -42,7 +42,7 @@ const Navbar = ({ isMobile }: { isMobile: Boolean }) => {
   };
 
   return (
-    <div>
+    <Div>
       <AppBar sx={style} elevation={isMobile ? 1 : 0}>
         <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
           {isMobile && <SideToggle />}
@@ -76,6 +76,8 @@ const Navbar = ({ isMobile }: { isMobile: Boolean }) => {
           </div>
         </div>
 
+
+
         {/* user photo || user name || logout button */}
 
         <div
@@ -100,8 +102,16 @@ const Navbar = ({ isMobile }: { isMobile: Boolean }) => {
           </Button>
         </div>
       </AppBar>
-    </div>
+    </Div>
   );
 };
+
+const Div =({children}:{children:any})=>{
+  return(
+    <div>
+      {children}
+    </div>
+  )
+}
 
 export default Navbar;
