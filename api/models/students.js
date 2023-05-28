@@ -175,7 +175,7 @@ const InternProjects=sequelize.define("internprojects",{
     inname:{
     allowNull:false,
     type:DataTypes.TEXT,
-    validate:{notNull:true,notEmpty: true }//wont allow null
+    validate:{notNull:true,notEmpty: true }
 },
     fromperiod:{
     type:DataTypes.DATEONLY
@@ -186,7 +186,7 @@ const InternProjects=sequelize.define("internprojects",{
     details:{
     allowNull:false,
     type:DataTypes.TEXT,
-    validate:{notNull:true,notEmpty: true }//wont allow null
+    validate:{notNull:true,notEmpty: true }
 },
 
 },{
@@ -220,8 +220,164 @@ const MarksheetProofs=sequelize.define("marksheets",{
         defaultValue:Number(0)
     }
 })
+const Workshops=sequelize.define("workshops",{
+    id:{
+        allowNull:false,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true},
+    name:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    },
+    heldby:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    },
+    certificate:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    },
+    dateattended:{
+        allowNull:false,
+        type:DataTypes.DATEONLY,
+        validate:{notNull:true,notEmpty: true }
+    }
+})
 
-module.exports={StuPersonalDetails,Students,Scholarship,StudentSem,InternProjects,Placement,MarksheetProofs}
+const ExtraCourses=sequelize.define("extracourses",{
+    id:{
+        allowNull:false,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true},
+    name:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    },
+    certificate:{
+            allowNull:false,
+            type:DataTypes.TEXT,
+            validate:{notNull:true,notEmpty: true }
+    },
+    duration:{//should be months
+        type:DataTypes.INTEGER,
+        allowNull:false,
+        validate:{notNull:true,notEmpty: true }
+    },
+    typeofcourse:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    },//NPTEL/MOORE/OTHERS
+
+})
+
+const EventHackathon=sequelize.define(("eventshackathon"),{
+    id:{
+        allowNull:false,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true},
+    name:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    },
+    role:{
+        type:DataTypes.INTEGER,
+        allowNull:false,
+        validate:{notNull:true,notEmpty: true}//( Organized/ Participated/ Won) - (1,2,3)
+    },
+   organizedBy:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    },
+    dateattended:{
+        allowNull:false,
+        type:DataTypes.DATEONLY,
+        validate:{notNull:true,notEmpty: true }
+    },
+    certificate:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    },
+    participationlevel:{
+        type:DataTypes.INTEGER,
+        allowNull:false,
+        validate:{notNull:true,notEmpty: true}
+    } // (International/National/State/University/College)- (1,2,3,4,5)
+})
+
+const PaperPublished=sequelize.define("paperpublished",{
+    id:{
+        allowNull:false,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    authors:{ 
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    },
+    title:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    },
+    journalname:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    },
+    doilink:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    },
+    Category:{
+        type:DataTypes.INTEGER,
+        allowNull:false,
+        validate:{notNull:true,notEmpty: true}
+    } //- (SCI-E / SCI / Scopus / WOS / National / International Conference / Workshop / Symposium) - (1,2,3,4,5,6,7,8)
+})
+
+const HigherEducation=sequelize.define("highereducation",{
+    id:{
+        allowNull:false,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    universityname:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    },
+    yearofadmission:{
+        type:DataTypes.INTEGER,
+        allowNull:false,
+        validate:{notNull:true,notEmpty: true}
+    },
+    specialization:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    },
+    degreename:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    }
+})
+module.exports={StuPersonalDetails,Students,Scholarship,StudentSem,InternProjects,Placement,MarksheetProofs,Workshops,ExtraCourses,EventHackathon,PaperPublished,HigherEducation}
 
 
 

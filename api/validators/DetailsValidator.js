@@ -283,6 +283,213 @@ const addSubElectivesValidator=async(req,res,next)=>{
         .run(req)
     next()
 }
+
+const addWorkshopValidator=async(req,res,next)=>{
+    await body("name")
+        .notEmpty()
+        .withMessage("Workshop name not defined in body")
+        .trim()
+        .toUpperCase()
+        .run(req)
+
+    await body("heldby")
+        .notEmpty()
+        .withMessage("Organisation name not defined in body")
+        .trim()
+        .run(req)
+
+    await body("dateattended")
+        .notEmpty()
+        .withMessage("Date attended not defined in body")
+        .trim()
+        .bail()
+        .isDate()
+        .withMessage("Must be a valid date")
+		.run(req)    
+    
+    await body('worshopcertificate')
+        .custom(async(value,{req})=>{
+            if(req.file===undefined ){
+                throw new Error("Empty file")
+            }  
+            if(req.file.mimetype !== 'application/pdf'){
+                throw new Error("Invalid file type") 
+            }
+            else if(Number(req.file.size)>(1024*1024)){
+                throw new Error("File size exceeds the limit greater than 1MB")
+            }
+        })
+        .run(req)
+
+    next()
+}
+
+const addExtraCoursesValidator=async(req,ress,next)=>{
+    await body("name")
+        .notEmpty()
+        .withMessage("ExtraCourse name not defined in body")
+        .trim()
+        .toUpperCase()
+        .run(req)
+
+    await body('certificate')
+        .custom(async(value,{req})=>{
+            if(req.file===undefined ){
+                throw new Error("Empty file")
+            }  
+            if(req.file.mimetype !== 'application/pdf'){
+                throw new Error("Invalid file type") 
+            }
+            else if(Number(req.file.size)>(1024*1024)){
+                throw new Error("File size exceeds the limit greater than 1MB")
+            }
+        })
+        .run(req)
+
+    await body("duration")//should be in months
+        .notEmpty()
+        .withMessage("Duration not defined in body")
+        .bail()
+        .isNumeric()
+        .withMessage("Invalid Duration")
+        .run(req)
+
+    await body("typeofcourse")
+        .notEmpty()
+        .withMessage("typeofcourse not defined in body")
+        .trim()
+        .toUpperCase()
+        .run(req)
+    next()
+}
+
+const PaperPublishingValidator=async(req,res,next)=>{
+    await body("authors")
+        .notEmpty()
+        .withMessage("Authors not defined in body")
+        .trim()
+        .toUpperCase()
+        .run(req)
+
+    await body("title")
+        .notEmpty()
+        .withMessage("title not defined in body")
+        .trim()
+        .toUpperCase()
+        .run(req)
+
+    await body("journalname")
+        .notEmpty()
+        .withMessage("journalname not defined in body")
+        .trim()
+        .toUpperCase()
+        .run(req)
+
+    await body("doilink")
+        .notEmpty()
+        .withMessage("doilink not defined in body")
+        .trim()
+        .run(req)
+
+     await body("Category")//- (SCI-E / SCI / Scopus / WOS / National / International Conference / Workshop / Symposium) - (1,2,3,4,5,6,7,8)
+        .notEmpty()
+        .withMessage("Category not defined in body")
+        .bail()
+        .isNumeric()
+        .withMessage("Invalid Category")
+        .run(req)
+    next()
+}
+const HigherEducationValidator=async(req,res,next)=>{
+    await body("universityname")
+        .notEmpty()
+        .withMessage("universityname not defined in body")
+        .trim()
+        .toUpperCase()
+        .run(req)
+    
+    await body("yearofadmission")
+        .notEmpty()
+        .withMessage("yearofadmission not defined in body")
+        .bail()
+        .trim()
+        .isNumeric()
+        .withMessage("Invalid Year of Admission")
+        .run(req)
+
+    await body("specialization")
+        .notEmpty()
+        .withMessage("specialization not defined in body")
+        .bail()
+        .trim()
+        .run(req)
+
+    await body("degreename")
+        .notEmpty()
+        .withMessage("specialization not defined in body")
+        .bail()
+        .trim()
+        .run(req)
+
+    next()
+}
+
+const EventHackathonValidator=async(req,res,next)=>{
+    await body("name")
+        .notEmpty()
+        .withMessage("ExtraCourse name not defined in body")
+        .trim()
+        .toUpperCase()
+        .run(req)
+    await body("role")//( Organized/ Participated/ Won) - (1,2,3)
+        .notEmpty()
+        .withMessage("role not defined in body")
+        .bail()
+        .trim()
+        .isNumeric()
+        .withMessage("Invalid role")
+        .run(req)
+    
+    await body("organizedBy")
+        .notEmpty()
+        .withMessage("Organisation name not defined in body")
+        .trim()
+        .run(req)
+    
+    await body("dateattended")
+        .notEmpty()
+        .withMessage("Date attended not defined in body")
+        .trim()
+        .bail()
+        .isDate()
+        .withMessage("Must be a valid date")
+		.run(req)   
+        
+    await body("participationlevel")// (International/National/State/University/College)- (1,2,3,4,5)
+        .notEmpty()
+        .withMessage("role not defined in body")
+        .bail()
+        .trim()
+        .isNumeric()
+        .withMessage("Invalid role")
+        .run(req)
+
+    await body('certificate')
+        .custom(async(value,{req})=>{
+            if(req.file===undefined ){
+                throw new Error("Empty file")
+            }  
+            if(req.file.mimetype !== 'application/pdf'){
+                throw new Error("Invalid file type") 
+            }
+            else if(Number(req.file.size)>(1024*1024)){
+                throw new Error("File size exceeds the limit greater than 1MB")
+            }
+        })
+        .run(req)
+
+    next();
+}
 module.exports={
     addDetailsValidator,
     internDetailsValidator,
@@ -290,5 +497,11 @@ module.exports={
     scholarshipvalidator,
     SemMarkValidator,
     MarksheetValidator,
-    addSubElectivesValidator
+    addSubElectivesValidator,
+    addWorkshopValidator,
+    addExtraCoursesValidator,
+    PaperPublishingValidator,
+    HigherEducationValidator,
+    EventHackathonValidator
+
 }

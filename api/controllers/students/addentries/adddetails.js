@@ -1,6 +1,6 @@
 var logger = require("../../../utils/log")(module);
 const { Degree } = require("../../../models/comod");
-var {Scholarship,InternProjects,Placement, StudentSem, Students}=require("../../../models/students");
+var {Scholarship,InternProjects,Placement, StudentSem, Students,Workshops,ExtraCourses,EventHackathon,PaperPublished,HigherEducation}=require("../../../models/students");
 const {containerClient}=require("../../../utils/azureconfig");
 
 
@@ -102,4 +102,149 @@ const addSubElectives=async(req,res)=>{
         return res.status(500).send({message:"Server Error"});
     }
 }
-module.exports={addintern,addplacement,addscholarship,addSubElectives}
+const addWorkshops=async(req,res)=>{
+    try{
+
+        let entry={
+            name:req.body.name,
+            heldby:req.body.heldby,
+            dateattended:req.body.dateattended,
+            studentStId:res.locals._id
+
+        }
+        
+        const checkExists=await Workshops.findOne({where:entry})
+        if(checkExists){
+            return res.status(400).send({message:"Already exists."})
+        }
+        else{
+            const blobname=res.locals._id+"_workshop_"+Date.now()+".pdf";
+            const blockBlobClient = containerClient("workshopcertificates").getBlockBlobClient(blobname);
+            const data =req.file.buffer;
+            await blockBlobClient.upload(data, data.length);
+            entry.certificate=blobname;
+           
+
+            await Workshops.create(entry);
+            return res.status(200).send({message:"Added Successfully!"});
+        }
+    }
+    catch(err){
+        logger.error(err);
+        return res.status(500).send({message:"Server Error Try again"})
+    }
+}
+const addExtraCourses=async(req,res)=>{
+    try{
+        let entry={
+            name:req.body.name,
+            duration:req.body.duration,
+            typeofcourse:req.body.typeofcourse,
+            studentStId:res.locals._id
+        }
+        const checkExists=await ExtraCourses.findOne({where:entry})
+        if(checkExists){
+            return res.status(400).send({message:"Already exists."})
+        }
+        else{
+            const blobname=res.locals._id+"_extracourse_"+Date.now()+".pdf";
+            const blockBlobClient = containerClient("extracourseproofs").getBlockBlobClient(blobname);
+            const data =req.file.buffer;
+            await blockBlobClient.upload(data, data.length);
+            entry.certificate=blobname;
+            await ExtraCourses.create(entry);
+            return res.status(200).send({message:"Added Successfully!"});
+        }
+
+
+    }
+    catch(err){
+        logger.error(err);
+        return res.status(500).send({message:"Server Error Try again"})
+    }
+}
+const addPaperPublishing=async(req,res)=>{
+    try{
+        let entry={
+            authors:req.body.authors,
+            title:req.body.title,
+            journalname:req.body.journalname,
+            doilink:req.body.doilink,
+            Category:Number(req.body.Category),//- (SCI-E / SCI / Scopus / WOS / National / International Conference / Workshop / Symposium) - (1,2,3,4,5,6,7,8)
+            studentStId:res.locals._id,
+        }
+        const checkExists=await PaperPublished.findOne({where:entry});
+        if(checkExists){
+            return res.status(400).send({message:"Already exists."})
+        }
+        else{
+            await PaperPublished.create(entry);
+            return res.status(200).send({message:"Added Successfully!"});
+        }
+    }
+    catch(err){
+        logger.error(err);
+        return res.status(500).send({message:"Server Error Try again"})
+    }
+}
+
+const addHigherEducation=async(req,res)=>{
+    try{
+        let entry={
+            universityname:req.body.universityname,
+            yearofadmission:Number(req.body.yearofadmission),
+            specialization:req.body.specialization,
+            degreename:req.body.degreename,
+            studentStId:res.locals._id,
+        }
+        const checkExists=await HigherEducation.findOne({where:entry});
+        if(checkExists){
+            return res.status(400).send({message:"Already exists."})
+        }
+        else{
+            await HigherEducation.create(entry);
+            return res.status(200).send({message:"Added Successfully!"});
+        }
+    }
+    catch(err)
+    {
+        logger.error(err);
+        return res.status(500).send({message:"Server Error Try again"})
+    }
+}
+
+const addEventHackathon=async(req,res)=>{
+    try{
+        let entry={
+            name:req.body.name,
+            role:Number(req.body.role),//( Organized/ Participated/ Won) - (1,2,3)
+            organizedBy:req.body.organizedBy,
+            dateattended:req.body.dateattended,
+            participationlevel:Number(req.body.participationlevel),// (International/National/State/University/College)- (1,2,3,4,5)
+            studentStId:res.locals._id,
+        }
+        const checkExists=await EventHackathon.findOne({where:entry})
+        if(checkExists){
+            return res.status(400).send({message:"Already exists."})
+        }
+        else{
+            const blobname=res.locals._id+"_eventhackathon_"+Date.now()+".pdf";
+            const blockBlobClient = containerClient("eventhackathonproofs").getBlockBlobClient(blobname);
+            const data =req.file.buffer;
+            await blockBlobClient.upload(data, data.length);
+            entry.certificate=blobname;
+            
+            await EventHackathon.create(entry);
+            return res.status(200).send({message:"Added Successfully!"});
+
+        }
+
+    }
+    catch(err)
+    {
+        logger.error(err);
+        return res.status(500).send({message:"Server Error Try again"})
+    }
+
+}
+module.exports={addintern,addplacement,addscholarship,addSubElectives,addWorkshops,addExtraCourses,addPaperPublishing,addHigherEducation,addEventHackathon}

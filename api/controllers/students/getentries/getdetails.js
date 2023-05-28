@@ -1,10 +1,10 @@
 var logger = require("../../../utils/log")(module);
 
 const {Subjects,Degree}=require("../../../models/comod");
-const {InternProjects,Placement,StuPersonalDetails,Scholarship,Students,MarksheetProofs}=require("../../../models/students")
+const {InternProjects,Placement,StuPersonalDetails,Scholarship,Students,MarksheetProofs,Workshops,ExtraCourses,EventHackathon,PaperPublished,HigherEducation}=require("../../../models/students")
 const {containerClient,azureBlobSaSUrl}=require("../../../utils/azureconfig");
 
-const sequelize = require("sequelize");
+
 
 const getInterndetails=async(req,res)=>{
     try{
@@ -173,4 +173,99 @@ const getMarkSheet=async(req,res)=>{
         return res.status(500).send({message:"Server Error Try again."});
     }
 }
-module.exports={getInterndetails,getplacement,getPersonalDetails,getScholarship,studentsemscount,getSubjects,getMarkSheet}
+
+const getWorkshops=async(req,res)=>{
+    try{
+        const workDetails=await Workshops.findAll({where:{studentStId:res.locals._id}});
+
+        if(workDetails){
+            for(let i=0;i<workDetails.length;i++){
+                workDetails[i]['certificate']=await azureBlobSaSUrl("workshopcertificates",workDetails[i]['certificate']);
+            }
+            return res.status(200).send({message:workDetails});
+        }
+        else{
+            return res.status(400).send({message:"No entry found.."});
+        }
+    }
+    catch(err){
+        logger.error(err);
+        return res.status(500).send({message:"Server Error Try again."});
+    }
+
+}
+
+const getExtraCourses=async(req,res)=>{
+    try{
+        const ExtraCoursesDetails=await ExtraCourses.findAll({where:{studentStId:res.locals._id}});
+
+        if(ExtraCoursesDetails){
+            for(let i=0;i<ExtraCoursesDetails.length;i++){
+                ExtraCoursesDetails[i]['certificate']=await azureBlobSaSUrl("extracourseproofs",ExtraCoursesDetails[i]['certificate']);
+
+            }
+            return res.status(200).send({message:ExtraCoursesDetails});
+        }
+        else{
+            return res.status(400).send({message:"No entry found.."});
+        }
+    }
+    catch(err){
+        logger.error(err);
+        return res.status(500).send({message:"Server Error Try again."});
+    }
+}
+
+const getPaperPublishing=async(req,res)=>{
+    try{
+        const PaperPublishedDetails=await PaperPublished.findAll({where:{studentStId:res.locals._id}});
+
+        if(PaperPublishedDetails){
+            return res.status(200).send({message:PaperPublishedDetails});
+        }
+        else{
+            return res.status(400).send({message:"No entry found.."});
+        }
+    }
+    catch(err){
+        logger.error(err);
+        return res.status(500).send({message:"Server Error Try again."});
+    }
+
+}
+
+const getHigherEducation=async(req,res)=>{
+    try{
+        const HigherEducationDetails=await HigherEducation.findAll({where:{studentStId:res.locals._id}});
+        if(HigherEducationDetails){
+            return res.status(200).send({message:HigherEducationDetails});
+        }
+        else{
+            return res.status(400).send({message:"No entry found.."});
+        }
+    }
+    catch(err){
+        logger.error(err);
+        return res.status(500).send({message:"Server Error Try again."});
+    }
+}
+
+const getEventHackathon=async(req,res)=>{
+    try{
+        const EventHackathonDetails=await EventHackathon.findAll({where:{studentStId:res.locals._id}});
+        if(EventHackathonDetails){
+            for(let i=0;i<EventHackathonDetails.length;i++){
+                EventHackathonDetails[i]['certificate']=await azureBlobSaSUrl("eventhackathonproofs",EventHackathonDetails[i]['certificate']);
+            }
+            return res.status(200).send({message:EventHackathonDetails});
+            
+        }else{
+            return res.status(400).send({message:"No entry found.."});
+        }
+    }
+    catch(err){
+        logger.error(err);
+        return res.status(500).send({message:"Server Error Try again."});
+    }
+}
+module.exports={getInterndetails,getplacement,getPersonalDetails,getScholarship,studentsemscount,getSubjects,getMarkSheet,getWorkshops,getExtraCourses,getPaperPublishing,getHigherEducation,getEventHackathon}
