@@ -1183,6 +1183,402 @@
 			]
 		},
 		{
+			"name": "get-admin-ProjectReport",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{admintoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/admin/getProjectReport?batchId=1&degreeDegid=1&regulationRegid=1&distDepartmentDeptid=1",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"admin",
+						"getProjectReport"
+					],
+					"query": [
+						{
+							"key": "batchId",
+							"value": "1"
+						},
+						{
+							"key": "degreeDegid",
+							"value": "1"
+						},
+						{
+							"key": "regulationRegid",
+							"value": "1"
+						},
+						{
+							"key": "distDepartmentDeptid",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get-admin-Scholarshipreport",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseapiurl}}/admin/getscholarship?batchId=1&degreeDegid=1&regulationRegid=1&distDepartmentDeptid=1",
+							"host": [
+								"{{baseapiurl}}"
+							],
+							"path": [
+								"admin",
+								"getscholarship"
+							],
+							"query": [
+								{
+									"key": "batchId",
+									"value": "1"
+								},
+								{
+									"key": "degreeDegid",
+									"value": "1"
+								},
+								{
+									"key": "regulationRegid",
+									"value": "1"
+								},
+								{
+									"key": "distDepartmentDeptid",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1238"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4d6-cif1xwrd9OermEgyfQULnw7NZKE\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 May 2023 10:31:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": [\n        {\n            \"firstname\": \"Srirambabu\",\n            \"lastname\": \"R K\",\n            \"community\": \"hack\",\n            \"rollnumber\": \"2020115093\",\n            \"mailid\": \"ubabmarirs@gmail.com\",\n            \"scholarshipname\": \"Cordoba\",\n            \"scholarshipamount\": 250000,\n            \"fileurl\": \"https://distceg.blob.core.windows.net/scholarshiproofs/26_scholarship2023_1683470820306.pdf?st=2023-05-28T10%3A31%3A27Z&se=2023-05-28T10%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=cwlD6%2F9i1LkqkEiNHNCDCVahH9PeiTZINihztn6AXlQ%3D\"\n        },\n        {\n            \"firstname\": \"user\",\n            \"lastname\": \"B\",\n            \"community\": null,\n            \"rollnumber\": \"2020115040\",\n            \"mailid\": \"neonlite91@gmail.com\",\n            \"scholarshipname\": \"UIC-Franc\",\n            \"scholarshipamount\": 500000,\n            \"fileurl\": \"https://distceg.blob.core.windows.net/scholarshiproofs/27_scholarship2022_1685269838434.pdf?st=2023-05-28T10%3A31%3A27Z&se=2023-05-28T10%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=69AcdnXLTssWNFwqye5X866Z6Vs2mfi%2FM8qiEYQtXJU%3D\"\n        },\n        {\n            \"firstname\": \"user\",\n            \"lastname\": \"B\",\n            \"community\": null,\n            \"rollnumber\": \"2020115040\",\n            \"mailid\": \"neonlite91@gmail.com\",\n            \"scholarshipname\": \"Operations\",\n            \"scholarshipamount\": 10000,\n            \"fileurl\": \"https://distceg.blob.core.windows.net/scholarshiproofs/27_scholarship2021_1685269858612.pdf?st=2023-05-28T10%3A31%3A27Z&se=2023-05-28T10%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=Ch%2BoNCo8ad4QU3ZjcJ5SikULMRJ6YkJJc%2FcfCqKId44%3D\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "get-admin-getPlacementReport",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{admintoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/admin/getPlacementReport?batchId=1&degreeDegid=1&regulationRegid=1&distDepartmentDeptid=1",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"admin",
+						"getPlacementReport"
+					],
+					"query": [
+						{
+							"key": "batchId",
+							"value": "1"
+						},
+						{
+							"key": "degreeDegid",
+							"value": "1"
+						},
+						{
+							"key": "regulationRegid",
+							"value": "1"
+						},
+						{
+							"key": "distDepartmentDeptid",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get-admin-getPlacementReport",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseapiurl}}/admin/getPlacementReport?batchId=1&degreeDegid=1&regulationRegid=1&distDepartmentDeptid=1",
+							"host": [
+								"{{baseapiurl}}"
+							],
+							"path": [
+								"admin",
+								"getPlacementReport"
+							],
+							"query": [
+								{
+									"key": "batchId",
+									"value": "1"
+								},
+								{
+									"key": "degreeDegid",
+									"value": "1"
+								},
+								{
+									"key": "regulationRegid",
+									"value": "1"
+								},
+								{
+									"key": "distDepartmentDeptid",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "298"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"12a-VHLcTmSDO4o1ZWGorHBjoEoz5G8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 May 2023 14:09:49 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": [\n        {\n            \"rollnumber\": \"2020115040\",\n            \"firstname\": \"user\",\n            \"lastname\": \"B\",\n            \"companyname\": \"WELLS FARGO\",\n            \"selection\": false,\n            \"salary\": 3000000,\n            \"comptype\": \"1\"\n        },\n        {\n            \"rollnumber\": \"2020115093\",\n            \"firstname\": \"Srirambabu\",\n            \"lastname\": \"R K\",\n            \"companyname\": \"SC BANK\",\n            \"selection\": false,\n            \"salary\": 20000000,\n            \"comptype\": \"1\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "get-admin-getInternshipReport",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{admintoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/admin/getInternshipsReport?batchId=1&degreeDegid=1&regulationRegid=1&distDepartmentDeptid=1",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"admin",
+						"getInternshipsReport"
+					],
+					"query": [
+						{
+							"key": "batchId",
+							"value": "1"
+						},
+						{
+							"key": "degreeDegid",
+							"value": "1"
+						},
+						{
+							"key": "regulationRegid",
+							"value": "1"
+						},
+						{
+							"key": "distDepartmentDeptid",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get-admin-getInternshipReport",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseapiurl}}/admin/getInternshipsReport?batchId=1&degreeDegid=1&regulationRegid=1&distDepartmentDeptid=1",
+							"host": [
+								"{{baseapiurl}}"
+							],
+							"path": [
+								"admin",
+								"getInternshipsReport"
+							],
+							"query": [
+								{
+									"key": "batchId",
+									"value": "1"
+								},
+								{
+									"key": "degreeDegid",
+									"value": "1"
+								},
+								{
+									"key": "regulationRegid",
+									"value": "1"
+								},
+								{
+									"key": "distDepartmentDeptid",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "339"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"153-3Z/y5mkJM1qqklw4iB/UdyXgEI0\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 May 2023 14:10:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": [\n        {\n            \"rollnumber\": \"2020115040\",\n            \"firstname\": \"user\",\n            \"lastname\": \"B\",\n            \"companyname\": \"ARAB\",\n            \"from\": \"2002-12-12\",\n            \"to\": \"2002-12-12\",\n            \"details\": \"Assistant quantify navigating\"\n        },\n        {\n            \"rollnumber\": \"2020115040\",\n            \"firstname\": \"user\",\n            \"lastname\": \"B\",\n            \"companyname\": \"BUCKINGHAMSHIRE\",\n            \"from\": \"2002-12-12\",\n            \"to\": \"2002-12-12\",\n            \"details\": \"Berkshire Licensed\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
 			"name": "get-admin-getBatches",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -2798,6 +3194,102 @@
 			]
 		},
 		{
+			"name": "get-student-Projects",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/getProjects",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"getProjects"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get-student-Higher Education",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseapiurl}}/student/getHigherEducation",
+							"host": [
+								"{{baseapiurl}}"
+							],
+							"path": [
+								"student",
+								"getHigherEducation"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "684"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2ac-luz8PZXz8Tke0hb6fWnlASZO6Ls\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 May 2023 06:39:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"universityname\": \"ZERO CORPORATE\",\n            \"yearofadmission\": 2022,\n            \"specialization\": \"instruction\",\n            \"degreename\": \"M.Tech\",\n            \"createdAt\": \"2023-05-28T06:38:18.736Z\",\n            \"updatedAt\": \"2023-05-28T06:38:18.736Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 2,\n            \"universityname\": \"CROSS-PLATFORM WISCONSIN MOBILE ERGONOMIC\",\n            \"yearofadmission\": 2022,\n            \"specialization\": \"knowledge\",\n            \"degreename\": \"M.Tech\",\n            \"createdAt\": \"2023-05-28T06:38:21.435Z\",\n            \"updatedAt\": \"2023-05-28T06:38:21.435Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 3,\n            \"universityname\": \"RUBLE OPERATIONS MARKETS\",\n            \"yearofadmission\": 2022,\n            \"specialization\": \"Mouse\",\n            \"degreename\": \"M.Tech\",\n            \"createdAt\": \"2023-05-28T06:38:23.029Z\",\n            \"updatedAt\": \"2023-05-28T06:38:23.029Z\",\n            \"studentStId\": 26\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
 			"name": "student-adding elective subjects",
 			"request": {
 				"auth": {
@@ -3001,6 +3493,72 @@
 					"path": [
 						"student",
 						"addPaperPublishing"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "student-adding PaperPublishing Copy",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "{{$randomWords}}",
+							"type": "text"
+						},
+						{
+							"key": "guidename",
+							"value": "{{$randomWords}}",
+							"type": "text"
+						},
+						{
+							"key": "fromperiod",
+							"value": "2002/12/12",
+							"type": "text"
+						},
+						{
+							"key": "toperiod",
+							"value": "2003/12/12",
+							"type": "text"
+						},
+						{
+							"key": "sourcecodelink",
+							"value": "{{$randomUrl}}",
+							"type": "text"
+						},
+						{
+							"key": "certificate",
+							"type": "file",
+							"src": "/Users/kanivan/Downloads/Bayesian Classification.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseapiurl}}/student/addProjects",
+					"host": [
+						"{{baseapiurl}}"
+					],
+					"path": [
+						"student",
+						"addProjects"
 					]
 				}
 			},
@@ -3568,14 +4126,18 @@
 		{
 			"name": "student-adding intern details",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{studenttoken}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
-				"header": [
-					{
-						"key": "access-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
-						"type": "default"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "urlencoded",
 					"urlencoded": [
@@ -3702,7 +4264,7 @@
 		},
 		{
 			"key": "studenttoken",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiU3R1ZGVudCIsImlkIjoyNywibWFpbCI6Im5lb25saXRlOTFAZ21haWwuY29tIiwicmVnbnVtIjoiMjAyMDExNTA0MCIsInRvdGFsX3NlbSI6OCwiaWF0IjoxNjg1MjY5Nzk3LCJleHAiOjE2ODUzNTYxOTd9.u-FD4i4VxFxnlPAPn9QQHu8oKAbHpyMdBjEz8h29HKQ",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiU3R1ZGVudCIsImlkIjoyNywibWFpbCI6Im5lb25saXRlOTFAZ21haWwuY29tIiwicmVnbnVtIjoiMjAyMDExNTA0MCIsInRvdGFsX3NlbSI6OCwiaWF0IjoxNjg1Mjc3NTQwLCJleHAiOjE2ODUzNjM5NDB9.3Dr_rUz3mfJUJOx4fDDMqsbAwAqbyy9mC1vs-xPaTEU",
 			"type": "string"
 		},
 		{

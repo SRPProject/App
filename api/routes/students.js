@@ -7,8 +7,8 @@ const  DetailsValidator=require("../validators/DetailsValidator");
 const { validate } = require("../validators/index");
 const {getstudentsem}=require("../controllers/students/getentries/getstudentsem");
 const {updatesem,uploadMarkSheet}=require("../controllers/students/updateentries/semmark");
-const {addintern,addplacement, addscholarship,addSubElectives,addWorkshops,addExtraCourses,addPaperPublishing,addHigherEducation,addEventHackathon}=require("../controllers/students/addentries/adddetails");
-const {getInterndetails,getplacement,getPersonalDetails,getScholarship,studentsemscount,getSubjects,getMarkSheet,getWorkshops,getExtraCourses,getPaperPublishing,getHigherEducation,getEventHackathon}=require("../controllers/students/getentries/getdetails")
+const {addintern,addplacement, addscholarship,addSubElectives,addWorkshops,addExtraCourses,addPaperPublishing,addHigherEducation,addEventHackathon,addProjects}=require("../controllers/students/addentries/adddetails");
+const {getInterndetails,getplacement,getPersonalDetails,getScholarship,studentsemscount,getSubjects,getMarkSheet,getWorkshops,getExtraCourses,getPaperPublishing,getHigherEducation,getEventHackathon,getProjects}=require("../controllers/students/getentries/getdetails")
 
 const multer=require("multer");
 const upload=multer({storage:multer.memoryStorage({})});
@@ -84,6 +84,13 @@ router.post("/addEventHackathon",
     addEventHackathon
 )
 
+router.post("/addProjects",
+    upload.single('certificate'),
+    DetailsValidator.ProjectsValidator,
+    validate,
+    addProjects
+)
+
 router.get("/studentsemcount",studentsemscount);
 router.get("/getPersonalDetails",getPersonalDetails)
 router.get("/studentsem", getstudentsem)
@@ -96,7 +103,8 @@ router.get('/getworkshops',getWorkshops);
 router.get('/getextracourses',getExtraCourses);
 router.get("/getPaperPublishing",getPaperPublishing);
 router.get("/getHigherEducation",getHigherEducation);
-router.get("/getEventHackathon",getEventHackathon)
+router.get("/getEventHackathon",getEventHackathon);
+router.get("/getProjects",getProjects);
 
 router.use(function(req, res, next) {
     return res.status(404).send({message:"Not Found"});

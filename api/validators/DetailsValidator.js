@@ -130,6 +130,8 @@ const internDetailsValidator=async(req,res,next)=>{
     await body("inname")
         .notEmpty()
 		.withMessage("Intern name not defined")
+        .trim()
+        .toUpperCase()
 		.run(req)
     await body("fromperiod")
         .notEmpty()
@@ -155,6 +157,8 @@ const placementDetailsValidator=async(req,res,next)=>{
     await body("compname")
         .notEmpty()
 		.withMessage("Company name not defined")
+        .trim()
+        .toUpperCase()
 		.run(req)
     await body("selection")
         .notEmpty()
@@ -183,6 +187,8 @@ const scholarshipvalidator=async(req,res,next)=>{
     await body("name")
         .notEmpty()
         .withMessage("Scholarship name not defined")
+        .trim()
+        .toUpperCase()
         .run(req)
     await body("ryear")
         .notEmpty()
@@ -490,6 +496,73 @@ const EventHackathonValidator=async(req,res,next)=>{
 
     next();
 }
+
+const ProjectsValidator=async(req,res,next)=>{
+    await body("title")
+        .notEmpty()
+        .withMessage("Title not defined in body")
+        .trim()
+        .toUpperCase()
+        .run(req)
+
+    await body("guidename")
+        .notEmpty()
+        .withMessage("Guide Name not defined in body")
+        .trim()
+        .toUpperCase()
+        .run(req)
+
+    await body("fromperiod")
+        .notEmpty()
+        .withMessage("fromperiod not defined")
+        .bail()
+        .isDate()
+        .withMessage("fromperiod must be a valid date")
+        .run(req)   
+    await body("toperiod")
+        .notEmpty()
+        .withMessage("toperiod not defined")
+        .bail()
+        .isDate()
+        .withMessage("toperiod must be a valid date")
+        .run(req)   
+
+    await body("toperiod")
+        .custom(async(value,{req})=>{
+            if(req.body.toperiod && req.body.fromperiod){
+                if(new Date(req.body.toperiod)<= new Date(req.body.fromperiod)){
+                    throw new Error("toperiodd should be greater than from period");
+                }
+            }
+           
+        })
+        .run(req)
+
+    await body("sourcecodelink")
+        .notEmpty()
+        .withMessage("sourcecodelink not defined")
+        .bail()
+        .isURL()
+        .withMessage("sourcecodelink not valid")
+        .run(req)  
+
+    await body('certificate')
+        .custom(async(value,{req})=>{
+            if(req.file===undefined ){
+                throw new Error("Empty file")
+            }  
+            if(req.file.mimetype !== 'application/pdf'){
+                throw new Error("Invalid file type") 
+            }
+            else if(Number(req.file.size)>(1024*1024)){
+                throw new Error("File size exceeds the limit greater than 1MB")
+            }
+        })
+        .run(req)
+    
+    next()
+
+}
 module.exports={
     addDetailsValidator,
     internDetailsValidator,
@@ -502,6 +575,7 @@ module.exports={
     addExtraCoursesValidator,
     PaperPublishingValidator,
     HigherEducationValidator,
-    EventHackathonValidator
+    EventHackathonValidator,
+    ProjectsValidator
 
 }

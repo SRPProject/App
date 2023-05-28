@@ -165,7 +165,7 @@ const StudentSem=sequelize.define("studentsems",{
     freezeTableName: true
 })
 
-const InternProjects=sequelize.define("internprojects",{
+const Internships=sequelize.define("internships",{
     id:{
     allowNull:false,
     type: DataTypes.INTEGER,
@@ -377,7 +377,46 @@ const HigherEducation=sequelize.define("highereducation",{
         validate:{notNull:true,notEmpty: true }
     }
 })
-module.exports={StuPersonalDetails,Students,Scholarship,StudentSem,InternProjects,Placement,MarksheetProofs,Workshops,ExtraCourses,EventHackathon,PaperPublished,HigherEducation}
+
+const Projects=sequelize.define("projects",{
+    id:{ allowNull:false,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    title:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    },
+    guidename:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    },
+    fromperiod:{
+        allowNull:false,
+        type:DataTypes.DATEONLY,
+        validate:{notNull:true,notEmpty: true }
+    },
+    toperiod:{
+        allowNull:false,
+        type:DataTypes.DATEONLY,
+        validate:{notNull:true,notEmpty: true }
+    },
+    certificate:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    },
+    sourcecodelink:{
+        allowNull:false,
+        type:DataTypes.TEXT,
+        validate:{notNull:true,notEmpty: true }
+    }
+
+})
+module.exports={StuPersonalDetails,Students,Scholarship,StudentSem,Internships,Placement,MarksheetProofs,Workshops,ExtraCourses,EventHackathon,PaperPublished,HigherEducation,Projects}
 
 
 
