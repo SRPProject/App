@@ -1,29 +1,41 @@
-import {
-  Typography,
-  Button,
-  Stepper,
-  StepLabel,
-  Step,
-  Card,
-  MenuList,
-  MenuItem,
-  Icon,
-  TextField,
-} from "@mui/material";
-import React, { useState } from "react";
+import { Typography, Button, Stepper, StepLabel, Step } from "@mui/material";
+import React, { useState, useRef, useEffect } from "react";
 import "./index.scss";
-import { DoneRounded } from "@mui/icons-material";
+import SelectOption from "./SelectOption";
+import UploadFile from "./UploadFile";
+import axiosObj from "../../api";
+import FormData from "form-data";
 
 const Student = () => {
   const degree = ["MSC", "BSC", "B.Tech", "M.Tech", "M.sc"];
 
   const batch = ["2021-2024", "2021-2025"];
 
+  const regulation = ["R2021", "R2019"];
+
   const steps = ["Select Options", "Upload Excel", "Confirm"];
 
   const [activeStep, setActiveStep] = useState(0);
 
-  console.log(activeStep);
+  const [url, setUrl] = useState("");
+
+  const dRef = useRef({
+    studentslist: null,
+    facultyFacid: 7,
+    distDepartmentDeptid: 1,
+    regulationRegid: 1,
+    degreeDegid: 1,
+    batchId: 1,
+  });
+
+  useEffect(() => {
+    (async function () {
+      const endpoint = "/admin/getbulkStudentssheet";
+      const resp = await axiosObj.get(endpoint);
+      setUrl(resp.data.message);
+      console.log(resp.data);
+    })();
+  }, []);
 
   return (
     <div className="student">
@@ -43,143 +55,54 @@ const Student = () => {
             setActiveStep={setActiveStep}
             degree={degree}
             batch={batch}
+            regulation={regulation}
+            dRef={dRef}
           />
         )}
-        {activeStep == 1 && <UploadFile setActiveStep={setActiveStep} />}
-        {activeStep == 2 && <Confirm setActiveStep={setActiveStep} />}
+        {activeStep == 1 && (
+          <UploadFile dRef={dRef} url={url} setActiveStep={setActiveStep} />
+        )}
+        {activeStep == 2 && (
+          <Confirm dRef={dRef} setActiveStep={setActiveStep} />
+        )}
       </div>
     </div>
   );
 };
 
-const SelectOption = ({
+const submit = async (arr: any) => {
+  const endpoint = "admin/addBulkStudents";
+
+  let data = new FormData();
+
+  Object.keys(arr).map((el: any) => {
+    console.log(el);
+    data.append(el, arr[[el]]);
+  });
+
+  const resp = await axiosObj.post(endpoint, data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+
+  console.log(resp);
+};
+
+const Confirm = ({
   setActiveStep,
-  batch,
-  degree,
+  dRef,
 }: {
   setActiveStep: any;
-  batch: any;
-  degree: any;
+  dRef: any;
 }) => {
-  const [selectedDegree, setSelectedDegree] = useState(0);
-  const [selectedBatch, setSelectedBatch] = useState(0);
-  return (
-    <div className="container">
-      <Card sx={{ padding: "2rem" }}>
-        <Typography variant="h5">Select Degree</Typography>
-        <MenuList>
-          {degree.map((el: any, index: any) => {
-            const temp = index == selectedDegree;
-
-            return (
-              <MenuItem
-                style={{
-                  backgroundColor: temp && "aliceblue",
-                  display: "flex",
-                  flexDirection: "row",
-                  gap: "1rem",
-                  alignItems: "center",
-                }}
-                onClick={() => {
-                  setSelectedDegree(index);
-                }}
-              >
-                {temp && (
-                  <Icon>
-                    <DoneRounded />
-                  </Icon>
-                )}
-
-                {el}
-              </MenuItem>
-            );
-          })}
-        </MenuList>
-      </Card>
-
-      <Card sx={{ padding: "2rem" }}>
-        <Typography variant="h5">Select Batch</Typography>
-        <MenuList>
-          {batch.map((el: any, index: any) => {
-            const temp = index == selectedBatch;
-
-            return (
-              <MenuItem
-                style={{
-                  backgroundColor: temp && "aliceblue",
-                  display: "flex",
-                  flexDirection: "row",
-                  gap: "1rem",
-                  alignItems: "center",
-                }}
-                onClick={() => {
-                  setSelectedBatch(index);
-                }}
-              >
-                {temp && (
-                  <Icon>
-                    <DoneRounded />
-                  </Icon>
-                )}
-
-                {el}
-              </MenuItem>
-            );
-          })}
-        </MenuList>
-      </Card>
-
-      <Button
-        variant="contained"
-        style={{ alignSelf: "flex-start" }}
-        onClick={() => setActiveStep(1)}
-      >
-        Next
-      </Button>
-    </div>
-  );
-};
-
-const UploadFile = ({ setActiveStep }: { setActiveStep: any }) => {
-  return (
-    <div className="container">
-      <a>Download Sample Excel file</a>
-
-      <TextField
-        inputProps={{
-          accept:
-            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        }}
-        type="file"
-      ></TextField>
-      <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-        <Button
-          variant="contained"
-          style={{ alignSelf: "flex-start" }}
-          onClick={() => setActiveStep(0)}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="contained"
-          style={{ alignSelf: "flex-start" }}
-          onClick={() => setActiveStep(2)}
-        >
-          Next
-        </Button>
-      </div>
-    </div>
-  );
-};
-
-const Confirm = ({ setActiveStep }: { setActiveStep: any }) => {
   return (
     <div className="container">
       <ul>
         <li>Make sure excel sheet format is valid</li>
         <li>Once students added , it is difficult to modify</li>
       </ul>
-      <Typography>Are You sure?</Typography>
+      <Typography>Are You sure of adding students?</Typography>
 
       <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
         <Button
@@ -189,7 +112,13 @@ const Confirm = ({ setActiveStep }: { setActiveStep: any }) => {
         >
           Previous
         </Button>
-        <Button variant="contained" style={{ alignSelf: "flex-start" }}>
+        <Button
+          variant="contained"
+          style={{ alignSelf: "flex-start" }}
+          onClick={() => {
+            submit(dRef.current);
+          }}
+        >
           Confirm
         </Button>
       </div>
