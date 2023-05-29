@@ -14,6 +14,7 @@ const multer=require("multer");
 const upload=multer({storage:multer.memoryStorage({})});
 
 
+
 router.post("/updateStudentPersonal",
     DetailsValidator.addDetailsValidator,
     validate,

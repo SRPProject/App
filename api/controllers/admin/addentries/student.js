@@ -16,14 +16,12 @@ const addStudent=async(req,res)=>{
         });
         
         if(checkacc){
-            return res.status(401).send({message:"Student account already exists for roll number : "+req.body.regnum});
+            return res.status(400).send({message:"Student account already exists for roll number : "+req.body.regnum});
         }
         else{
             //getting no of semester from degrees
 
             const semcount=await Degree.findByPk(req.body.degreeDegid);
-
-            
         
             const createacc=await Students.create({
                 regnum: req.body.regnum,
@@ -82,7 +80,7 @@ const addStudent=async(req,res)=>{
     }
     catch(err){
         logger.error(err);
-        return res.status(500).send({message:"Server Error Try again"})
+        return res.status(400).send({message:err.message})
     }
 }
 const extractDatafromExcel=async(req,res)=>{
@@ -94,7 +92,7 @@ const extractDatafromExcel=async(req,res)=>{
     }
     catch(err){
         logger.error(err);
-        return res.status(500).send({message:"Server Error Try again"})
+        return res.status(400).send({message:err.message})
     }
 }
 const addBulkStudents=async (req,res)=>{
@@ -185,20 +183,20 @@ const addBulkStudents=async (req,res)=>{
             }
         }
 
-        console.log("personalentries");
-        console.log(personalentries);
+        // console.log("personalentries");
+        // console.log(personalentries);
 
         await StuPersonalDetails.bulkCreate(personalentries);
 
 
-        console.log("marksheetentry");
-        console.log(marksheetentry);
+        // console.log("marksheetentry");
+        // console.log(marksheetentry);
 
         await MarksheetProofs.bulkCreate(marksheetentry);
 
 
-        console.log("StdSemEntry");
-        console.log(StdSemEntry);
+        // console.log("StdSemEntry");
+        // console.log(StdSemEntry);
 
         await StudentSem.bulkCreate(StdSemEntry);
 
@@ -213,7 +211,12 @@ const addBulkStudents=async (req,res)=>{
     }
     catch(err){
         logger.error(err);
-        return res.status(500).send({message:"Server Error Try again"})
+    
+        if(err.name==="SequelizeUniqueConstraintError")
+            return res.status(400).send({message:"Student(s) already exists"});
+
+        return res.status(500).send({message:"Server Error"})
+
     }
 }
 

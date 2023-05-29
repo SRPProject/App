@@ -40,7 +40,7 @@ app.use((req,res,next)=>{
   
     res.locals.role = data.role 
     res.locals._id = data.id 
-    
+  
     next() 
   }
   else  return res.status(401).send({message:"un-authorised , give me token!!"})
@@ -74,7 +74,7 @@ app.use('/api/student',
 
 
 app.use(function(req, res, next) {
-  return res.status(404)
+  return res.status(404).send()
 });
 
 

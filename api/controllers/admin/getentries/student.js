@@ -78,8 +78,7 @@ const getProjectReport=async(req,res)=>{
                             from 
                                 (select st_id,regnum,mail from "students"  where "students"."distDepartmentDeptid"=${rq.distDepartmentDeptid} and "students"."batchId"=${rq.batchId} and "students"."degreeDegid"=${rq.degreeDegid} as sttb 
                                 inner join studentpersonal on sttb.st_id=studentpersonal."studentStId" )
-                    as tb inner join "projects" on tb."st_id"=projects."studentStId"
-                    )  order by tb.regnum;
+                    as tb inner join "projects" on tb."st_id"=projects."studentStId") order by tb.regnum );
                 `
                 
             )

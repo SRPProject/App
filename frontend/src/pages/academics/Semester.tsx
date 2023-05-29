@@ -65,7 +65,6 @@ const Semester = ({
   console.log(data);
 
   useEffect(() => {
-
     if (sem in data) {
     } else {
       //request for getting student sem marks
@@ -105,7 +104,7 @@ const Semester = ({
 
       <VerficationFile sem={sem} />
 
-      <AddSubject />
+      <AddSubject sem={sem} />
 
       {loading ? (
         <Skeleton
@@ -376,7 +375,53 @@ const SubjectType = ({ data, updated }: { data: any; updated: any }) => {
   );
 };
 
-const AddSubject = () => {
+const AddSubject = ({ sem }: { sem: any }) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const [results, setResults] = useState([]);
+
+  const add = async (subid: any, sem: any) => {
+    const data = {
+      subjectSubid: subid,
+      semsubbelongs: sem,
+    };
+
+    const endpoint = "student/addSubElectives";
+
+    const resp = await axiosObj.post(endpoint, data);
+
+    if (resp.status == 200) {
+      toast.success("Subject Added Please Wait");
+
+      setTimeout(() => {
+        window.location = "/";
+      }, 3000);
+    } else {
+      toast.error(resp.data.message);
+    }
+  };
+
+  const submit = async () => {
+    setResults([]);
+    setSubmitting(true);
+
+    const endpoint = "student/getsubjects";
+
+    const resp = await axiosObj.get(endpoint, {
+      params: {
+        typeofsub: document.getElementById("typeofsub").value,
+      },
+    });
+    console.log(resp);
+    if (resp.status === 200) {
+      setResults(resp.data.message);
+    } else {
+      toast.error(resp.data.message);
+    }
+
+    setSubmitting(false);
+  };
+
   return (
     <div className="sub-types">
       <Typography
@@ -386,20 +431,26 @@ const AddSubject = () => {
         Add Subjects
       </Typography>
       <div>
-        <Card sx={{ padding: "1rem" }}>
+        <Card sx={{ padding: "1rem", display: "flex", alignItems: "center" }}>
           <Typography variant="caption">
             {" "}
             **Not this is not applicable for core subjects**
           </Typography>
-          <TextField
-            variant="outlined"
-            fullWidth
-            placeholder="Enter Subject Code"
+
+          <select id="typeofsub" style={{ margin: "0 2rem" }}>
+            <option selected value={2}>
+              Professional Elective
+            </option>
+            <option value={3}>Humanities</option>
+            <option value={4}>Audit Course</option>
+          </select>
+          <Button
+            disabled={submitting}
             size="small"
-            sx={{ margin: "1rem 0" }}
-          ></TextField>
-          <Button size="small" variant="contained">
-            Search
+            onClick={submit}
+            variant="contained"
+          >
+            Go
           </Button>
         </Card>
       </div>
@@ -410,7 +461,6 @@ const AddSubject = () => {
           borderRadius: "10px",
         }}
       >
-        <Typography>Results</Typography>
         <div
           style={{
             display: "flex",
@@ -420,11 +470,32 @@ const AddSubject = () => {
             marginTop: "1rem",
           }}
         >
-          <Typography>IT5017(Data-Structures)</Typography>
-          <Typography>Professional Electives</Typography>
-          <Button variant="contained" size="small">
-            Add Subject
-          </Button>
+          <div>
+            {results.map((el: any) => {
+              return (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-around",
+                    gap: "2rem",
+                  }}
+                >
+                  <Typography>{el.subcode}</Typography>
+                  <Typography>{el.subname}</Typography>
+                  <Button
+                    onClick={() => {
+                      add(el.subid, sem);
+                    }}
+                    variant="contained"
+                    size="small"
+                  >
+                    Add Subject
+                  </Button>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
@@ -460,20 +531,16 @@ const saveFile = async (sem: any) => {
 };
 
 export const VerficationFile = ({ sem }: { sem: number }) => {
-  
-
   const [loading, setLoading] = useState(true);
 
   const [uploaded, setUploaded] = useState(null);
 
-  console.log(loading)
+  console.log(loading);
 
   useEffect(() => {
-    
     (async function () {
-
       setLoading(true);
-      setUploaded(null) ;
+      setUploaded(null);
 
       const endpoint = "student/getMarkSheet";
 
@@ -481,7 +548,7 @@ export const VerficationFile = ({ sem }: { sem: number }) => {
 
       // file uploaded
       if (resp.status === 200) {
-        console.log(resp.data.message)
+        console.log(resp.data.message);
         setUploaded(resp.data.message);
       }
 
@@ -506,7 +573,7 @@ const FileUploaded = ({ url }: { url: String }) => {
   return (
     <div>
       <Typography variant="h5">
-      Verification File has already uploaded
+        Verification File has already uploaded
       </Typography>
       <a href={url} download={true}>
         Download

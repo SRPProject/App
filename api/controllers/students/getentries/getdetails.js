@@ -122,6 +122,7 @@ const getSubjects=async(req,res)=>{
          
          var condt="";
          const getStdDetails=await Students.findOne({where:{st_id:res.locals._id}});
+
          if(getStdDetails && req.query.typeofsub ){
             condt={
                 typeofsub:req.query.typeofsub,
@@ -141,7 +142,7 @@ const getSubjects=async(req,res)=>{
             }
          }
         else{
-            return res.status(400).send({message:"Are u invalid ?"});
+            return res.status(400).send({message:"Inavlid Request"});
         }
     }catch(err){
         logger.error(err);
