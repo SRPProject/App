@@ -124,7 +124,7 @@ const Subjects = () => {
           </select>
 
           <Button type="submit" disabled={submitting} variant="contained">
-            {submitting ? "Please Wait" : "Add Batch"}
+            {submitting ? "Please Wait" : "Add Subject"}
           </Button>
         </form>
       </Card>

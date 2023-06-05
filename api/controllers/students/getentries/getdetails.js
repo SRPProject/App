@@ -155,10 +155,15 @@ const getMarkSheet=async(req,res)=>{
         if(req.query.semno){
             const SemMarkSheet=await MarksheetProofs.findOne({where:{studentStId:res.locals._id,semno:req.query.semno}});
             if(SemMarkSheet){
-               
+               if(SemMarkSheet.marksheetname){
                 const marksheetURL=await azureBlobSaSUrl("marksheetproofs",SemMarkSheet.marksheetname);
 
                 return res.status(200).send({message:marksheetURL});
+               }
+               else{
+                return res.status(400).send({message:"No entry found.."});
+               }
+                
                 
             }
             else{

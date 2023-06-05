@@ -31,7 +31,7 @@ const getStudentScholarship=async(req,res)=>{
                     from (
                         (select studentpersonal.firstname,studentpersonal.lastname,studentpersonal.community,sttb.st_id,sttb.regnum,sttb.mail 
                             from 
-                                (select st_id,regnum,mail from "students"  where "students"."distDepartmentDeptid"=${rq.distDepartmentDeptid} and "students"."batchId"=${rq.batchId} and "students"."degreeDegid"=${rq.degreeDegid}  as sttb 
+                                (select st_id,regnum,mail from "students"  where "students"."distDepartmentDeptid"=${rq.distDepartmentDeptid} and "students"."batchId"=${rq.batchId} and "students"."degreeDegid"=${rq.degreeDegid}  )as sttb 
                                 inner join studentpersonal on sttb.st_id=studentpersonal."studentStId" )
                     as tb inner join "scholarships" on tb."st_id"=scholarships."studentStId" 
                     )order by tb.regnum;
@@ -76,9 +76,9 @@ const getProjectReport=async(req,res)=>{
                     from (
                         (select studentpersonal.firstname,studentpersonal.lastname,sttb.st_id,sttb.regnum
                             from 
-                                (select st_id,regnum,mail from "students"  where "students"."distDepartmentDeptid"=${rq.distDepartmentDeptid} and "students"."batchId"=${rq.batchId} and "students"."degreeDegid"=${rq.degreeDegid} as sttb 
+                                (select st_id,regnum,mail from "students"  where "students"."distDepartmentDeptid"=${rq.distDepartmentDeptid} and "students"."batchId"=${rq.batchId} and "students"."degreeDegid"=${rq.degreeDegid}) as sttb 
                                 inner join studentpersonal on sttb.st_id=studentpersonal."studentStId" )
-                    as tb inner join "projects" on tb."st_id"=projects."studentStId") order by tb.regnum );
+                    as tb inner join "projects" on tb."st_id"=projects."studentStId") order by tb.regnum ;
                 `
                 
             )
@@ -105,7 +105,7 @@ const getInternshipsReport=async(req,res)=>{
                     from (
                         (select studentpersonal.firstname,studentpersonal.lastname,sttb.st_id,sttb.regnum
                             from 
-                                (select st_id,regnum,mail from "students"  where "students"."distDepartmentDeptid"=${rq.distDepartmentDeptid} and "students"."batchId"=${rq.batchId} and "students"."degreeDegid"=${rq.degreeDegid}  as sttb 
+                                (select st_id,regnum,mail from "students"  where "students"."distDepartmentDeptid"=${rq.distDepartmentDeptid} and "students"."batchId"=${rq.batchId} and "students"."degreeDegid"=${rq.degreeDegid}  )as sttb 
                                 inner join studentpersonal on sttb.st_id=studentpersonal."studentStId" )
                     as tb inner join "internships" on tb."st_id"=internships."studentStId" 
                     ) order by tb.regnum;
@@ -131,7 +131,7 @@ const getPlacementReport=async(req,res)=>{
                     from (
                         (select studentpersonal.firstname,studentpersonal.lastname,sttb.st_id,sttb.regnum
                             from 
-                                (select st_id,regnum,mail from "students"  where "students"."distDepartmentDeptid"=${rq.distDepartmentDeptid} and "students"."batchId"=${rq.batchId} and "students"."degreeDegid"=${rq.degreeDegid}  as sttb 
+                                (select st_id,regnum,mail from "students"  where "students"."distDepartmentDeptid"=${rq.distDepartmentDeptid} and "students"."batchId"=${rq.batchId} and "students"."degreeDegid"=${rq.degreeDegid})  as sttb 
                                 inner join studentpersonal on sttb.st_id=studentpersonal."studentStId" )
                     as tb inner join "placements" on tb."st_id"=placements."studentStId" 
                     ) order by placements.salary;

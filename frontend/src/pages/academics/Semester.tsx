@@ -73,7 +73,9 @@ const Semester = ({
 
         const endpoint = "/student/studentsem";
 
-        const resp = await axiosObj.get(endpoint);
+        const resp = await axiosObj.get(endpoint,{params:{
+          semno : sem 
+        }});
 
         const obj = resp.data.message;
 

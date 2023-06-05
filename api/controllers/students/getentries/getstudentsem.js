@@ -11,7 +11,7 @@ const getstudentsem=async (req,res)=>{
     
     try{
         const stid=res.locals._id;
-        const semno= 1;
+        const semno= req.query.semno;
 
         if(semno){
             const getstdsubs=await sequelize.query(`select 

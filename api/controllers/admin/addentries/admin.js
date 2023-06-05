@@ -72,7 +72,7 @@ const addingSubjects=async (req,res)=>{
     try{
         //type of subjects==>1 compulsory,2 professional elective ,3 humanities elective,4 audit 
         //fields credit subcode , subname ,typeofsub ,regulationRegid ,degreeDegid,distDepartmentDeptid,semsubbelongs
-
+        console.log("--->"+req.body.semsubbelongs+'-->'+req.body.typeofsub);
         const entry={
             subcode:req.body.subcode,
             subname:req.body.subname,
@@ -83,7 +83,7 @@ const addingSubjects=async (req,res)=>{
             distDepartmentDeptid:req.body.distDepartmentDeptid,
             credit:req.body.credit
         }
-        if(entry.typeofsub !== 1){entry.semsubbelongs=0;}
+        if(entry.typeofsub != '1'){entry.semsubbelongs=0;}
 
         //Subjects Names will be in Uppercase
         entry.subname=(entry.subname).trim().toUpperCase();
@@ -93,7 +93,7 @@ const addingSubjects=async (req,res)=>{
         if(sub===null){
             const MaxSemNum=await Degree.findOne({where:{degid:req.body.degreeDegid}})
             if(MaxSemNum){
-                if(entry.typeofsub === 1){
+                if(entry.typeofsub == 1){
                     //for core(compulsory subject) need to check semster no. 
                     //should be within the degree table semester no
                     if((entry.semsubbelongs>=1 && entry.semsubbelongs<=MaxSemNum)){
