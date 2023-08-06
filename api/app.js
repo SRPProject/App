@@ -1,0 +1,96 @@
+var logger = require("./utils/log")(module);
+const express = require("express");
+const app = express();
+const cors = require("cors");
+const con = require("./config/dbconnection");
+const authroutes = require("./routes/auth");
+const adminroutes = require("./routes/admin");
+const studentroutes = require("./routes/students");
+const facultyRoutes = require("./routes/faculty");
+
+const utils = require("./utils");
+
+app.use(cors({ origin: "*" }));
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  }),
+);
+
+//DB-Connection
+con
+  .sync()
+  .then(() => {
+    logger.info("Synced db.");
+  })
+  .catch((err) => {
+    logger.error(err);
+    logger.info("Failed to sync db: " + err.message);
+  });
+
+
+
+app.use("/api/auth", authroutes);
+
+// middle ware for protected routes
+app.use((req, res, next) => {
+  const token = req.headers.authorization;
+
+  if (!token || token === "Bearer no_token")
+    return res.status(401).send({ message: "token required" });
+
+  const data = utils.token.verifyToken(token);
+
+  //set locals
+  if (data !== null) {
+    res.locals.role = data.role;
+    res.locals._id = data.id;
+
+    next();
+  } else return res.status(401).send({ message: "token required" });
+});
+
+// admin-only routes
+app.use(
+  "/api/admin",
+  (req, res, next) => {
+    if (res.locals.role == "Admin") {
+      next();
+    } else {
+      next("router");
+    }
+  },
+  adminroutes,
+);
+
+//student-only routes
+
+app.use(
+  "/api/student",
+  (req, res, next) => {
+    if (res.locals.role == "Student") next();
+    else {
+      next("router");
+    }
+  },
+  studentroutes,
+);
+
+app.use("/api/faculty",(req, res, next) => {
+  if (res.locals.role == "Faculty") next();
+  else {
+    next("router");
+  }
+}, facultyRoutes);
+
+app.use(express.static("files"));
+
+app.use(function (req, res, next) {
+  return res.status(404).json({ message: "404 baby!!" });
+});
+
+app.listen(3001, (err) => {
+  if (!err) logger.info("App Started!!");
+  else logger.error("Error Starting");
+});

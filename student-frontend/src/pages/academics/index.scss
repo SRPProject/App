@@ -1,0 +1,43 @@
+
+.semester {
+    display: flex;
+    flex-direction: column;
+   
+    gap:1.5rem ; 
+
+    .row {
+        display: flex;
+        align-items: center;
+        gap :1rem ;
+    }
+
+    .header {
+        display: flex;
+        gap:1rem ;
+        flex-direction: column;
+        padding: 2rem 1rem ; 
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+
+
+    .subjects{
+        margin : 1rem 0 ;
+        padding :1rem  ;
+        background-color: darken(aliceblue,5%);
+        border-radius: 10px;
+    }
+    
+    .file-upload {
+        border: .5px dashed black;
+        padding: 1rem;
+        border-radius: 10px;
+        margin : 2rem 0 ; 
+    }
+
+}

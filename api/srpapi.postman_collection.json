@@ -1,0 +1,3875 @@
+{
+  "info": {
+    "_postman_id": "4430d73c-bca1-4902-860b-2449d848a43e",
+    "name": "srpapi",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "27121287",
+    "_collection_link": "https://red-rocket-402627.postman.co/workspace/My-Workspace~6e79e5a1-0d08-42f9-8848-7e697902256f/collection/27121287-4430d73c-bca1-4902-860b-2449d848a43e?action=share&creator=27121287&source=collection_link"
+  },
+  "item": [
+    {
+      "name": "create admin",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "mail",
+              "value": "skanivan12@gmail.com",
+              "type": "default"
+            },
+            {
+              "key": "password",
+              "value": "asdfghjk",
+              "type": "default"
+            },
+            {
+              "key": "distDepartmentDeptid",
+              "value": "1",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/auth/signup-admin",
+          "host": ["{{baseapiurl}}"],
+          "path": ["auth", "signup-admin"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "mail",
+              "value": "skanivan12@gmail.com",
+              "type": "default"
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "default"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/auth/admin/",
+          "host": ["{{baseapiurl}}"],
+          "path": ["auth", "admin", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin forgot-password",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "mail",
+              "value": "skanivan12@gmail.com",
+              "type": "default"
+            },
+            {
+              "key": "password",
+              "value": "asdfghjkl",
+              "type": "default",
+              "disabled": true
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/auth/forgot-password",
+          "host": ["{{baseapiurl}}"],
+          "path": ["auth", "forgot-password"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin set-password",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "userId",
+              "value": "1",
+              "type": "default"
+            },
+            {
+              "key": "linkCode",
+              "value": "12444d99",
+              "type": "default"
+            },
+            {
+              "key": "confirmpassword",
+              "value": "123456",
+              "type": "text"
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/auth/set-password/",
+          "host": ["{{baseapiurl}}"],
+          "path": ["auth", "set-password", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin login Copy",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "mail",
+              "value": "skanivan12@gmail.com",
+              "type": "default"
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "default"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/auth/admin/",
+          "host": ["{{baseapiurl}}"],
+          "path": ["auth", "admin", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-adding faculty",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{admintoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "mail",
+              "value": "neonlite90@gmail.com",
+              "type": "text"
+            },
+            {
+              "key": "distDepartmentDeptid",
+              "value": "1",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/addFaculty",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "addFaculty"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-adding Subjects",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{admintoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "subcode",
+              "value": "AD5096",
+              "type": "text"
+            },
+            {
+              "key": "credit",
+              "value": "0",
+              "type": "text"
+            },
+            {
+              "key": "subname",
+              "value": "Unnat Bharat Abhiyan",
+              "type": "text"
+            },
+            {
+              "key": "typeofsub",
+              "value": "4",
+              "type": "text"
+            },
+            {
+              "key": "regulationRegid",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "degreeDegid",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "semsubbelongs",
+              "value": "0",
+              "type": "text"
+            },
+            {
+              "key": "distDepartmentDeptid",
+              "value": "1",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/addSubjects",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "addSubjects"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-adding departments",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{admintoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "deptName",
+              "value": "English",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/addDepartment",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "addDepartment"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-adding regulation",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{admintoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "regyear",
+              "value": "2019.  ",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/addRegulation",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "addRegulation"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-adding Degree",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{admintoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "degreename",
+              "value": "M TECH",
+              "type": "text"
+            },
+            {
+              "key": "noofsems",
+              "value": "4",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/addDegree",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "addDegree"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-adding Batches",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{admintoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "startyr",
+              "value": "2021",
+              "type": "text"
+            },
+            {
+              "key": "endyr",
+              "value": "2025",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/addBatches",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "addBatches"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-adding Bulk Students",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{admintoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "studentslist",
+              "type": "file",
+              "src": "/Users/kanivan/Downloads/stupr.xlsx"
+            },
+            {
+              "key": "facultyFacid",
+              "value": "7",
+              "type": "text"
+            },
+            {
+              "key": "distDepartmentDeptid",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "regulationRegid",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "degreeDegid",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "batchId",
+              "value": "1",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/addBulkStudents",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "addBulkStudents"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "faculty set-password",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "userId",
+              "value": "3",
+              "type": "text"
+            },
+            {
+              "key": "linkCode",
+              "value": "c20aa9d9910533d9",
+              "type": "text"
+            },
+            {
+              "key": "confirmpassword",
+              "value": "123456",
+              "type": "text"
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/auth/set-password/",
+          "host": ["{{baseapiurl}}"],
+          "path": ["auth", "set-password", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "faculty login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "mail",
+              "value": "neonlite90@gmail.com",
+              "type": "default"
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "default"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/auth/faculty/",
+          "host": ["{{baseapiurl}}"],
+          "path": ["auth", "faculty", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-adding student",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{admintoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "mail",
+              "value": "sivakanivan3@gmail.com",
+              "type": "text"
+            },
+            {
+              "key": "regnum",
+              "value": "20201150110",
+              "type": "text"
+            },
+            {
+              "key": "sex",
+              "value": "M",
+              "type": "text"
+            },
+            {
+              "key": "firstname",
+              "value": "user",
+              "type": "text"
+            },
+            {
+              "key": "lastname",
+              "value": "S",
+              "type": "text"
+            },
+            {
+              "key": "dob",
+              "value": "2002/12/12",
+              "type": "text"
+            },
+            {
+              "key": "distDepartmentDeptid",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "batchId",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "degreeDegid",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "regulationRegid",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "facultyFacid",
+              "value": "7",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/addStudent",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "addStudent"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "student set-password",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "userId",
+              "value": "2020115040",
+              "type": "text"
+            },
+            {
+              "key": "linkCode",
+              "value": "dae1e58f01b2f28d9b1c0627",
+              "type": "text"
+            },
+            {
+              "key": "confirmpassword",
+              "value": "123456",
+              "type": "text"
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/auth/set-password-student",
+          "host": ["{{baseapiurl}}"],
+          "path": ["auth", "set-password-student"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "student login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "regnum",
+              "value": "2020115040",
+              "type": "default"
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "default"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/auth/student/",
+          "host": ["{{baseapiurl}}"],
+          "path": ["auth", "student", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-addding dept",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "deptName",
+              "value": "Information Technology",
+              "type": "default"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/addDepartment/",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "addDepartment", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "password set",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "localhost:3000/password-set/641d6170259b7e16de34c921/a2aee88a",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["password-set", "641d6170259b7e16de34c921", "a2aee88a"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get-student-countofsem",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/studentsemcount",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "studentsemcount"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get-admin-sample sheet",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{admintoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/getbulkStudentssheet",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "getbulkStudentssheet"]
+        }
+      },
+      "response": [
+        {
+          "name": "get-student-getbulkStudentssheet",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/admin/getbulkStudentssheet",
+              "host": ["{{baseapiurl}}"],
+              "path": ["admin", "getbulkStudentssheet"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "210"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"d2-fALfOhSf5XlDozzXRrWs8/Ozyr0\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 May 2023 07:50:11 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"https://distceg.blob.core.windows.net/sampledocs/stupr.xlsx?st=2023-05-28T07%3A50%3A11Z&se=2023-05-28T08%3A10%3A11Z&sp=r&sv=2018-03-28&sr=b&sig=IDpj%2Bf3mjK3bHLUPWAS%2FndbP0PiRfufs6q%2BCVsidy6A%3D\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-admin-Scholarshipreport",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{admintoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/getscholarship?batchId=1&degreeDegid=1&regulationRegid=1&distDepartmentDeptid=1",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "getscholarship"],
+          "query": [
+            {
+              "key": "batchId",
+              "value": "1"
+            },
+            {
+              "key": "degreeDegid",
+              "value": "1"
+            },
+            {
+              "key": "regulationRegid",
+              "value": "1"
+            },
+            {
+              "key": "distDepartmentDeptid",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "get-admin-Scholarshipreport",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/admin/getscholarship?batchId=1&degreeDegid=1&regulationRegid=1&distDepartmentDeptid=1",
+              "host": ["{{baseapiurl}}"],
+              "path": ["admin", "getscholarship"],
+              "query": [
+                {
+                  "key": "batchId",
+                  "value": "1"
+                },
+                {
+                  "key": "degreeDegid",
+                  "value": "1"
+                },
+                {
+                  "key": "regulationRegid",
+                  "value": "1"
+                },
+                {
+                  "key": "distDepartmentDeptid",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1238"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"4d6-cif1xwrd9OermEgyfQULnw7NZKE\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 May 2023 10:31:27 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"firstname\": \"Srirambabu\",\n            \"lastname\": \"R K\",\n            \"community\": \"hack\",\n            \"rollnumber\": \"2020115093\",\n            \"mailid\": \"ubabmarirs@gmail.com\",\n            \"scholarshipname\": \"Cordoba\",\n            \"scholarshipamount\": 250000,\n            \"fileurl\": \"https://distceg.blob.core.windows.net/scholarshiproofs/26_scholarship2023_1683470820306.pdf?st=2023-05-28T10%3A31%3A27Z&se=2023-05-28T10%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=cwlD6%2F9i1LkqkEiNHNCDCVahH9PeiTZINihztn6AXlQ%3D\"\n        },\n        {\n            \"firstname\": \"user\",\n            \"lastname\": \"B\",\n            \"community\": null,\n            \"rollnumber\": \"2020115040\",\n            \"mailid\": \"neonlite91@gmail.com\",\n            \"scholarshipname\": \"UIC-Franc\",\n            \"scholarshipamount\": 500000,\n            \"fileurl\": \"https://distceg.blob.core.windows.net/scholarshiproofs/27_scholarship2022_1685269838434.pdf?st=2023-05-28T10%3A31%3A27Z&se=2023-05-28T10%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=69AcdnXLTssWNFwqye5X866Z6Vs2mfi%2FM8qiEYQtXJU%3D\"\n        },\n        {\n            \"firstname\": \"user\",\n            \"lastname\": \"B\",\n            \"community\": null,\n            \"rollnumber\": \"2020115040\",\n            \"mailid\": \"neonlite91@gmail.com\",\n            \"scholarshipname\": \"Operations\",\n            \"scholarshipamount\": 10000,\n            \"fileurl\": \"https://distceg.blob.core.windows.net/scholarshiproofs/27_scholarship2021_1685269858612.pdf?st=2023-05-28T10%3A31%3A27Z&se=2023-05-28T10%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=Ch%2BoNCo8ad4QU3ZjcJ5SikULMRJ6YkJJc%2FcfCqKId44%3D\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-admin-ProjectReport",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{admintoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/getProjectReport?batchId=1&degreeDegid=1&regulationRegid=1&distDepartmentDeptid=1",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "getProjectReport"],
+          "query": [
+            {
+              "key": "batchId",
+              "value": "1"
+            },
+            {
+              "key": "degreeDegid",
+              "value": "1"
+            },
+            {
+              "key": "regulationRegid",
+              "value": "1"
+            },
+            {
+              "key": "distDepartmentDeptid",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "get-admin-Scholarshipreport",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/admin/getscholarship?batchId=1&degreeDegid=1&regulationRegid=1&distDepartmentDeptid=1",
+              "host": ["{{baseapiurl}}"],
+              "path": ["admin", "getscholarship"],
+              "query": [
+                {
+                  "key": "batchId",
+                  "value": "1"
+                },
+                {
+                  "key": "degreeDegid",
+                  "value": "1"
+                },
+                {
+                  "key": "regulationRegid",
+                  "value": "1"
+                },
+                {
+                  "key": "distDepartmentDeptid",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1238"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"4d6-cif1xwrd9OermEgyfQULnw7NZKE\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 May 2023 10:31:27 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"firstname\": \"Srirambabu\",\n            \"lastname\": \"R K\",\n            \"community\": \"hack\",\n            \"rollnumber\": \"2020115093\",\n            \"mailid\": \"ubabmarirs@gmail.com\",\n            \"scholarshipname\": \"Cordoba\",\n            \"scholarshipamount\": 250000,\n            \"fileurl\": \"https://distceg.blob.core.windows.net/scholarshiproofs/26_scholarship2023_1683470820306.pdf?st=2023-05-28T10%3A31%3A27Z&se=2023-05-28T10%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=cwlD6%2F9i1LkqkEiNHNCDCVahH9PeiTZINihztn6AXlQ%3D\"\n        },\n        {\n            \"firstname\": \"user\",\n            \"lastname\": \"B\",\n            \"community\": null,\n            \"rollnumber\": \"2020115040\",\n            \"mailid\": \"neonlite91@gmail.com\",\n            \"scholarshipname\": \"UIC-Franc\",\n            \"scholarshipamount\": 500000,\n            \"fileurl\": \"https://distceg.blob.core.windows.net/scholarshiproofs/27_scholarship2022_1685269838434.pdf?st=2023-05-28T10%3A31%3A27Z&se=2023-05-28T10%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=69AcdnXLTssWNFwqye5X866Z6Vs2mfi%2FM8qiEYQtXJU%3D\"\n        },\n        {\n            \"firstname\": \"user\",\n            \"lastname\": \"B\",\n            \"community\": null,\n            \"rollnumber\": \"2020115040\",\n            \"mailid\": \"neonlite91@gmail.com\",\n            \"scholarshipname\": \"Operations\",\n            \"scholarshipamount\": 10000,\n            \"fileurl\": \"https://distceg.blob.core.windows.net/scholarshiproofs/27_scholarship2021_1685269858612.pdf?st=2023-05-28T10%3A31%3A27Z&se=2023-05-28T10%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=Ch%2BoNCo8ad4QU3ZjcJ5SikULMRJ6YkJJc%2FcfCqKId44%3D\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-admin-getPlacementReport",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{admintoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/getPlacementReport?batchId=1&degreeDegid=1&regulationRegid=1&distDepartmentDeptid=1",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "getPlacementReport"],
+          "query": [
+            {
+              "key": "batchId",
+              "value": "1"
+            },
+            {
+              "key": "degreeDegid",
+              "value": "1"
+            },
+            {
+              "key": "regulationRegid",
+              "value": "1"
+            },
+            {
+              "key": "distDepartmentDeptid",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "get-admin-getPlacementReport",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/admin/getPlacementReport?batchId=1&degreeDegid=1&regulationRegid=1&distDepartmentDeptid=1",
+              "host": ["{{baseapiurl}}"],
+              "path": ["admin", "getPlacementReport"],
+              "query": [
+                {
+                  "key": "batchId",
+                  "value": "1"
+                },
+                {
+                  "key": "degreeDegid",
+                  "value": "1"
+                },
+                {
+                  "key": "regulationRegid",
+                  "value": "1"
+                },
+                {
+                  "key": "distDepartmentDeptid",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "298"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"12a-VHLcTmSDO4o1ZWGorHBjoEoz5G8\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 May 2023 14:09:49 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"rollnumber\": \"2020115040\",\n            \"firstname\": \"user\",\n            \"lastname\": \"B\",\n            \"companyname\": \"WELLS FARGO\",\n            \"selection\": false,\n            \"salary\": 3000000,\n            \"comptype\": \"1\"\n        },\n        {\n            \"rollnumber\": \"2020115093\",\n            \"firstname\": \"Srirambabu\",\n            \"lastname\": \"R K\",\n            \"companyname\": \"SC BANK\",\n            \"selection\": false,\n            \"salary\": 20000000,\n            \"comptype\": \"1\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-admin-getInternshipReport",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{admintoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/getInternshipsReport?batchId=1&degreeDegid=1&regulationRegid=1&distDepartmentDeptid=1",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "getInternshipsReport"],
+          "query": [
+            {
+              "key": "batchId",
+              "value": "1"
+            },
+            {
+              "key": "degreeDegid",
+              "value": "1"
+            },
+            {
+              "key": "regulationRegid",
+              "value": "1"
+            },
+            {
+              "key": "distDepartmentDeptid",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "get-admin-getInternshipReport",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/admin/getInternshipsReport?batchId=1&degreeDegid=1&regulationRegid=1&distDepartmentDeptid=1",
+              "host": ["{{baseapiurl}}"],
+              "path": ["admin", "getInternshipsReport"],
+              "query": [
+                {
+                  "key": "batchId",
+                  "value": "1"
+                },
+                {
+                  "key": "degreeDegid",
+                  "value": "1"
+                },
+                {
+                  "key": "regulationRegid",
+                  "value": "1"
+                },
+                {
+                  "key": "distDepartmentDeptid",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "339"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"153-3Z/y5mkJM1qqklw4iB/UdyXgEI0\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 May 2023 14:10:46 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"rollnumber\": \"2020115040\",\n            \"firstname\": \"user\",\n            \"lastname\": \"B\",\n            \"companyname\": \"ARAB\",\n            \"from\": \"2002-12-12\",\n            \"to\": \"2002-12-12\",\n            \"details\": \"Assistant quantify navigating\"\n        },\n        {\n            \"rollnumber\": \"2020115040\",\n            \"firstname\": \"user\",\n            \"lastname\": \"B\",\n            \"companyname\": \"BUCKINGHAMSHIRE\",\n            \"from\": \"2002-12-12\",\n            \"to\": \"2002-12-12\",\n            \"details\": \"Berkshire Licensed\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-admin-getBatches",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{admintoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/getBatches",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "getBatches"]
+        }
+      },
+      "response": [
+        {
+          "name": "get-admin-getBatches",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/admin/getBatches",
+              "host": ["{{baseapiurl}}"],
+              "path": ["admin", "getBatches"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "50"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"32-DBNgUyRtKKD9GeU+iOVavv/4Fyg\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 May 2023 10:51:56 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"startyr\": 2020,\n            \"endyr\": 2024\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-admin-getRegulations",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{admintoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/getRegulations",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "getRegulations"]
+        }
+      },
+      "response": [
+        {
+          "name": "get-admin-getRegulations",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/admin/getRegulations",
+              "host": ["{{baseapiurl}}"],
+              "path": ["admin", "getRegulations"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "67"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"43-4nX60DUsD4k0yEuVrM1c/4I3Iqs\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 May 2023 10:52:47 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"regid\": 1,\n            \"regyear\": 2019\n        },\n        {\n            \"regid\": 2,\n            \"regyear\": 2020\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-admin-getDegrees",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{admintoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/getDegrees",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "getDegrees"]
+        }
+      },
+      "response": [
+        {
+          "name": "get-admin-getDegrees",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/admin/getDegrees",
+              "host": ["{{baseapiurl}}"],
+              "path": ["admin", "getDegrees"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "142"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"8e-DBodgNazOKJpfcC7nTqjh/qy9s0\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 May 2023 10:53:26 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"degid\": 1,\n            \"degname\": \"B TECH\",\n            \"noofsems\": 8\n        },\n        {\n            \"degid\": 3,\n            \"degname\": \"B E\",\n            \"noofsems\": 8\n        },\n        {\n            \"degid\": 5,\n            \"degname\": \"M Tech\",\n            \"noofsems\": 4\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-admin-getDepartments",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{admintoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/admin/getDepartments",
+          "host": ["{{baseapiurl}}"],
+          "path": ["admin", "getDepartments"]
+        }
+      },
+      "response": [
+        {
+          "name": "get-admin-getDepartments",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/admin/getDepartments",
+              "host": ["{{baseapiurl}}"],
+              "path": ["admin", "getDepartments"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "96"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"60-iM/BwJdP/lm11nRcKCS0tIU/w0I\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 May 2023 10:54:12 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"deptid\": 1,\n            \"deptname\": \"Information Technology\"\n        },\n        {\n            \"deptid\": 6,\n            \"deptname\": \"English\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "update-studentsemmark",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "marks",
+              "value": "[{\"subjectSubid\":31,\"scoredgrade\":10,\"monthyrpass\":\"2020/1/1\"},{\"subjectSubid\":32 ,\"scoredgrade\":10,\"monthyrpass\":\"2020/1/1\"},{\"subjectSubid\":33 ,\"scoredgrade\":10,\"monthyrpass\":\"2020/1/1\"}]",
+              "type": "text"
+            },
+            {
+              "key": "studentStId",
+              "value": "27",
+              "type": "text"
+            },
+            {
+              "key": "marks",
+              "value": "[{\"subjectSubid\":32 ,\"scoredgrade\":10,\"monthyrpass\":\"2020/1/1\"}]",
+              "type": "text",
+              "disabled": true
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/updateSemMark",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "updateSemMark"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get-student-semdetails",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/studentsem?semno=3",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "studentsem"],
+          "query": [
+            {
+              "key": "semno",
+              "value": "3"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "get-student-semdetails",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/student/studentsem",
+              "host": ["{{baseapiurl}}"],
+              "path": ["student", "studentsem"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "5650"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"1612-KqbdE44zHdDiIKwKFftqZLUaJZY\""
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 27 Apr 2023 12:41:02 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"st_id\": 9,\n            \"regnum\": 2020115039,\n            \"password\": null,\n            \"iscreated\": false,\n            \"createdAt\": \"2023-04-27T12:30:24.481Z\",\n            \"updatedAt\": \"2023-04-27T12:30:24.481Z\",\n            \"distDepartmentDeptid\": 1,\n            \"batchId\": 1,\n            \"degreeDegid\": 1,\n            \"regulationRegid\": 1,\n            \"subjects\": [\n                {\n                    \"subid\": 22,\n                    \"credit\": 4,\n                    \"subcode\": \"HS5151\",\n                    \"subname\": \"Technical English\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 1,\n                    \"createdAt\": \"2023-03-30T16:34:43.190Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:43.190Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 23,\n                    \"credit\": 4,\n                    \"subcode\": \"MA5158\",\n                    \"subname\": \"Engineering Mathematics\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 1,\n                    \"createdAt\": \"2023-03-30T16:34:45.064Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:45.064Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 24,\n                    \"credit\": 3,\n                    \"subcode\": \"PH5151\",\n                    \"subname\": \"Engineering Physics\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 1,\n                    \"createdAt\": \"2023-03-30T16:34:45.325Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:45.325Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 25,\n                    \"credit\": 3,\n                    \"subcode\": \"CY5151\",\n                    \"subname\": \"Engineering Chemistry\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 1,\n                    \"createdAt\": \"2023-03-30T16:34:45.594Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:45.594Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 26,\n                    \"credit\": 3,\n                    \"subcode\": \"GE5153\",\n                    \"subname\": \"Problem Solving and Python Programming\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 1,\n                    \"createdAt\": \"2023-03-30T16:34:45.861Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:45.861Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 27,\n                    \"credit\": 2,\n                    \"subcode\": \"BS5161\",\n                    \"subname\": \"Basic Sciences Laboratory\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 1,\n                    \"createdAt\": \"2023-03-30T16:34:46.134Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:46.134Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 28,\n                    \"credit\": 2,\n                    \"subcode\": \"GE5161\",\n                    \"subname\": \"Problem Solving and Python Programming Laboratory\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 1,\n                    \"createdAt\": \"2023-03-30T16:34:46.397Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:46.397Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 29,\n                    \"credit\": 4,\n                    \"subcode\": \"HS5251\",\n                    \"subname\": \"Professional Communication\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 2,\n                    \"createdAt\": \"2023-03-30T16:34:46.662Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:46.662Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 30,\n                    \"credit\": 4,\n                    \"subcode\": \"MA5252\",\n                    \"subname\": \"Engineering Mathematics II\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 2,\n                    \"createdAt\": \"2023-03-30T16:34:46.928Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:46.928Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 31,\n                    \"credit\": 3,\n                    \"subcode\": \"IT5201\",\n                    \"subname\": \"Information Technology Essentials\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 2,\n                    \"createdAt\": \"2023-03-30T16:34:47.297Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:47.297Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 32,\n                    \"credit\": 3,\n                    \"subcode\": \"EE5251\",\n                    \"subname\": \"Basics of Electrical and Electronics Engineering\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 2,\n                    \"createdAt\": \"2023-03-30T16:34:47.611Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:47.611Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 33,\n                    \"credit\": 3,\n                    \"subcode\": \"GE5151\",\n                    \"subname\": \"Engineering Graphics\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 2,\n                    \"createdAt\": \"2023-03-30T16:34:47.893Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:47.893Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 34,\n                    \"credit\": 2,\n                    \"subcode\": \"IT5211\",\n                    \"subname\": \"Information Technology Essentials Laboratory\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 2,\n                    \"createdAt\": \"2023-03-30T16:34:48.174Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:48.174Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 35,\n                    \"credit\": 2,\n                    \"subcode\": \"EE5261\",\n                    \"subname\": \"Electrical and Electronics Engineering Laboratory\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 2,\n                    \"createdAt\": \"2023-03-30T16:34:48.602Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:48.602Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 36,\n                    \"credit\": 4,\n                    \"subcode\": \"MA5302\",\n                    \"subname\": \"Discrete Mathematics\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 3,\n                    \"createdAt\": \"2023-03-30T16:34:49.893Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:49.893Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 37,\n                    \"credit\": 3,\n                    \"subcode\": \"IT5301\",\n                    \"subname\": \"Digital Logic and Design\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 3,\n                    \"createdAt\": \"2023-03-30T16:34:50.281Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:50.281Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 38,\n                    \"credit\": 3,\n                    \"subcode\": \"IT5352\",\n                    \"subname\": \"Programming and Data Structures\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 3,\n                    \"createdAt\": \"2023-03-30T16:34:50.562Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:50.562Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 39,\n                    \"credit\": 3,\n                    \"subcode\": \"IT5351\",\n                    \"subname\": \"Database Management Systems\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 3,\n                    \"createdAt\": \"2023-03-30T16:34:50.940Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:50.940Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 40,\n                    \"credit\": 3,\n                    \"subcode\": \"IT5302\",\n                    \"subname\": \"Software Engineering\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 3,\n                    \"createdAt\": \"2023-03-30T16:34:51.302Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:51.302Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 41,\n                    \"credit\": 2,\n                    \"subcode\": \"IT5311\",\n                    \"subname\": \"Programming and Data Structures Laboratory\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 3,\n                    \"createdAt\": \"2023-03-30T16:34:51.609Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:51.609Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                },\n                {\n                    \"subid\": 42,\n                    \"credit\": 2,\n                    \"subcode\": \"IT5312\",\n                    \"subname\": \"Database Management Systems Laboratory\",\n                    \"typeofsub\": 1,\n                    \"semsubbelongs\": 3,\n                    \"createdAt\": \"2023-03-30T16:34:51.911Z\",\n                    \"updatedAt\": \"2023-03-30T16:34:51.911Z\",\n                    \"regulationRegid\": 1,\n                    \"degreeDegid\": 1,\n                    \"distDepartmentDeptid\": 1\n                }\n            ]\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-student-interndetails",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "access-",
+            "value": "",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/getinterndetails",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "getinterndetails"]
+        }
+      },
+      "response": [
+        {
+          "name": "get-student-interndetails",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "access-",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/student/getinterndetails",
+              "host": ["{{baseapiurl}}"],
+              "path": ["student", "getinterndetails"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "583"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"247-qoW43tP37mLIEutENnItCJ8dRnI\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 07 May 2023 08:47:42 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"inname\": \"hghgh\",\n            \"fromperiod\": \"2023-05-09\",\n            \"toperiod\": \"2023-05-24\",\n            \"details\": \"hghghgh\",\n            \"createdAt\": \"2023-05-06T14:56:00.458Z\",\n            \"updatedAt\": \"2023-05-06T14:56:00.458Z\",\n            \"studentStId\": 18\n        },\n        {\n            \"id\": 2,\n            \"inname\": \"gtgtg\",\n            \"fromperiod\": \"2023-05-10\",\n            \"toperiod\": \"2023-05-17\",\n            \"details\": \"gtgtgt\",\n            \"createdAt\": \"2023-05-06T14:57:57.563Z\",\n            \"updatedAt\": \"2023-05-06T14:57:57.563Z\",\n            \"studentStId\": 18\n        },\n        {\n            \"id\": 3,\n            \"inname\": \"BNY \",\n            \"fromperiod\": \"2023-05-12\",\n            \"toperiod\": \"2023-05-19\",\n            \"details\": \"ssasas\",\n            \"createdAt\": \"2023-05-06T15:02:22.986Z\",\n            \"updatedAt\": \"2023-05-06T15:02:22.986Z\",\n            \"studentStId\": 18\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-student-placementdetails",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "access-",
+            "value": "",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/getplacementdetails",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "getplacementdetails"]
+        }
+      },
+      "response": [
+        {
+          "name": "get-student-placementdetails",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "access-",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/student/getinterndetails",
+              "host": ["{{baseapiurl}}"],
+              "path": ["student", "getinterndetails"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "583"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"247-qoW43tP37mLIEutENnItCJ8dRnI\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 07 May 2023 08:47:42 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"inname\": \"hghgh\",\n            \"fromperiod\": \"2023-05-09\",\n            \"toperiod\": \"2023-05-24\",\n            \"details\": \"hghghgh\",\n            \"createdAt\": \"2023-05-06T14:56:00.458Z\",\n            \"updatedAt\": \"2023-05-06T14:56:00.458Z\",\n            \"studentStId\": 18\n        },\n        {\n            \"id\": 2,\n            \"inname\": \"gtgtg\",\n            \"fromperiod\": \"2023-05-10\",\n            \"toperiod\": \"2023-05-17\",\n            \"details\": \"gtgtgt\",\n            \"createdAt\": \"2023-05-06T14:57:57.563Z\",\n            \"updatedAt\": \"2023-05-06T14:57:57.563Z\",\n            \"studentStId\": 18\n        },\n        {\n            \"id\": 3,\n            \"inname\": \"BNY \",\n            \"fromperiod\": \"2023-05-12\",\n            \"toperiod\": \"2023-05-19\",\n            \"details\": \"ssasas\",\n            \"createdAt\": \"2023-05-06T15:02:22.986Z\",\n            \"updatedAt\": \"2023-05-06T15:02:22.986Z\",\n            \"studentStId\": 18\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-student-scholarshipetails",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "access-",
+            "value": "",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/getscholarshipdetails",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "getscholarshipdetails"]
+        }
+      },
+      "response": [
+        {
+          "name": "get-student-placementdetails",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "access-",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/student/getinterndetails",
+              "host": ["{{baseapiurl}}"],
+              "path": ["student", "getinterndetails"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "583"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"247-qoW43tP37mLIEutENnItCJ8dRnI\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 07 May 2023 08:47:42 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"inname\": \"hghgh\",\n            \"fromperiod\": \"2023-05-09\",\n            \"toperiod\": \"2023-05-24\",\n            \"details\": \"hghghgh\",\n            \"createdAt\": \"2023-05-06T14:56:00.458Z\",\n            \"updatedAt\": \"2023-05-06T14:56:00.458Z\",\n            \"studentStId\": 18\n        },\n        {\n            \"id\": 2,\n            \"inname\": \"gtgtg\",\n            \"fromperiod\": \"2023-05-10\",\n            \"toperiod\": \"2023-05-17\",\n            \"details\": \"gtgtgt\",\n            \"createdAt\": \"2023-05-06T14:57:57.563Z\",\n            \"updatedAt\": \"2023-05-06T14:57:57.563Z\",\n            \"studentStId\": 18\n        },\n        {\n            \"id\": 3,\n            \"inname\": \"BNY \",\n            \"fromperiod\": \"2023-05-12\",\n            \"toperiod\": \"2023-05-19\",\n            \"details\": \"ssasas\",\n            \"createdAt\": \"2023-05-06T15:02:22.986Z\",\n            \"updatedAt\": \"2023-05-06T15:02:22.986Z\",\n            \"studentStId\": 18\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-student-marksheetURL",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "access-",
+            "value": "",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/getMarkSheet?semno=10",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "getMarkSheet"],
+          "query": [
+            {
+              "key": "semno",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "get-student-placementdetails",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "access-",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/student/getinterndetails",
+              "host": ["{{baseapiurl}}"],
+              "path": ["student", "getinterndetails"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "583"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"247-qoW43tP37mLIEutENnItCJ8dRnI\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 07 May 2023 08:47:42 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"inname\": \"hghgh\",\n            \"fromperiod\": \"2023-05-09\",\n            \"toperiod\": \"2023-05-24\",\n            \"details\": \"hghghgh\",\n            \"createdAt\": \"2023-05-06T14:56:00.458Z\",\n            \"updatedAt\": \"2023-05-06T14:56:00.458Z\",\n            \"studentStId\": 18\n        },\n        {\n            \"id\": 2,\n            \"inname\": \"gtgtg\",\n            \"fromperiod\": \"2023-05-10\",\n            \"toperiod\": \"2023-05-17\",\n            \"details\": \"gtgtgt\",\n            \"createdAt\": \"2023-05-06T14:57:57.563Z\",\n            \"updatedAt\": \"2023-05-06T14:57:57.563Z\",\n            \"studentStId\": 18\n        },\n        {\n            \"id\": 3,\n            \"inname\": \"BNY \",\n            \"fromperiod\": \"2023-05-12\",\n            \"toperiod\": \"2023-05-19\",\n            \"details\": \"ssasas\",\n            \"createdAt\": \"2023-05-06T15:02:22.986Z\",\n            \"updatedAt\": \"2023-05-06T15:02:22.986Z\",\n            \"studentStId\": 18\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-student-personaldetails",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "access-",
+            "value": "",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/getPersonalDetails",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "getPersonalDetails"]
+        }
+      },
+      "response": [
+        {
+          "name": "get-student-personaldetails",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "access-",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/student/getPersonalDetails",
+              "host": ["{{baseapiurl}}"],
+              "path": ["student", "getPersonalDetails"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "947"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"3b3-7VEr5IC+fHX1q26SqbNjpuTrcGk\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 07 May 2023 14:30:28 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": {\n        \"sp_id\": 2,\n        \"regnum\": 2020115093,\n        \"sex\": \"M                                                                                                                                                                                                                                                              \",\n        \"cutoffmark\": \"999\",\n        \"admittedon\": \"2002-12-12\",\n        \"firstname\": \"Srirambabu\",\n        \"lastname\": \"R K\",\n        \"dob\": \"2002-12-12\",\n        \"bloodgroup\": \"A+\",\n        \"specialcategory\": \"YES\",\n        \"community\": \"hack\",\n        \"volunteer\": \"NSS\",\n        \"accomodation\": 0,\n        \"fathername\": \"system\",\n        \"fatherjob\": \"interface\",\n        \"fatherincome\": 623,\n        \"mothername\": \"panel\",\n        \"motherjob\": \"firewall\",\n        \"motherincome\": 539,\n        \"parentaddress\": \"bus\",\n        \"parentemail\": \"winona87@gmail.com\",\n        \"parentphonenum\": 1234567890,\n        \"localgname\": \"bandwidth\",\n        \"localgaddr\": \"sensor\",\n        \"localgphone\": 1234567890,\n        \"localgmail\": \"domingo.dach79@hotmail.com\",\n        \"isfilled\": true,\n        \"createdAt\": \"2023-05-07T12:58:32.083Z\",\n        \"updatedAt\": \"2023-05-07T13:38:35.370Z\",\n        \"studentStId\": 26\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-student-subjects",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/getsubjects?typeofsub=1",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "getsubjects"],
+          "query": [
+            {
+              "key": "typeofsub",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get-student-workshops",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/getworkshops",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "getworkshops"]
+        }
+      },
+      "response": [
+        {
+          "name": "get-student-workshops",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/student/getworkshops",
+              "host": ["{{baseapiurl}}"],
+              "path": ["student", "getworkshops"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1336"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"538-37bgQjLG7udztXEkEUO3kPqhVCo\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 May 2023 04:03:37 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"name\": \"Cyber security\",\n            \"heldby\": \"protocol\",\n            \"certificate\": \"https://distceg.blob.core.windows.net/workshopcertificates/26_workshop_Cyber%20security_1685232588360.pdf?st=2023-05-28T04%3A03%3A37Z&se=2023-05-28T04%3A23%3A37Z&sp=r&sv=2018-03-28&sr=b&sig=aZhhILhHqykG165PiN0vlUt7VFwAOwRoOWdFMmqsd0s%3D\",\n            \"dateattended\": \"2021-12-12\",\n            \"createdAt\": \"2023-05-28T00:09:54.455Z\",\n            \"updatedAt\": \"2023-05-28T00:09:54.455Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Cyber security\",\n            \"heldby\": \"application\",\n            \"certificate\": \"https://distceg.blob.core.windows.net/workshopcertificates/26_workshop_Cyber%20security_1685232599309.pdf?st=2023-05-28T04%3A03%3A37Z&se=2023-05-28T04%3A23%3A37Z&sp=r&sv=2018-03-28&sr=b&sig=Qle73uXCJ6Jan1oNEN18c6G5Wc3Hq%2FGERCt9IapEDOk%3D\",\n            \"dateattended\": \"2021-12-12\",\n            \"createdAt\": \"2023-05-28T00:10:09.476Z\",\n            \"updatedAt\": \"2023-05-28T00:10:09.476Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Cyber security       \",\n            \"heldby\": \"application\",\n            \"certificate\": \"https://distceg.blob.core.windows.net/workshopcertificates/26_workshop_Cyber%20security%20%20%20%20%20%20%20_1685232729297.pdf?st=2023-05-28T04%3A03%3A37Z&se=2023-05-28T04%3A23%3A37Z&sp=r&sv=2018-03-28&sr=b&sig=zcXBw5rMbgYwwtvht3sVP5eEfeqCewFeT5wNLeK4L4A%3D\",\n            \"dateattended\": \"2021-12-12\",\n            \"createdAt\": \"2023-05-28T00:12:16.555Z\",\n            \"updatedAt\": \"2023-05-28T00:12:16.555Z\",\n            \"studentStId\": 26\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-student-extracourses",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/getextracourses",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "getextracourses"]
+        }
+      },
+      "response": [
+        {
+          "name": "get-student-extracourses",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/student/getextracourses",
+              "host": ["{{baseapiurl}}"],
+              "path": ["student", "getextracourses"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1203"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"4b3-/k5B0hzFlh0naW8mboKC5HSH89c\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 May 2023 04:32:07 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"name\": \"Rest\",\n            \"certificate\": \"https://distceg.blob.core.windows.net/extracourseproofs/26_extracourse_1685247738554.pdf?st=2023-05-28T04%3A32%3A07Z&se=2023-05-28T04%3A52%3A07Z&sp=r&sv=2018-03-28&sr=b&sig=XOghiQwI%2BqKqcKYdZdRaRTo7QZpUVfi9qMaqeTdWUWk%3D\",\n            \"duration\": 437,\n            \"typeofcourse\": \"NPTEL\",\n            \"createdAt\": \"2023-05-28T04:22:20.736Z\",\n            \"updatedAt\": \"2023-05-28T04:22:20.736Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Junction\",\n            \"certificate\": \"https://distceg.blob.core.windows.net/extracourseproofs/26_extracourse_1685247775641.pdf?st=2023-05-28T04%3A32%3A07Z&se=2023-05-28T04%3A52%3A07Z&sp=r&sv=2018-03-28&sr=b&sig=Cq3d%2FRHVQKHhJ%2FsRI2AOwIH8SW2rZMgFPPpzxZQwwOg%3D\",\n            \"duration\": 335,\n            \"typeofcourse\": \"NPTEL\",\n            \"createdAt\": \"2023-05-28T04:22:58.152Z\",\n            \"updatedAt\": \"2023-05-28T04:22:58.152Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 3,\n            \"name\": \"BEAUTY\",\n            \"certificate\": \"https://distceg.blob.core.windows.net/extracourseproofs/26_extracourse_1685247833912.pdf?st=2023-05-28T04%3A32%3A07Z&se=2023-05-28T04%3A52%3A07Z&sp=r&sv=2018-03-28&sr=b&sig=HoJP8aeMm94%2FCgy8PfXzorS29mq18hD7hErPMgHVzVE%3D\",\n            \"duration\": 314,\n            \"typeofcourse\": \"NPTEL\",\n            \"createdAt\": \"2023-05-28T04:23:56.315Z\",\n            \"updatedAt\": \"2023-05-28T04:23:56.315Z\",\n            \"studentStId\": 26\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-student-PaperPublishing",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/getPaperPublishing",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "getPaperPublishing"]
+        }
+      },
+      "response": [
+        {
+          "name": "get-student-PaperPublishing",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/student/getPaperPublishing",
+              "host": ["{{baseapiurl}}"],
+              "path": ["student", "getPaperPublishing"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1635"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"663-hBxnBiE3h64VxMiF2dqOUPoSd5Q\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 May 2023 06:40:18 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"authors\": \"HANDMADE DIRECT\",\n            \"title\": \"APPLICATION\",\n            \"journalname\": \"REQ.BODY.JOURNALNAME\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 1,\n            \"createdAt\": \"2023-05-28T06:19:46.459Z\",\n            \"updatedAt\": \"2023-05-28T06:19:46.459Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 2,\n            \"authors\": \"COMPRESSING HANDCRAFTED DIRECTIVES FISH\",\n            \"title\": \"COPYING\",\n            \"journalname\": \"REQ.BODY.JOURNALNAME\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 1,\n            \"createdAt\": \"2023-05-28T06:19:50.039Z\",\n            \"updatedAt\": \"2023-05-28T06:19:50.039Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 3,\n            \"authors\": \"GLOVES KANSAS INCREDIBLE\",\n            \"title\": \"BRICKS-AND-CLICKS\",\n            \"journalname\": \"DIVISION\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 1,\n            \"createdAt\": \"2023-05-28T06:20:40.572Z\",\n            \"updatedAt\": \"2023-05-28T06:20:40.572Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 4,\n            \"authors\": \"TUNA VIRTUAL INTEGRATE BORDERS MINDSHARE\",\n            \"title\": \"HANDCRAFTED BLUETOOTH HTTP\",\n            \"journalname\": \"METRICS\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 3,\n            \"createdAt\": \"2023-05-28T06:23:24.317Z\",\n            \"updatedAt\": \"2023-05-28T06:23:24.317Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 5,\n            \"authors\": \"TABLE UNBRANDED USER-FRIENDLY ERGONOMIC WYOMING\",\n            \"title\": \"DISTRICT PROFIT-FOCUSED BUCKINGHAMSHIRE\",\n            \"journalname\": \"SET\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 4,\n            \"createdAt\": \"2023-05-28T06:23:29.648Z\",\n            \"updatedAt\": \"2023-05-28T06:23:29.648Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 6,\n            \"authors\": \"GORGEOUS PERSISTENT DEPOSIT GARDEN OVERRIDE\",\n            \"title\": \"RUBBER METAL BUCKINGHAMSHIRE VIRTUAL\",\n            \"journalname\": \"FAULT-TOLERANT\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 5,\n            \"createdAt\": \"2023-05-28T06:23:34.811Z\",\n            \"updatedAt\": \"2023-05-28T06:23:34.811Z\",\n            \"studentStId\": 26\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-student-EventHackathon",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/getEventHackathon",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "getEventHackathon"]
+        }
+      },
+      "response": [
+        {
+          "name": "get-student-PaperPublishing",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/student/getPaperPublishing",
+              "host": ["{{baseapiurl}}"],
+              "path": ["student", "getPaperPublishing"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1635"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"663-hBxnBiE3h64VxMiF2dqOUPoSd5Q\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 May 2023 06:40:18 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"authors\": \"HANDMADE DIRECT\",\n            \"title\": \"APPLICATION\",\n            \"journalname\": \"REQ.BODY.JOURNALNAME\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 1,\n            \"createdAt\": \"2023-05-28T06:19:46.459Z\",\n            \"updatedAt\": \"2023-05-28T06:19:46.459Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 2,\n            \"authors\": \"COMPRESSING HANDCRAFTED DIRECTIVES FISH\",\n            \"title\": \"COPYING\",\n            \"journalname\": \"REQ.BODY.JOURNALNAME\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 1,\n            \"createdAt\": \"2023-05-28T06:19:50.039Z\",\n            \"updatedAt\": \"2023-05-28T06:19:50.039Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 3,\n            \"authors\": \"GLOVES KANSAS INCREDIBLE\",\n            \"title\": \"BRICKS-AND-CLICKS\",\n            \"journalname\": \"DIVISION\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 1,\n            \"createdAt\": \"2023-05-28T06:20:40.572Z\",\n            \"updatedAt\": \"2023-05-28T06:20:40.572Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 4,\n            \"authors\": \"TUNA VIRTUAL INTEGRATE BORDERS MINDSHARE\",\n            \"title\": \"HANDCRAFTED BLUETOOTH HTTP\",\n            \"journalname\": \"METRICS\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 3,\n            \"createdAt\": \"2023-05-28T06:23:24.317Z\",\n            \"updatedAt\": \"2023-05-28T06:23:24.317Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 5,\n            \"authors\": \"TABLE UNBRANDED USER-FRIENDLY ERGONOMIC WYOMING\",\n            \"title\": \"DISTRICT PROFIT-FOCUSED BUCKINGHAMSHIRE\",\n            \"journalname\": \"SET\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 4,\n            \"createdAt\": \"2023-05-28T06:23:29.648Z\",\n            \"updatedAt\": \"2023-05-28T06:23:29.648Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 6,\n            \"authors\": \"GORGEOUS PERSISTENT DEPOSIT GARDEN OVERRIDE\",\n            \"title\": \"RUBBER METAL BUCKINGHAMSHIRE VIRTUAL\",\n            \"journalname\": \"FAULT-TOLERANT\",\n            \"doilink\": \"https://www.annauniv.edu/DIST/\",\n            \"Category\": 5,\n            \"createdAt\": \"2023-05-28T06:23:34.811Z\",\n            \"updatedAt\": \"2023-05-28T06:23:34.811Z\",\n            \"studentStId\": 26\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-student-Higher Education",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/getHigherEducation",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "getHigherEducation"]
+        }
+      },
+      "response": [
+        {
+          "name": "get-student-Higher Education",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/student/getHigherEducation",
+              "host": ["{{baseapiurl}}"],
+              "path": ["student", "getHigherEducation"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "684"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"2ac-luz8PZXz8Tke0hb6fWnlASZO6Ls\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 May 2023 06:39:47 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"universityname\": \"ZERO CORPORATE\",\n            \"yearofadmission\": 2022,\n            \"specialization\": \"instruction\",\n            \"degreename\": \"M.Tech\",\n            \"createdAt\": \"2023-05-28T06:38:18.736Z\",\n            \"updatedAt\": \"2023-05-28T06:38:18.736Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 2,\n            \"universityname\": \"CROSS-PLATFORM WISCONSIN MOBILE ERGONOMIC\",\n            \"yearofadmission\": 2022,\n            \"specialization\": \"knowledge\",\n            \"degreename\": \"M.Tech\",\n            \"createdAt\": \"2023-05-28T06:38:21.435Z\",\n            \"updatedAt\": \"2023-05-28T06:38:21.435Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 3,\n            \"universityname\": \"RUBLE OPERATIONS MARKETS\",\n            \"yearofadmission\": 2022,\n            \"specialization\": \"Mouse\",\n            \"degreename\": \"M.Tech\",\n            \"createdAt\": \"2023-05-28T06:38:23.029Z\",\n            \"updatedAt\": \"2023-05-28T06:38:23.029Z\",\n            \"studentStId\": 26\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-student-Projects",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/getProjects",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "getProjects"]
+        }
+      },
+      "response": [
+        {
+          "name": "get-student-Higher Education",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/student/getHigherEducation",
+              "host": ["{{baseapiurl}}"],
+              "path": ["student", "getHigherEducation"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "684"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"2ac-luz8PZXz8Tke0hb6fWnlASZO6Ls\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 May 2023 06:39:47 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": [\n        {\n            \"id\": 1,\n            \"universityname\": \"ZERO CORPORATE\",\n            \"yearofadmission\": 2022,\n            \"specialization\": \"instruction\",\n            \"degreename\": \"M.Tech\",\n            \"createdAt\": \"2023-05-28T06:38:18.736Z\",\n            \"updatedAt\": \"2023-05-28T06:38:18.736Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 2,\n            \"universityname\": \"CROSS-PLATFORM WISCONSIN MOBILE ERGONOMIC\",\n            \"yearofadmission\": 2022,\n            \"specialization\": \"knowledge\",\n            \"degreename\": \"M.Tech\",\n            \"createdAt\": \"2023-05-28T06:38:21.435Z\",\n            \"updatedAt\": \"2023-05-28T06:38:21.435Z\",\n            \"studentStId\": 26\n        },\n        {\n            \"id\": 3,\n            \"universityname\": \"RUBLE OPERATIONS MARKETS\",\n            \"yearofadmission\": 2022,\n            \"specialization\": \"Mouse\",\n            \"degreename\": \"M.Tech\",\n            \"createdAt\": \"2023-05-28T06:38:23.029Z\",\n            \"updatedAt\": \"2023-05-28T06:38:23.029Z\",\n            \"studentStId\": 26\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "student-adding elective subjects",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "subjectSubid",
+              "value": "55",
+              "type": "text"
+            },
+            {
+              "key": "semsubbelongs",
+              "value": "3",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/addSubElectives",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "addSubElectives"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "student-upload- sem marksheet",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "marksheet",
+              "type": "file",
+              "src": "/Users/kanivan/Downloads/IOT_Assign1_2020115093.pdf"
+            },
+            {
+              "key": "semno",
+              "value": "5",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/uploadMarkSheet",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "uploadMarkSheet"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "student-adding workshops",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {}
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "Cyber security       ",
+              "type": "text"
+            },
+            {
+              "key": "heldby",
+              "value": "application      ",
+              "type": "text"
+            },
+            {
+              "key": "dateattended",
+              "value": "2021/12/12",
+              "type": "text"
+            },
+            {
+              "key": "worshopcertificate",
+              "type": "file",
+              "src": "/Users/kanivan/Downloads/Bayesian Classification.pdf"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/addWorkshops",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "addWorkshops"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "student-adding PaperPublishing",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {}
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "authors",
+              "value": "{{$randomWords}}",
+              "type": "text"
+            },
+            {
+              "key": "title",
+              "value": "{{$randomWords}}",
+              "type": "text"
+            },
+            {
+              "key": "journalname",
+              "value": "{{$randomWord}}",
+              "type": "text"
+            },
+            {
+              "key": "doilink",
+              "value": "https://www.annauniv.edu/DIST/",
+              "type": "text"
+            },
+            {
+              "key": "Category",
+              "value": "5",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/addPaperPublishing",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "addPaperPublishing"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "student-adding PaperPublishing Copy",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {}
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "title",
+              "value": "{{$randomWords}}",
+              "type": "text"
+            },
+            {
+              "key": "guidename",
+              "value": "{{$randomWords}}",
+              "type": "text"
+            },
+            {
+              "key": "fromperiod",
+              "value": "2002/12/12",
+              "type": "text"
+            },
+            {
+              "key": "toperiod",
+              "value": "2003/12/12",
+              "type": "text"
+            },
+            {
+              "key": "sourcecodelink",
+              "value": "{{$randomUrl}}",
+              "type": "text"
+            },
+            {
+              "key": "certificate",
+              "type": "file",
+              "src": "/Users/kanivan/Downloads/Bayesian Classification.pdf"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/addProjects",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "addProjects"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "student-adding HigherEducation",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {}
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "universityname",
+              "value": "{{$randomWords}}",
+              "type": "text"
+            },
+            {
+              "key": "yearofadmission",
+              "value": "2022",
+              "type": "text"
+            },
+            {
+              "key": "specialization",
+              "value": "{{$randomWord}}",
+              "type": "text"
+            },
+            {
+              "key": "degreename",
+              "value": "M.Tech",
+              "type": "text"
+            },
+            {
+              "key": "",
+              "value": "5",
+              "type": "text",
+              "disabled": true
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/addHigherEducation",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "addHigherEducation"]
+        }
+      },
+      "response": [
+        {
+          "name": "student-adding PaperPublishing Copy",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "universityname",
+                  "value": "{{$randomWords}}",
+                  "type": "text"
+                },
+                {
+                  "key": "yearofadmission",
+                  "value": "2022",
+                  "type": "text"
+                },
+                {
+                  "key": "specialization",
+                  "value": "{{$randomWord}}",
+                  "type": "text"
+                },
+                {
+                  "key": "degreename",
+                  "value": "M.Tech",
+                  "type": "text"
+                },
+                {
+                  "key": "",
+                  "value": "5",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/student/addHigherEducation",
+              "host": ["{{baseapiurl}}"],
+              "path": ["student", "addHigherEducation"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "33"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"21-ipdK4bGviOGVE57ywEnG2e09yu0\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 May 2023 06:38:23 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Added Successfully!\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "student-adding EventHackathon",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {}
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "{{$randomWords}}",
+              "type": "text"
+            },
+            {
+              "key": "role",
+              "value": "2",
+              "type": "text"
+            },
+            {
+              "key": "organizedBy",
+              "value": "{{$randomWords}}",
+              "type": "text"
+            },
+            {
+              "key": "dateattended",
+              "value": "2022/12/12",
+              "type": "text"
+            },
+            {
+              "key": "participationlevel",
+              "value": "2",
+              "type": "text"
+            },
+            {
+              "key": "certificate",
+              "type": "file",
+              "src": "/Users/kanivan/Downloads/Bayesian Classification.pdf"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/addEventHackathon",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "addEventHackathon"]
+        }
+      },
+      "response": [
+        {
+          "name": "student-adding EventHackathon",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "{{$randomWords}}",
+                  "type": "text"
+                },
+                {
+                  "key": "role",
+                  "value": "2",
+                  "type": "text"
+                },
+                {
+                  "key": "organizedBy",
+                  "value": "{{$randomWords}}",
+                  "type": "text"
+                },
+                {
+                  "key": "dateattended",
+                  "value": "2022/12/12",
+                  "type": "text"
+                },
+                {
+                  "key": "participationlevel",
+                  "value": "2",
+                  "type": "text"
+                },
+                {
+                  "key": "certificate",
+                  "type": "file",
+                  "src": "/Users/kanivan/Downloads/Bayesian Classification.pdf"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseapiurl}}/student/addEventHackathon",
+              "host": ["{{baseapiurl}}"],
+              "path": ["student", "addEventHackathon"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "33"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"21-ipdK4bGviOGVE57ywEnG2e09yu0\""
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 May 2023 07:32:31 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Added Successfully!\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "student-updating general details",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "cutoffmark",
+              "value": "{{$randomInt}}",
+              "type": "text"
+            },
+            {
+              "key": "admittedon",
+              "value": "2002/12/12",
+              "type": "text"
+            },
+            {
+              "key": "bloodgroup",
+              "value": "A+",
+              "type": "text"
+            },
+            {
+              "key": "specialcategory",
+              "value": "YES",
+              "type": "text"
+            },
+            {
+              "key": "community",
+              "value": "{{$randomVerb}}",
+              "type": "text"
+            },
+            {
+              "key": "volunteer",
+              "value": "NSS",
+              "type": "text"
+            },
+            {
+              "key": "accomodation",
+              "value": "0",
+              "type": "text"
+            },
+            {
+              "key": "fathername",
+              "value": "{{$randomNoun}}",
+              "type": "text"
+            },
+            {
+              "key": "fatherjob",
+              "value": "{{$randomNoun}}",
+              "type": "text"
+            },
+            {
+              "key": "fatherincome",
+              "value": "{{$randomInt}}",
+              "type": "text"
+            },
+            {
+              "key": "motherjob",
+              "value": "{{$randomNoun}}",
+              "type": "text"
+            },
+            {
+              "key": "mothername",
+              "value": "{{$randomNoun}}",
+              "type": "text"
+            },
+            {
+              "key": "motherincome",
+              "value": "{{$randomInt}}",
+              "type": "text"
+            },
+            {
+              "key": "parentaddress",
+              "value": "{{$randomNoun}}",
+              "type": "text"
+            },
+            {
+              "key": "parentemail",
+              "value": "{{$randomEmail}}",
+              "type": "text"
+            },
+            {
+              "key": "parentphonenum",
+              "value": "1234567890",
+              "type": "text"
+            },
+            {
+              "key": "localgname",
+              "value": "{{$randomNoun}}",
+              "type": "text"
+            },
+            {
+              "key": "localgaddr",
+              "value": "{{$randomNoun}}",
+              "type": "text"
+            },
+            {
+              "key": "localgphone",
+              "value": "1234567890",
+              "type": "text"
+            },
+            {
+              "key": "localgmail",
+              "value": "{{$randomEmail}}",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/updateStudentPersonal",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "updateStudentPersonal"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "student-adding scholarhips",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "{{$randomWord}}",
+              "type": "text"
+            },
+            {
+              "key": "ryear",
+              "value": "2021",
+              "type": "text"
+            },
+            {
+              "key": "amount",
+              "value": "10000",
+              "type": "text"
+            },
+            {
+              "key": "scholarshipproof",
+              "type": "file",
+              "src": "/Users/kanivan/Downloads/Bayesian Classification.pdf"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/addscholarhip",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "addscholarhip"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "student-adding extracourses",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "beauty",
+              "type": "text"
+            },
+            {
+              "key": "duration",
+              "value": "314",
+              "type": "text"
+            },
+            {
+              "key": "typeofcourse",
+              "value": "nptel",
+              "type": "text"
+            },
+            {
+              "key": "certificate",
+              "type": "file",
+              "src": "/Users/kanivan/Downloads/Bayesian Classification.pdf"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/addExtracourses",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "addExtracourses"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "student-adding intern details",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{studenttoken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "inname",
+              "value": "{{$randomWord}}",
+              "type": "text"
+            },
+            {
+              "key": "fromperiod",
+              "value": "2002/12/12",
+              "type": "text"
+            },
+            {
+              "key": "toperiod",
+              "value": "2002/12/12",
+              "type": "text"
+            },
+            {
+              "key": "details",
+              "value": "{{$randomWords}}",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/addinterndetails",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "addinterndetails"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "student-adding placement",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiU3R1ZGVudCIsImlkIjoxOCwibWFpbCI6InZldHR1a2lsaTAwQGdtYWlsLmNvbSIsInJlZ251bSI6MjAyMDExNTA0OSwidG90YWxfc2VtIjo4LCJpYXQiOjE2ODM0NDkwMDMsImV4cCI6MTY4MzQ1MjYwM30.UeredQw0YoiXVJG6quj30HsuxAsO4LUb-MvVfJyrp64",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiIsImlkIjoiNjQxZGVlYTI0YTVjMDU1NTA3MTAwOTBiIiwiaWF0IjoxNjc5NjgzNDU1LCJleHAiOjE2Nzk2ODcwNTV9.4xraOan9sh4EDqAAMO8I_WgUQulY8oIU5Rs3UmNSu14",
+            "type": "default",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "compname",
+              "value": "{{$randomWord}}",
+              "type": "text"
+            },
+            {
+              "key": "selection",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "salary",
+              "value": "{{$randomInt}}",
+              "type": "text"
+            },
+            {
+              "key": "comptype",
+              "value": "service",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseapiurl}}/student/addplacements",
+          "host": ["{{baseapiurl}}"],
+          "path": ["student", "addplacements"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseapiurl",
+      "value": "localhost:3001/api"
+    },
+    {
+      "key": "studenttoken",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiU3R1ZGVudCIsImlkIjoyNywibWFpbCI6Im5lb25saXRlOTFAZ21haWwuY29tIiwicmVnbnVtIjoiMjAyMDExNTA0MCIsInRvdGFsX3NlbSI6OCwiaWF0IjoxNjg1Mjc3NTQwLCJleHAiOjE2ODUzNjM5NDB9.3Dr_rUz3mfJUJOx4fDDMqsbAwAqbyy9mC1vs-xPaTEU",
+      "type": "string"
+    },
+    {
+      "key": "admintoken",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQWRtaW4iLCJpZCI6MSwibWFpbCI6InNrYW5pdmFuMTJAZ21haWwuY29tIiwiaWF0IjoxNjg1MjYwMTkwLCJleHAiOjE2ODUzNDY1OTB9.5hzC8hjF1fgREIYJTWOZloN8-Da1VpXN0jmEXmfaSzE",
+      "type": "string"
+    },
+    {
+      "key": "faculttoken",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiRmFjdWx0eSIsImlkIjo3LCJtYWlsIjoibmVvbmxpdGU5MEBnbWFpbC5jb20iLCJpYXQiOjE2ODM2MzI0MjIsImV4cCI6MTY4MzYzNjAyMn0.NKc1otZKzEc8M4rEOCE2IqgEucq7dqIVHmtvhj0X_tw",
+      "type": "string"
+    }
+  ]
+}
